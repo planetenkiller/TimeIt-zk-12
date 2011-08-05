@@ -1,0 +1,57 @@
+<!--[pnpageaddvar name="javascript" value="javascript/ajax/prototype.js" ]-->
+<!--[pnpageaddvar name="javascript" value="javascript/jscalendar/calendar.js" ]-->
+<!--[pnpageaddvar name="stylesheet" value="javascript/jscalendar/calendar-win2k-cold-2.css" ]-->
+<!--[pnpageaddvar name="javascript" value="javascript/jscalendar/lang/calendar-`$lang`.js" ]-->
+<!--[pnpageaddvar name="javascript" value="javascript/jscalendar/lang/calendar-`$lang`.utf8.js" ]-->
+<!--[pnpageaddvar name="javascript" value="javascript/jscalendar/calendar-setup.js" ]-->
+<!--[pnpageaddvar name="rawtext" value='<style type="text/css">#calendar-container div.calendar { border-width:0px; }</style>']-->
+
+
+<div id="calendar-container"></div>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+  function dateChanged(calendar) {
+    // Beware that this function is called even if the end-user only
+    // changed the month/year.  In order to determine if a date was
+    // clicked you can use the dateClicked property of the calendar:
+    if (calendar.dateClicked) {
+      // OK, a date was clicked, redirect to /yyyy/mm/dd/index.php
+      var y = calendar.date.getFullYear();
+      var m = calendar.date.getMonth()+1;     // integer, 0..11
+      var d = calendar.date.getDate();      // integer, 1..31
+
+      // redirect...
+      window.location = "index.php?module=TimeIt&func=view&viewType=day&year="+ y +"&month="+ m +"&day="+ d;
+    }
+  };
+
+
+  Calendar.setup(
+    {
+
+      flat         : "calendar-container", // ID of the parent element
+      flatCallback : dateChanged ,          // our callback function
+      firstDay     : "<!--[$firstweekday]-->",	// First Day of Week
+      daFormat     : "%Y-%m-%d",
+      date         : "<!--[$date]-->",  // initial date
+      singleClick :    true,
+      align       :    "Bl"
+    }
+  );
+  
+  // Fix for Bug #16
+  function changeCalendarDisplayStyle()
+  {
+  	 var temp = $$('.calendar').each(function(n){
+  	 	n.style.display = 'inline';
+  	 });
+  	 
+  }
+  Event.observe(window, 'load', function(){
+  	 changeCalendarDisplayStyle();
+  });
+  // End Fix for Bug #16
+
+/* ]]> */
+</script>

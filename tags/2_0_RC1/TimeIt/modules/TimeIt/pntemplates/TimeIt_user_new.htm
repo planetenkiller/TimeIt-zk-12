@@ -1,0 +1,286 @@
+<!--[pnpageaddvar name="rawtext" value='<link rel="stylesheet" href="modules/TimeIt/pnstyle/style.css" type="text/css" />']-->
+<!--[pnpageaddvar name="javascript" value="javascript/ajax/prototype.js"]-->
+<!--[pnpageaddvar name="javascript" value="modules/TimeIt/pnjavascript/event_edit.js"]-->
+<!--[pnpageaddvar name="rawtext" value="`$smarty.ldelim`if IE]><link rel=\"stylesheet\" href=\"modules/TimeIt/pnstyle/ie_fix.css\" type=\"text/css\" /><![endif`$smarty.rdelim`"]--> 
+
+<div class="pn-frontendcontainer">
+<h2><!--[pnml name="_TIMEIT_NEW_EVENT"]--></h2>
+
+
+<!--[pnform cssClass="pn-form"]-->
+<!--[pnformvalidationsummary]-->
+
+<table border="0" width="100%">
+    <tr>
+        <td valign="top">
+                <fieldset id="timeit_new_box_title">
+                        <legend><!--["_TIMEIT_NEWEVENT_TITLE"|pnml]--></legend>
+                        <div class="pn-formrow">
+                                <!--[pnformlabel for="title" text="_TITLE"|pnml]-->:
+                                <!--[pnformtextinput id="title" mandatory=true maxLength=50 ]-->
+                        </div>
+
+                        <div class="pn-formrow">
+                                <!--[pnformlabel for="startDate" text="_DATE"|pnml]-->:
+                                <!--[pnformdateinput id="startDate" mandatory=true]--> (yyyy-mm-dd)
+                        </div>
+
+
+                <!--[pnmodgetvar module="TimeIt" name="enablecategorization" assign="enablecategorization"]-->
+                <!--[if $enablecategorization]-->
+                        <div class="pn-formrow">
+                            <span class="unterstrich"><!--['_CATEGORIES'|pnml]--></span>:<br />
+
+                                <!--[foreach name="catFor" from=$categories key=property item=category]-->
+                                            <!--[*selector_category category=$category name="cat[$property]" field="id" defaultValue="0"*]-->
+                                        <!--[if $smarty.foreach.catFor.first != true]-->
+                                            <br />
+                                        <!--[/if]-->
+                                        <!--[pnformlabel for="cat_$property" text=$category.name]-->:
+                                        <!--[tiformcategoryselector includeEmptyElement=true id="cat_$property" group="cats" category=$category.id]-->
+                                 <!--[/foreach]-->
+                    </div>
+                <!--[/if]-->
+                </fieldset>
+            
+            
+                <fieldset>
+                        <legend><!--[pnml name="_TIME"]-->?</legend>
+                        <div class="pn-formrow">
+
+                                <!--[pnformlabel for="allDay" text="_TIMEIT_EVENTTYPE"|pnml]-->:
+                                <!--[pnformradiobutton id="allDay" dataField="allDay" value='1' checked=true mandatory=1]-->
+                                <!--[pnml name="_TIMEIT_ALLDAY"]--><br /><br />
+
+                                <!--[pnformlabel for="allDay2" html=1 text="_TIMEIT_EVENTTYPE"|pnml]-->:
+                                <!--[pnformradiobutton id="allDay2" dataField="allDay" value="0" mandatory=1]-->
+                                <!--[pnml name="_TIMEIT_ALLDAY2"]-->
+                                <!--[pnformdropdownlist id="allDayStart_h" width="50px"]--> :
+                                <!--[pnformdropdownlist id="allDayStart_m" width="50px"]--><!--[pnml name="_TIMEIT_OCLOCK"]--><br />
+
+                                <!--[pnformlabel for="allDayDur" html=1 text="_TIMEIT_DURATION"|pnml]-->:
+                                <!--[pnformintinput id="allDayDur" minValue=0 maxLength=2 size=2]--> <!--['_TIMEIT_HOURS'|pnml]-->
+                                <!--[pnformintinput id="allDayDurMin" minValue=0 maxValue=59 size=2]--> <!--['_MINUTES'|pnml]-->
+                        </div>
+                </fieldset>
+        </td>
+        
+        
+        <td valign="top">
+                <fieldset<!--[if $groupItemsHide && $shareItemsHide]--> style="display:none;"<!--[/if]-->>
+                        <legend><!--["_TIMEIT_SHARING"|pnml]--></legend>
+
+                        <div class="pn-formrow"<!--[if !$groupItemsHide && $shareItemsHide]--> style="display:none;"<!--[/if]-->>
+                                <!--[pnformlabel for="share" text="_TIMEIT_SHARING"|pnml]-->:
+                                <!--[pnformdropdownlist id="share"]-->
+                        </div>
+
+                        <div class="pn-formrow"<!--[if $groupItemsHide && !$shareItemsHide]--> style="display:none;"<!--[/if]-->>
+                                <!--[pnformlabel for="group" text="_TIMEIT_GROUP"|pnml]-->:
+                                <!--[pnformdropdownlist id="group"]-->
+                        </div>
+                </fieldset>            
+            
+            
+                <!--[assign var="allowSubscribe" value=$calendar.allowSubscribe]-->
+	 	<fieldset<!--[if !$allowSubscribe]--> style="display:none;"<!--[/if]-->>
+	 		<legend><!--['_TIMEIT_UN_SUBSCRIBE'|pnml]--></legend>
+	 		<div  class="pn-formrow">
+				<!--[pnformlabel for="subscribeLimit" text="_TIMEIT_LIMIT"|pnml]-->:
+				<!--[pnformintinput  id="subscribeLimit" maxLength="10" minValue="-1"]-->
+			</div>
+			
+			<div  class="pn-formrow">
+				<!--[pnformlabel for="subscribeWPend" text="_TIMEIT_SUBSCRIBEMODERATE"|pnml]-->:
+				<!--[pnformcheckbox id="subscribeWPend"]-->
+			</div>
+	 	</fieldset>
+            
+        </td>
+    </tr>
+</table>
+    
+<fieldset id="timeIt_new_box_description">
+    <legend><!--["_DESCRIPTION"|pnml]--></legend>
+    <div  class="pn-formrow">
+            <!--[*pnformlabel for="text" text="_DESCRIPTION"|pnml*]-->
+            <!--[pnformtextinput id="text" textMode="multiline" cols=30 rows=10 mandatory=true]-->
+    </div>
+
+    <div  class="pn-formrow">
+            <!--[pnformlabel for="text_type1" text="Plain Text"]-->:
+            <!--[pnformradiobutton id="text_type1" dataField="text_type" value="0" checked=true]-->
+    </div>
+
+    <div  class="pn-formrow">
+            <!--[pnformlabel for="text_type1" text="HTML"]-->:
+            <!--[pnformradiobutton id="text_type2" dataField="text_type" value="1"]-->
+    </div>
+
+    <!--[if $mode eq 'create']-->
+            <!--[pnmodcallhooks hookobject=item hookaction=new module=TimeIt]-->
+    <!--[elseif $mode eq 'edit' && $recurrenceOnly == false]-->
+            <!--[pnmodcallhooks hookobject=item hookaction=modify hookid=$event.id module=TimeIt]-->
+    <!--[/if]-->
+</fieldset>
+
+
+<!--[if $event.mmid == 2]-->
+    <!--[pnml name="_TIMEIT_ICAL_REPEAT_INFO" html=1]-->
+<!--[/if]-->
+<fieldset<!--[if $recurrenceOnly == true || $event.mmid == 2]--> style="display:none;"<!--[/if]-->>
+	<legend><!--["_TIMEIT_REPEAT"|pnml]--></legend>
+        <a href="#timeIt_new_box_repeat" onclick="if($('timeIt_new_box_repeat').visible()){ $('timeIt_new_box_repeat').hide(); }else{ $('timeIt_new_box_repeat').show(); } return false;">show/hide</a>
+        <div id="timeIt_new_box_repeat">
+            <table><tr><td>
+            <div class="pn-formrow">
+                    <!--[pnformlabel for="repeat" text="_TIMEIT_REPEAT"|pnml]-->:
+                    <!--[pnformradiobutton id="repeat" dataField="repeat" value="0" checked="1"]--> <!--[pnml name="_TIMEIT_NOREPEAT"]-->
+            </div>
+            <div class="pn-formrow">
+                    <!--[pnformlabel for="repeat1" html=1 text="_TIMEIT_REPEAT"|pnml]-->:
+                    <!--[pnformradiobutton id="repeat1" dataField="repeat" value="1"]--> <!--[pnml name="_TIMEIT_EVERY"]-->
+                    <!--[pnformintinput id="repeatFrec" maxLength=3 size=2 minValue=1 maxValue=365]-->
+                    <!--[pnformdropdownlist id="repeatFrec1"]-->
+            </div>
+            <div class="pn-formrow">
+                    <!--[pnformlabel for="repeat2" html=1 text="_TIMEIT_REPEAT"|pnml]-->:
+                    <!--[pnformradiobutton id="repeat2" dataField="repeat" value="2"]--> <!--[pnml name="_TIMEIT_ON"]--><br />
+                    <div style="padding-left: 8em;">
+                            <!--[pnformcheckboxlist id="repeat21" repeatColumns=3]-->
+                            <!--[pnformdropdownlist id="repeat22"]--> <!--[pnml name="_TIMEIT_OFMONTHEVERY"]-->
+                            <!--[pnformintinput id="repeatFrec2" maxLength=3 size=2 minValue=1 maxValue=12]--> <!--[pnml name="_MONTHS"]-->
+                    </div>
+            </div>
+            <div class="pn-formrow">
+                    <!--[pnformlabel for="repeat3" html=1 text="_TIMEIT_REPEAT"|pnml]-->:
+                    <!--[pnformradiobutton id="repeat3" dataField="repeat" value="3"]--> <!--[pnml name="_TIMEIT_EVERY"]-->
+                    <!--[tiformdateinput id="repeat3Dates" multipleTime=true]-->
+            </div>
+            <div class="pn-formrow">
+                    <!--[pnformlabel for="noReapeats" text=_TIMEIT_NOREPEATSAT]-->:
+                    <!--[tiformdateinput id="noReapeats" multipleTime=true]-->
+            </div>
+            <div class="pn-formrow">
+                    <!--[pnformlabel for="endDate" text="_TIMEIT_ENDDATE"|pnml]-->:
+                    <!--[pnformdateinput id="endDate"]--> (yyyy-mm-dd)
+            </div>
+            <br /><br />
+
+            </td>
+            <!--[*<td valign="top">
+                <div id="sendRecurrenceToApplet_error_date" style="display:none;"><!--['_TIMEIT_ERROR_APPLET_DATE'|pnml]--> </div>
+                <a href="#" onclick="sendRecurrenceToApplet();return false;">Show recurrences on the month view</a>
+                <object id="tiapplet" classid="java:org.zikula.timeit.Main.class" type="application/java" archive="<!--[pngetbaseurl]-->modules/TimeIt/includes/TimeItRecurrenceViewer.jar" height="190" width="220" >
+                    <param name="archive" value="<!--[pngetbaseurl]-->modules/TimeIt/includes/TimeItRecurrenceViewer.jar" />
+                </object>
+            </td>*]-->
+            </tr>
+            </table>
+        </div>
+</fieldset>	
+    
+ 
+ <table border="0" width="100%">
+     <tr>
+         <td valign="top" style="width:50%">
+             
+                <!--[pnmodgetvar module="TimeIt" name="hideTimeItAddress" assign="hideTimeItAddress"]-->
+                <!--[assign var="useLocations" value=$calendar.useLocations]-->
+                <!--[assign var="subscribeMode" value=$calendar.subscribeMode]-->
+                <!--[if ($mode eq 'edit' && $locations)]-->
+                        <!--[assign var="hasLocations" value=true]-->
+                <!--[else]-->
+                        <!--[assign var="hasLocations" value=false]-->
+                <!--[/if]-->
+
+                 <!--[foreach from=$eventPlugins.contact item=plugin]-->
+                    <!--[if $plugin.edit]-->
+                        <!--[pnformlabel for="eventplugin_contact_`$plugin.name`" text=$plugin.name]-->:
+                        <!--[pnformradiobutton group="data" id="eventplugin_contact_`$plugin.name`" value=$plugin.name dataField="eventplugin_contact"]-->
+                        <script type="text/javascript">
+                            Event.observe($('eventplugin_contact_<!--[$plugin.name]-->'), 'click', function(event) {
+                                                            $$('div.timeit_eventplugin_contact').each(Element.hide);
+                                                            $('eventplugin_<!--[$plugin.name]-->').show();
+                                                         }, false);
+                        </script>
+                    <!--[/if]-->
+                <!--[/foreach]-->
+                <script type="text/javascript">
+                    Event.observe(window, 'load', function(){$('eventplugin_contact_<!--[$data.eventplugin_contact]-->').click()}, false);
+                </script>
+
+                <!--[foreach from=$eventPlugins.contact item=plugin]-->
+                    <!--[if $plugin.edit]-->
+                        <div id="eventplugin_<!--[$plugin.name]-->" class="timeit_eventplugin_contact">
+                            <!--[include file="eventplugins/TimeIt_eventplugins_`$plugin.name`_edit.htm"]-->
+                        </div>
+                    <!--[/if]-->
+                <!--[/foreach]-->
+                
+                
+                <fieldset>
+                    <legend><!--["_TIMEIT_TICKET_PRICE"|pnml]--></legend>
+                    <div  class="pn-formrow">
+                            <!--[pnformlabel for="fee" text="_TIMEIT_FEE"|pnml]-->:
+                            <!--[pnformtextinput group="data" id="fee" maxLength="100"]-->
+                    </div>
+		</fieldset>
+         </td>
+         <td valign="top" style="width:50%">
+            
+                <div id="gmap" style="width:300px; height:300px;display:none;"></div>
+                <div id="timeit_address_box">
+                    <!--[foreach from=$eventPlugins.location item=plugin]-->
+                        <!--[if $plugin.edit]-->
+                            <!--[pnformlabel for="eventplugin_location_`$plugin.name`" text=$plugin.name]-->:
+                            <!--[pnformradiobutton group="data" id="eventplugin_location_`$plugin.name`" value=$plugin.name dataField="eventplugin_location"]-->
+                            <script type="text/javascript">
+                                Event.observe($('eventplugin_location_<!--[$plugin.name]-->'), 'click', function(event) {
+                                                                $$('div.timeit_eventplugin_location').each(Element.hide);
+                                                                $('eventplugin_<!--[$plugin.name]-->').show();
+                                                             }, false);
+                            </script>
+                        <!--[/if]-->
+                    <!--[/foreach]-->
+                    <script type="text/javascript">
+                        Event.observe(window, 'load', function(){$('eventplugin_location_<!--[$data.eventplugin_location]-->').click()}, false);
+                    </script>
+
+                    <!--[foreach from=$eventPlugins.location item=plugin]-->
+                        <!--[if $plugin.edit]-->
+                            <div id="eventplugin_<!--[$plugin.name]-->" class="timeit_eventplugin_location">
+                                <!--[include file="eventplugins/TimeIt_eventplugins_`$plugin.name`_edit.htm"]-->
+                            </div>
+                        <!--[/if]-->
+                    <!--[/foreach]-->
+                </div>
+         </td>
+     </tr>
+ </table>
+ 
+<fieldset id="buttonsBox">
+	<legend><!--["_ACTION"|pnml]--></legend>
+        <img id="timeit_geocode_indicator" style="display:none;" src="<!--[pngetbaseurl]-->images/ajax/indicator.white.gif"/>
+        <div class="pn-formrow" style="margin-left: 1em;">
+		<!--[if $wfactionsItemsCount == 1]--><div style="display:none;"><!--[/if]-->
+		<!--[pnformdropdownlist id="wfactions"]-->
+		<!--[if $wfactionsItemsCount == 1]--></div><!--[/if]-->
+                <span id="timeit_submit_btn"><!--[pnformimagebutton id="mybtn_create" commandName="create" text="_CREATE"|pnml imageUrl="images/icons/small/button_ok.gif"]--></span>
+		<!--[pnformimagebutton id="mybtn_cancel" commandName="cancel" text="_CANCEL"|pnml imageUrl="images/icons/small/button_cancel.gif"]-->
+	</div>
+</fieldset>	
+
+
+<!--[/pnform]-->
+</div>
+
+<!--[if $mapView]-->
+	<script type="text/javascript">
+	    Event.observe(window, 'load', eventEditInit, false);
+	</script>
+<!--[/if]-->
+
+<script type="text/javascript">
+    Event.observe(window, 'load', eventEditInitBoxes, false);
+</script>

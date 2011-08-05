@@ -1,0 +1,40 @@
+ <fieldset>
+    <legend>Addressbook %%%'Contact'%%%</legend>
+    <div style="display:none;">
+         <!--[pnformintinput group="data" id="ContactAddressbook_abid"]-->
+    </div>
+
+    <strong>%%%'Current selection'%%%:</strong><br />
+    <span id="ContactAddressbook_ab_current">
+            <!--[if $data.ContactAddressbook_abobj]-->
+                <!--[$data.ContactAddressbook_abobj.fname]--> <!--[$data.ContactAddressbook_abobj.lname]-->, <!--[$data.ContactAddressbook_abobj.zip]--> <!--[$data.ContactAddressbook_abobj.city]-->
+           <!--[else]-->
+                -
+           <!--[/if]-->
+    </span>
+    &nbsp;&nbsp;&nbsp;&nbsp;<!--[pnimg src="button_cancel.gif" modname="core" set="icons/extrasmall" id="ContactAddressbook_ab_current_btnclean"]-->
+    <div class="z-formrow">
+
+        <!--[pnformlabel for="ContactAddressbook_search" __text="Search"]-->
+        <!--[pnformtextinput maxLength="200" group="data" id="ContactAddressbook_search"]-->
+
+        <div id="ContactAddressbook_search_choices" class="ContactAddressbook_search_choices"></div>
+    </div>
+</fieldset>
+
+<!--[pnajaxheader modname=TimeIt]-->
+
+<script type="text/javascript">
+    Event.observe(window, 'load', function() {
+                                       new Ajax.Autocompleter("ContactAddressbook_search", "ContactAddressbook_search_choices", document.location.pnbaseURL+"index.php?module=TimeIt&type=ajax&func=ContactAddressbookSearch", {afterUpdateElement : function(text,li){
+                                                                                                                                                                                                                                                           $('ContactAddressbook_abid').value=li.id;
+                                                                                                                                                                                                                                                           $('ContactAddressbook_ab_current').innerHTML = li.innerHTML;
+                                                                                                                                                                                                                                                     }});
+
+                                    }, false);
+    Event.observe($('ContactAddressbook_ab_current_btnclean'), 'click', function() {
+                                                                            $('ContactAddressbook_abid').value='';
+                                                                            $('ContactAddressbook_ab_current').innerHTML = '-';
+                                                                        }, false);
+
+</script>

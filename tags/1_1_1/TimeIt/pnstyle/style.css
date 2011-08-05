@@ -1,0 +1,48 @@
+fieldset {
+	margin: 1.5em auto 1.5em auto;
+	background: #E8EBDF;
+	width: 90%;
+}
+
+legend {
+	background: #E8EBDF;
+	border: 1px solid #4b408c;
+	border-right-width: 2px;
+	border-bottom-width: 2px;
+	margin-bottom: 4px;
+	font-weight: bold;
+}
+
+div.ti-adminformrow>label {
+	width: 10em;
+}
+
+div.ti-adminformrow2>label {
+	width: 5em;
+}
+
+div.ti-adminformrow textarea
+{
+	width: 50em;
+}
+
+.unterstrich 
+{
+	text-decoration: underline;
+}
+
+
+.bnav 			{ border: 1px solid #000000; }
+td.nav  		{ border-right: 1px outset #FFFFFF; background-color:#FFFFFF; }
+td.nav:hover 	{ border-right: 1px outset #FFFFFF; background-color:#CCFFCC; }
+td.rnav 		{ background-color:#FFFFFF; }
+td.rnav:hover 	{ background-color:#CCFFCC; }
+td.snav 		{ border-right: 1px outset #FFFFFF; background-color:#CCFFCC; font-weight : bold; }
+td.rsnav 		{ background-color:#CCFFCC; font-weight : bold; }
+a.nav:link  	{ padding-right: 3px; padding-left: 3px; color: #000000; text-decoration: none; }
+a.nav:active 	{ padding-right: 3px; padding-left: 3px; color: #000000; text-decoration: none; }
+a.nav:hover 	{ padding-right: 3px; padding-left: 3px; color: #000000; text-decoration: none; }
+a.nav:visited 	{ padding-right: 3px; padding-left: 3px; color: #000000; text-decoration: none; }
+SELECT.nav  	{ color: #000000; background-color:#CCFFCC; }
+OPTION.nav  	{ color: #000000; background-color:#CCFFCC; }
+INPUT.nav 		{ color: #000000; background-color:#CCFFCC; }

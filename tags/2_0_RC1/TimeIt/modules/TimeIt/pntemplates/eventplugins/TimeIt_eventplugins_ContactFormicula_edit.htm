@@ -1,0 +1,19 @@
+ <fieldset>
+    <legend>formicula <!--["_TIMEIT_CONTACT"|pnml]--></legend>
+    <div class="pn-formrow">
+        <!--[pnformlabel for="formicula_contact_choose" text=_TIMEIT_MODE]-->:
+        <!--[pnformradiobutton group="data" id="formicula_contact_choose" value="choose" dataField=ContactFormicula_contact]--> <!--["_SEARCH"|pnml]-->
+    </div>
+
+    <!--[*<div class="pn-formrow">
+        <!--[pnformlabel for="formicula_contact_add" text=_TIMEIT_MODE]-->:
+        <!--[pnformradiobutton group="data" id="formicula_contact_add" value="add" dataField=ContactFormicula_contact]--> <!--["_ADD"|pnml]-->
+    </div>*]-->
+    <div id="formicula_contact_choose_content" style="<!--[if $data.ContactFormicula_contact neq 'choose']-->display:none;<!--[/if]-->">
+        <div class="pn-formrow">
+            <!--[pnformlabel for="ContactFormicula_cid" text=_TIMEIT_CONTACT]-->:
+            <!--[pnformdropdownlist group="data" id="ContactFormicula_cid"]-->
+        </div>
+    </div>
+    <div id="formicula_contact_add_content" style="<!--[if $data.ContactFormicula_contact neq 'add']-->display:none;<!--[/if]-->">add</div>
+</fieldset>

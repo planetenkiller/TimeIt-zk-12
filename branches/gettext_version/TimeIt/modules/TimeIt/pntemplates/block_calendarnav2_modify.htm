@@ -1,0 +1,13 @@
+<div class="pn-adminformrow">
+    <label for="TimeIt_calendar">%%%'Calendar'%%%</label>
+    <select id="TimeIt_calendar" name="calendar" size="1">
+        <!--[foreach from=$calendars item=row]-->
+            <option value="<!--[$row.value]-->" ><!--[$row.text|pnvarprephtmldisplay]--></option>
+        <!--[/foreach]-->
+    </select>
+</div>
+
+<div class="pn-adminformrow">
+    <label for="TimeIt_displayIfThereEvents">%%%'Highlight days with events?'%%%</label>
+    <input id="TimeIt_displayIfThereEvents" type="checkbox" name="displayIfThereEvents" <!--[if $displayIfThereEvents]-->checked="checked"<!--[/if]--> />
+</div>

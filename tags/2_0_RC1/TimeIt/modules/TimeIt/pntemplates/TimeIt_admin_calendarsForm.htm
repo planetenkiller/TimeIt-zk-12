@@ -1,0 +1,133 @@
+<!--[include file="TimeIt_admin_menu.htm"]-->
+<div class="pn-admincontainer">
+<div class="pn-adminpageicon"><!--[pnimg src=filenew.gif set=icons/large alt='_TIMEIT_NEW_EVENT' altml=true]--></div>
+<!--[if $mode eq 'edit']-->
+    <h2><!--[pnml name="_EDIT"]--></h2>
+<!--[else]-->
+    <h2><!--[pnml name="_CREATE"]--></h2>
+<!--[/if]-->
+
+<!--[pnform cssClass="pn-adminform"]-->
+<!--[pnformvalidationsummary]-->
+<div>
+    <fieldset>
+	<legend><!--['_TIMEIT_GENERAl'|pnml]--></legend>
+        <div  class="pn-adminformrow">
+            <!--[pnformlabel for="name" text="_NAME"|pnml]-->:
+            <!--[pnformtextinput id="name" mandatory=true maxLength=255 ]-->
+        </div>
+        <div  class="pn-adminformrow">
+            <!--[pnformlabel for="desc" text="_DESCRIPTION"|pnml]-->:
+            <!--[pnformtextinput id="desc" textMode="multiline" cols=40 rows=10 mandatory=true ]-->
+        </div>
+
+        <div class="pn-adminformrow">
+                <!--[pnformlabel for="workflow" text=_TIMEIT_WORKFLOW]-->:
+                <!--[pnformdropdownlist group="config" id="workflow"]-->
+        </div>
+
+        <div class="pn-adminformrow">
+                <!--[pnformlabel for="userCanEditHisEvents" text=_TIMEIT_USERCANEDITHISEVENTS]-->:
+                <!--[pnformcheckbox group="config" id="userCanEditHisEvents"]-->
+        </div>
+
+        <div class="pn-adminformrow">
+                <!--[pnformlabel for="defaultView" text=_TIMEIT_DEFAULTVIEW]-->:
+                <!--[pnformdropdownlist group="config" id="defaultView"]-->
+        </div>
+
+        <div class="pn-adminformrow">
+                <!--[pnformlabel for="defaultTemplate" text=_TIMEIT_DEFAULTTEMPLATE]-->:
+                <!--[pnformdropdownlist group="config" id="defaultTemplate"]-->
+        </div>
+    </fieldset>
+
+    <fieldset>
+	<legend><!--['_TIMEIT_SHARING'|pnml]--></legend>
+        <div  class="pn-adminformrow">
+            <!--[pnformlabel for="privateCalendar" text="_TIMEIT_PRVATECALENDAR"|pnml]-->:
+            <!--[pnformcheckbox id="privateCalendar"]-->
+        </div>
+        <div  class="pn-adminformrow">
+            <!--[pnformlabel for="globalCalendar" text="_TIMEIT_GLOBALCALENDAR"|pnml]-->:
+            <!--[pnformcheckbox id="globalCalendar"]-->
+        </div>
+
+        <div  class="pn-adminformrow">
+            <!--[pnformlabel for="friendCalendar" text="_TIMEIT_FRIENDCALENDAR"|pnml]-->:
+            <!--[if $ContactListModuleOK eq true]-->
+                    <!--[pnformcheckbox id="friendCalendar"]-->>
+            <!--[else]-->
+                    <!--['_TIMEIT_NOCONTACTLIST'|pnml]-->
+            <!--[/if]-->
+        </div>
+    </fieldset>
+
+    <fieldset>
+	<legend>Google Maps / Address</legend>
+	<div class="pn-adminformrow">
+		<!--[pnformlabel for="eventPluginsLocation" text=_TIMEIT_EVENTPLUGINSLOCATIONSEL]-->:
+                <!--[pnformcheckboxlist mandatory=true group="config" id="eventPluginsLocation" items=$config.eventPluginsLocationItems]-->
+  		<!--[if $locationsModuleOK eq false]-->
+  			<!--['_TIMEIT_NOLOCATIONS'|pnml]-->
+  		<!--[/if]-->
+	</div>
+
+        <div class="pn-adminformrow">
+		<!--[pnformlabel for="enableMapView" text=_TIMEIT_ENABLEMAPS]-->:
+  		<!--[pnformcheckbox group="config" id="enableMapView"]-->
+	</div>
+    </fieldset>
+
+    <fieldset>
+	<legend><!--['_TIMEIT_UN_SUBSCRIBE'|pnml]--></legend>
+
+        <fieldset>
+            <legend><!--['_TIMEIT_GENERAl'|pnml]--></legend>
+            <div class="pn-adminformrow">
+                    <!--[pnformlabel for="allowSubscribe" text=_TIMEIT_ALLOWSUBSCRIBE]-->:
+                    <!--[pnformcheckbox group="config" id="allowSubscribe"]-->
+            </div>
+
+            <div class="pn-adminformrow">
+                    <!--[pnformlabel for="eventPluginsContact" text=_TIMEIT_EVENTPLUGINSCONTACTSEL]-->:
+                    <!--[pnformcheckboxlist mandatory=true group="config" id="eventPluginsContact" items=$config.eventPluginsContactItems]-->
+                    <!--[if $formiculaModuleOk eq false]-->
+                        <!--['_TIMEIT_NOFORMICULA'|pnml]-->
+                    <!--[/if]-->
+            </div>
+
+            <div class="pn-adminformrow">
+                    <!--[pnformlabel for="allowSubscribeDelete" text=_TIMEIT_ALLOWSUBSCRIBEDELETE]-->:
+                    <!--[pnformcheckbox group="config" id="allowSubscribeDelete"]-->
+            </div>
+
+            <b><!--['_DEFAULT'|pnml]--></b>:
+            <div class="pn-adminformrow">
+                    <!--[pnformlabel for="subscribeLimit" text=_TIMEIT_LIMIT]-->:
+                    <!--[pnformintinput group="config" id="subscribeLimit"]-->
+            </div>
+            <div class="pn-adminformrow">
+                    <!--[pnformlabel for="subscribePending" text=_TIMEIT_SUBSCRIBEMODERATE]-->:
+                    <!--[pnformcheckbox group="config" id="subscribePending"]-->
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Formicula</legend>
+            <!--['_TIMEIT_FORMICULA_INFO'|pnml]-->
+            <div class="pn-adminformrow">
+                    <!--[pnformlabel for="formiculaFormId" text=_TIMEIT_FORMICULA_FROMID]-->:
+                    <!--[pnformintinput group="config" id="formiculaFormId"]-->
+            </div>
+        </fieldset>
+    </fieldset>
+    
+
+    <div class="pn-adminformrow pn-adminformbuttons" style="margin-left: 1em;">
+        <!--[pnformimagebutton id="mybtn_create" commandName="create" text="_CREATE"|pnml imageUrl="images/icons/small/button_ok.gif"]-->
+        <!--[pnformimagebutton id="mybtn_cancel" commandName="cancel" text="_CANCEL"|pnml imageUrl="images/icons/small/button_cancel.gif"]-->
+    </div>
+</div>
+<!--[/pnform]-->
+</div>

@@ -1,0 +1,12 @@
+<!--[foreach name=weekforeach from=$events item=objs key=day]--><!--[foreach from=$objs item=obj]-->BEGIN:VEVENT
+SUMMARY:<!--[$obj.title]-->
+DESCRIPTION:<!--[$obj.text|replace:"\r":"\n"|replace:"\n":" \n "|wordwrap:70:"\n "]-->
+UID:<!--[$obj.id]-->
+URL:<!--[pnmodurl modname="TimeIt" type="user" func="event" id=$obj.id]-->
+DTSTART;VALUE=DATE-TIME:<!--[$day|pndate_format:"%Y%m%dT%H%M%SZ"]-->
+DTEND;VALUE=DATE-TIME:<!--[$day|pndate_format:"%Y%m%dT%H%M%SZ"]-->
+DTSTAMP:<!--[$obj.cr_date|pndate_format:"%Y-%m-%dT%H:%M:%SZ"]-->
+CATEGORIES: <!--[ foreach name="catloop" from=$obj.__CATEGORIES__ item=cat ]--><!--[if $smarty.foreach.catloop.first != true]-->, <!--[/if]--><!--[$cat.name]--><!--[ /foreach ]-->
+
+END:VEVENT
+<!--[/foreach]--><!--[/foreach]-->

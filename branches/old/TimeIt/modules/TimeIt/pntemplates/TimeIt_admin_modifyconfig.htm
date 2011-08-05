@@ -1,0 +1,148 @@
+<!--[include file="TimeIt_admin_menu.htm"]-->
+<div class="pn-admincontainer">
+<div class="pn-adminpageicon"><!--[pnimg src=configure.gif set=icons/large alt='_TIMEIT_NEW_EVENT' altml=true]--></div>
+<h2><!--['_MODIFYCONFIG'|pnml]--></h2>
+<!--[pnform cssClass="pn-adminform"]-->
+<!--[pnformvalidationsummary]-->
+
+
+<fieldset>
+	<legend><!--['_TIMEIT_GENERAl'|pnml]--></legend>
+
+        <div class="pn-adminformrow">
+                <!--[pnformlabel for="defaultCalendar" text=_TIMEIT_DEFAULTCALENDAR]-->:
+                <!--[pnformdropdownlist id="defaultCalendar"]-->
+        </div>
+
+        <div class="pn-adminformrow">
+                <!--[pnformlabel for="defaultPrivateCalendar" text=_TIMEIT_DEFAULTPRIVATECALENDAR]-->:
+                <!--[pnformdropdownlist id="defaultPrivateCalendar"]-->
+        </div>
+        
+        <div class="pn-adminformrow">
+                <!--[pnformlabel for="rssatomitems" text=_TIMEIT_RSSATOMITEMS]-->:
+                <!--[pnformintinput id="rssatomitems" maxLength="5"]-->
+        </div>
+
+        <div class="pn-adminformrow">
+                <!--[pnformlabel for="notifyEvents" text=_TIMEIT_NOTIFYEVENTS]-->:
+                <!--[pnformcheckbox id="notifyEvents"]-->
+        </div>
+
+        <div class="pn-adminformrow">
+                <!--[pnformlabel for="notifyEventsEmail" text=_TIMEIT_NOTIFYEVENTSEMAIL]-->:
+                <!--[pnformemailinput id="notifyEventsEmail"]-->
+        </div>
+        
+        <div class="pn-adminformrow">
+                <!--[pnformlabel for="itemsPerPage" text=_TIMEIT_ITMESPERPAGE]-->:
+                <!--[pnformintinput id="itemsPerPage" maxLength="5"]-->
+        </div>
+        
+        <div class="pn-adminformrow">
+                <!--[pnformlabel for="scribiteEditor" text=_TIMEIT_SCRIBITEEDITOR]-->:
+                <!--[if $scribiteEditorItems != false]-->
+                        <!--[pnformdropdownlist id="scribiteEditor"]-->
+                <!--[else]-->
+                        <!--['_TIMEIT_NOSCRBITE'|pnml]-->
+                <!--[/if]-->
+        </div>
+</fieldset>
+
+<fieldset>
+	<legend><!--['_VIEW'|pnml]--></legend>
+        
+        <div class="pn-adminformrow">
+                <!--[pnformlabel for="popupOnHover" text=_TIMEIT_POPUPONHOVER]-->:
+                <!--[pnformcheckbox id="popupOnHover"]-->
+        </div>
+
+         <div class="pn-adminformrow">
+                <!--[pnformlabel for="dateformat" text=_TIMEIT_DATEFROMAT html=true]-->:
+                <!--[pnformtextinput id="dateformat" maxLength="20"]-->
+        </div>
+
+        <div class="pn-adminformrow">
+                <!--[pnformlabel for="sortMode" text=_TIMEIT_SORTMODE]-->:
+                <!--[pnformdropdownlist id="sortMode"]-->
+        </div>
+
+        <fieldset>
+            <legend><!--['_TIMEIT_VIEW_MONTH'|pnml]--></legend>
+            <div class="pn-adminformrow">
+                    <!--[pnformlabel for="firstWeekDay" text=_TIMEIT_FIRSTWEEKDAY]-->:
+                    <!--[pnformdropdownlist id="firstWeekDay"]-->
+            </div>
+            
+            <div class="pn-adminformrow">
+                <!--[pnformlabel for="truncateTitle" text=_TIMEIT_TRUNCATETITLE]-->:
+                <!--[pnformintinput id="truncateTitle"]-->
+            </div>
+        </fieldset>
+</fieldset>
+
+<fieldset>
+	<legend>Categories</legend>
+	<div class="pn-adminformrow">
+		<!--[pnformlabel for="enablecategorization" text=_ENABLECATEGORIZATION]-->:
+	  	<!--[pnformcheckbox id="enablecategorization"]-->
+	</div>
+	<div class="pn-adminformrow">
+		<!--[pnformlabel for="colorCats" text=_TIMEIT_COLORCATS]-->:
+	  	<!--[pnformcheckbox id="colorCats"]-->
+	</div>
+	<div class="pn-adminformrow">
+		<!--[pnformlabel for="colorCatsProp" text=_TIMEIT_COLORCATS_PROP]-->:
+  		<!--[pnformdropdownlist id="colorCatsProp"]-->
+  		<!--['_TIMEIT_COLORCATS_PROP_INFO'|pnml]-->
+	</div>
+	<div class="pn-adminformrow">
+		<!--[pnformlabel for="filterByPermission" text=_TIMEIT_FILTERBYPERMISSION]-->:
+  		<!--[pnformcheckbox id="filterByPermission"]-->
+	</div>
+	<div class="pn-adminformrow">
+		<!--[pnformlabel for="defalutCatColor" text=_TIMEIT_DEFAULTCATCOLOR]-->:
+  		<!--[pnformtextinput id="defalutCatColor" maxLength="50"]-->
+	</div>
+</fieldset>
+
+<fieldset>
+	<legend>Google Maps / Address</legend>
+
+	<div class="pn-adminformrow">
+		<!--[pnformlabel for="googleMapsApiKey" text="_TIMEIT_GOOGLEMAPSAPIKEY"|pnml]-->:
+  		<!--[pnformtextinput id="googleMapsApiKey" maxLength="100"]-->
+	</div>
+	<div class="pn-adminformrow">
+		<!--[pnformlabel for="mapHeight" text=_TIMEIT_MAPHEIGHT]-->:
+  		<!--[pnformintinput id="mapHeight"]-->
+	</div>
+	<div class="pn-adminformrow">
+		<!--[pnformlabel for="mapWidth" text=_TIMEIT_MAPWIDTH]-->:
+  		<!--[pnformintinput id="mapWidth"]-->
+	</div>
+	<div class="pn-adminformrow">
+		<!--[pnformlabel for="mapViewType" text=_TIMEIT_MAPVIEWTYPE]-->:
+  		<!--[pnformdropdownlist id="mapViewType"]-->
+	</div>
+	<!--[if $MyMapModuleOk eq false]-->
+		<!--['_TIMEIT_NOMYMAP'|pnml]-->
+	<!--[/if]-->
+</fieldset>
+
+<fieldset>
+	<legend>userdeletion Support</legend>
+	
+	<div class="pn-adminformrow">
+		<!--[pnformlabel for="userdeletionMode" text=_TIMEIT_MODE]-->:
+	  	<!--[pnformdropdownlist id="userdeletionMode"]-->
+	</div>
+</fieldset>
+
+<div class="pn-adminformrow pn-adminformbuttons">
+	<!--[pnformimagebutton commandName="update" text="_UPDATE"|pnml imageUrl="images/icons/small/button_ok.gif"]-->
+	<!--[pnformimagebutton commandName="cancel" text="_CANCEL"|pnml imageUrl="images/icons/small/button_cancel.gif"]-->
+</div>
+
+<!--[/pnform]-->
+</div>

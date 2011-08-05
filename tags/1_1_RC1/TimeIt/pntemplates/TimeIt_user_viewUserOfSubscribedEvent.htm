@@ -1,0 +1,11 @@
+<span style="font-size: large;"><strong><!--[pnml name="_TIMEIT_SUBSCRIBED_USER_TITLE"]--></strong></span>
+
+<ul>
+	<!--[foreach name="user" from=$users item="user"]-->
+		<li><!--[$user.name|pnvarprepfordisplay]--></li>
+	<!--[/foreach]-->
+</ul>
+
+<!--[if $smarty.foreach.user.total == 0]-->
+   <!--[pnml name="_TIMEIT_NONE"]-->
+<!--[/if]-->

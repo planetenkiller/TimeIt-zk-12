@@ -1,0 +1,11 @@
+<span style="font-size: large;"><strong><!--[pnml name="_TIMEIT_SUBSCRIBED_EVENTS_TITLE"]--></strong></span>
+<ul>
+	<!--[foreach name="events" from=$events item="event"]-->
+		<li><a href="<!--[pnmodurl modname="TimeIt" type="user" func="event" id=$event.eid]-->"><!--[$event.title|pnvarprepfordisplay]--></a>
+		    <a target="_blank" href="<!--[pnmodurl modname="TimeIt" type="user" func="unsubscribe" id=$event.eid]-->"><!--[pnml name="_TIMEIT_UNSUBSCRIBE"]--></a>
+		</li>
+	<!--[/foreach]-->
+</ul>
+<!--[if $smarty.foreach.events.total == 0]-->
+   <!--[pnml name="_TIMEIT_NONE"]-->
+<!--[/if]-->

@@ -1,0 +1,117 @@
+<!--[include file="TimeIt_admin_menu.htm"]-->
+<div class="pn-admincontainer">
+<div class="pn-adminpageicon"><!--[pnimg src=configure.gif set=icons/large alt='_TIMEIT_NEW_EVENT' altml=true]--></div>
+<h2>Settings</h2>
+<!--[pnform cssClass="pn-adminform"]-->
+<!--[pnformvalidationsummary]-->
+
+
+<div class="pn-adminformrow">
+	<!--[pnformlabel for="workflow" text=_TIMEIT_WORKFLOW]-->:
+  	<!--[pnformdropdownlist id="workflow"]-->
+</div>
+
+<div class="pn-adminformrow">
+	<!--[pnformlabel for="monthtoday" text=_TIMEIT_MONTHTODAY]-->:
+  	<!--[pnformtextinput id="monthtoday" maxLength="15"]-->
+</div>
+
+<div class="pn-adminformrow">
+	<!--[pnformlabel for="monthon" text=_TIMEIT_MONTHON]-->:
+  	<!--[pnformtextinput id="monthon" maxLength="15"]-->
+</div>
+
+<div class="pn-adminformrow">
+	<!--[pnformlabel for="monthoff" text=_TIMEIT_MONTHOFF]-->:
+  	<!--[pnformtextinput id="monthoff" maxLength="15"]-->
+</div>
+
+<div class="pn-adminformrow">
+	<!--[pnformlabel for="rssatomitems" text=_TIMEIT_RSSATOMITEMS]-->:
+  	<!--[pnformintinput id="rssatomitems" maxLength="5"]-->
+</div>
+
+<div class="pn-adminformrow">
+	<!--[pnformlabel for="notifyEvents" text=_TIMEIT_NOTIFYEVENTS]-->:
+  	<!--[pnformcheckbox id="notifyEvents"]-->
+</div>
+
+<div class="pn-adminformrow">
+	<!--[pnformlabel for="notifyEventsEmail" text=_TIMEIT_NOTIFYEVENTSEMAIL]-->:
+  	<!--[pnformemailinput id="notifyEventsEmail"]-->
+</div>
+
+<div class="pn-adminformrow">
+	<!--[pnformlabel for="privateCalendar" text=_TIMEIT_PRVATECALENDAR]-->:
+  	<!--[pnformcheckbox id="privateCalendar"]-->
+</div>
+
+<div class="pn-adminformrow">
+	<!--[pnformlabel for="globalCalendar" text=_TIMEIT_GLOBALCALENDAR]-->:
+  	<!--[pnformcheckbox id="globalCalendar"]-->
+</div>
+
+
+<div class="pn-adminformrow">
+	<!--[pnformlabel for="friendCalendar" text=_TIMEIT_FRIENDCALENDAR]-->:
+  	<!--[if $ContactListModuleOK eq true]-->
+  		<!--[pnformcheckbox id="friendCalendar"]-->
+  	<!--[else]-->
+  		<!--['_TIMEIT_NOCONTACTLIST'|pnml]-->
+  	<!--[/if]-->
+</div>
+
+
+<div class="pn-adminformrow">
+	<!--[pnformlabel for="defaultView" text=_TIMEIT_DEFAULTVIEW]-->:
+  	<!--[pnformdropdownlist id="defaultView"]-->
+</div>
+
+<div class="pn-adminformrow">
+	<!--[pnformlabel for="itemsPerPage" text=_TIMEIT_ITMESPERPAGE]-->:
+  	<!--[pnformintinput id="itemsPerPage" maxLength="5"]-->
+</div>
+
+<div class="pn-adminformrow">
+	<!--[pnformlabel for="scribiteEditor" text=_TIMEIT_SCRIBITEEDITOR]-->:
+	<!--[if $scribiteEditorItems != false]-->
+  		<!--[pnformdropdownlist id="scribiteEditor"]-->
+  	<!--[else]-->
+  		<!--['_TIMEIT_NOSCRBITE'|pnml]-->
+  	<!--[/if]-->
+</div>
+
+<div class="pn-adminformrow">
+	<!--[pnformlabel for="defaultTemplate" text=_TIMEIT_DEFAULTTEMPLATE]-->:
+  	<!--[pnformdropdownlist id="defaultTemplate"]-->
+</div>
+
+<div class="pn-adminformrow">
+	<!--[pnformlabel for="allowSubscribe" text=_TIMEIT_ALLOWSUBSCRIBE]-->:
+  	<!--[pnformcheckbox id="allowSubscribe"]-->
+</div>
+
+<div class="pn-adminformrow">
+	<!--[pnformlabel for="allowSubscribeDelete" text=_TIMEIT_ALLOWSUBSCRIBEDELETE]-->:
+  	<!--[pnformcheckbox id="allowSubscribeDelete"]-->
+</div>
+
+<div class="pn-adminformrow">
+	<!--[pnformlabel for="filterByPermission" text=_TIMEIT_FILTERBYPERMISSION]-->:
+  	<!--[pnformcheckbox id="filterByPermission"]-->
+</div>
+
+<div class="pn-adminformrow">
+	<!--[pnformlabel for="popupOnHover" text=_TIMEIT_POPUPONHOVER]-->:
+  	<!--[pnformcheckbox id="popupOnHover"]-->
+</div>
+
+
+
+<div class="pn-adminformrow pn-adminformbuttons">
+	<!--[pnformimagebutton commandName="update" text="_UPDATE"|pnml imageUrl="images/icons/small/button_ok.gif"]-->
+	<!--[pnformimagebutton commandName="cancel" text="_CANCEL"|pnml imageUrl="images/icons/small/button_cancel.gif"]-->
+</div>
+
+<!--[/pnform]-->
+</div>

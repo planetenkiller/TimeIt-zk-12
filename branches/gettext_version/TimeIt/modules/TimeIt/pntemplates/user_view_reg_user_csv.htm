@@ -1,0 +1,5 @@
+name;street;plzcity;email;date
+<!--[foreach name="user" from=$objectArray item="user"]-->
+<!--[if $user.uid == 1]-->"<!--[$user.data.name]-->";<!--[if $showAddress]-->"<!--[$user.data.street]-->"<!--[/if]-->;<!--[if $showAddress]-->"<!--[$user.data.plzcity]-->"<!--[/if]-->;<!--[if $showAddress]-->"<!--[$user.data.email]-->"<!--[/if]-->;"<!--[$user.cr_date|pndate_format:"datetimebrief"]-->"<!--[else]-->"<!--[$user.name]-->";;;<!--[if $showAddress]-->"<!--[$user.email]-->"<!--[/if]-->;"<!--[$user.cr_date|pndate_format:"datetimebrief"]-->"<!--[/if]-->
+
+<!--[/foreach]-->

@@ -1,0 +1,21 @@
+<ul id="ti-regsOfUserList">
+<!--[foreach name="events" from=$events item="event"]-->
+    <li>
+        <span class="ti-regsOfUserList-head">
+            <!--[$event.startDate|tidate_format:$modvars.dateformat]-->
+            <!--[$event.allDayStartLocalFormated]-->
+        </span>
+         <span class="ti-regsOfUserList-body">
+            <!--[if $event.plugins.location.name]-->
+                <!--[$event.plugins.location.name|pnvarprepfordisplay]-->
+                -
+            <!--[/if]-->
+            <a href="<!--[pnmodurl modname="TimeIt" type="user" func="display" ot="event" id=$event.id]-->"><!--[$event.title|pnvarprepfordisplay]--></a>
+         </span>
+    </li>
+<!--[/foreach]-->
+</ul>
+
+<!--[if $smarty.foreach.events.total == 0]-->
+   %%%'No registrations found'%%%
+<!--[/if]-->

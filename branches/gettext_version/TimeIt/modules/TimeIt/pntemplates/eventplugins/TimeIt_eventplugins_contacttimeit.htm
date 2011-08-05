@@ -1,0 +1,17 @@
+
+<!--[if $date_today > $viewDate]-->
+    %%%'This event is over already as a result the registration is disabled.'%%%
+<!--[else]-->
+    <!--[pnuserloggedin assign="userLoggedIn"]-->
+    <!--[if $userLoggedIn == false]-->
+        <!--[gt text="You must be logged in and have got the required permission before you can subscribe to this event." html=1]-->
+    <!--[else]-->
+        <a style="display:<!--[$displayS]-->;" id="subscribeLink" href="<!--[pnmodurl modname="TimeIt" type="user" func="subscribe" id=$dheobj2.id eid=$eid]-->">%%%'Register'%%%</a>
+         | <a style="display:<!--[$displayUS]-->;" id="unsubscribeLink" href="<!--[pnmodurl modname="TimeIt" type="user" func="unsubscribe" id=$dheobj2.id eid=$eid]-->">%%%'De-register'%%%</a>
+    <!--[/if]-->
+
+    <script type="text/javascript">
+        var timeit_lang_register = "<!--[gt text="Really register to this event?"]-->";
+        var timeit_lang_deregister = "<!--[gt text="Really de-register from this event?"]-->";
+    </script>
+<!--[/if]-->

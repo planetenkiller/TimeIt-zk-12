@@ -1,0 +1,67 @@
+<!--[templateWithTheme file="TimeIt_user_navigation.htm" theme=$calendar.defaultTemplate assign="templ_navi]-->
+<!--[include file=$templ_navi]-->
+<table width="100%" border="1" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="3" align="center"><!--[navigationDateMover cid=$calendar.id date=$dayAsDate viewType=$viewType filter_obj_url=$filter_obj_url]--></td>
+	</tr>
+	<tr>
+<!--[foreach name=monthforeach from=$events item=monthArray key=monthDate]-->
+	<!--[tiexplode zeichen="-" string=$monthDate assign="monthDateAr"]-->
+	<!--[assign var="monthNum" value=$monthDateAr[1]]-->
+	<!--[assign var="monthDateStart" value="`$monthDateAr[0]`-$monthDateAr[1]-01"]-->
+	<td>
+	
+	
+	<table style="margin:7px;" width="95%" border="1" cellpadding="0" cellspacing="0">
+	<tr>
+		<td style="background-color: <!--[$monthoff]-->;" colspan="8" align="center">
+			<a href="<!--[ pnmodurl modname="TimeIt" type="user" func="view" viewType="month" month=$monthNum year=$year]-->"><!--[monthName month=$monthNum]--></a>
+		</td>
+	</tr>
+	<tr>
+		<td align="center" style="width:5%;">&nbsp;</td>
+		<td align="center" style="width:13%;"><!--[weekdayName weekday=1 size=1 firstDayOfWeek=$firstDayOfWeek]--></td>
+		<td align="center" style="width:13%;"><!--[weekdayName weekday=2 size=1 firstDayOfWeek=$firstDayOfWeek]--></td>
+		<td align="center" style="width:13%;"><!--[weekdayName weekday=3 size=1 firstDayOfWeek=$firstDayOfWeek]--></td>
+		<td align="center" style="width:13%;"><!--[weekdayName weekday=4 size=1 firstDayOfWeek=$firstDayOfWeek]--></td>
+		<td align="center" style="width:13%;"><!--[weekdayName weekday=5 size=1 firstDayOfWeek=$firstDayOfWeek]--></td>
+		<td align="center" style="width:13%;"><!--[weekdayName weekday=6 size=1 firstDayOfWeek=$firstDayOfWeek]--></td>
+		<td align="center" style="width:13%;"><!--[weekdayName weekday=7 size=1 firstDayOfWeek=$firstDayOfWeek]--></td>
+	</tr>
+	<!--[foreach name=weekforeach from=$monthArray item=days key=weekArray]-->
+		<tr>
+			<td align="center" style="width:5%;">
+                            <!--[tiarrayfirstkey array=$days assign="weekDateAsString"]-->
+                            <!--[tiexplode string=$weekDateAsString zeichen="-" castToInt=true assign="weekDateAsArray"]-->
+                            <a href="<!--[ pnmodurl modname="TimeIt" type="user" func="view" viewType="week" year=$weekDateAsArray[0] month=$weekDateAsArray[1] day=$weekDateAsArray[2] cid=$calendar.id]-->">&gt;
+			</td>
+		<!--[foreach name=dayforeach from=$days item=hasEvents key=day]-->
+			<!--[assign var="dayNum" value=$day|substr:8:2]-->
+                        <!--[if $day eq $dayNumNow]-->
+                                <!--[assign var="color" value=$monthtoday]-->
+                        <!--[elseif $hasEvents]-->
+                                <!--[assign var="color" value="#BEFFB9"]-->
+                        <!--[elseif $day < $monthDateStart || $day > $monthDate]-->
+                                <!--[assign var="color" value=$monthoff]-->
+                        <!--[else]-->
+                                <!--[assign var="color" value=$monthon]-->
+                        <!--[/if]-->
+
+                        <td align="center" style="width:13%;background-color:<!--[$color]-->;">
+                                <a href="<!--[urlToDay date=$day cid=$calendar.id]-->"><!--[$dayNum|pnvarprepfordisplay]--></a>
+                        </td>
+		<!--[/foreach]-->
+		</tr>
+	<!--[/foreach]-->
+	</table>
+	
+	
+	</td>
+	
+	<!--[if ($monthNum % 3) == 0 && !$smarty.foreach.monthforeach.last]-->
+		</tr>
+		<tr>
+	<!--[/if]-->
+<!--[/foreach]-->
+</tr>
+</table>

@@ -1,0 +1,50 @@
+ <fieldset>
+    <legend>Addressbook <!--["_TIMEIT_LOCATION"|pnml]--></legend>
+    <div style="display:none;">
+         <!--[pnformintinput group="data" id="LocationAddressbook_abid"]-->
+    </div>
+
+    <strong><!--['_TIMEIT_CURRENT'|pnml]-->:</strong><br />
+    <span id="LocationAddressbook_ab_current">
+            <!--[if $data.LocationAddressbook_abobj]-->
+                <!--[$data.LocationAddressbook_abobj.fname]--> <!--[$data.LocationAddressbook_abobj.lname]-->, <!--[$data.LocationAddressbook_abobj.zip]--> <!--[$data.LocationAddressbook_abobj.city]-->
+           <!--[else]-->
+                -
+           <!--[/if]-->
+    </span>
+    &nbsp;&nbsp;&nbsp;&nbsp;<!--[pnimg src="button_cancel.gif" modname="core" set="icons/extrasmall" id="LocationAddressbook_ab_current_btnclean"]-->
+    <div class="pn-formrow">
+
+        <!--[pnformlabel for="LocationAddressbook_search" text=_SEARCH]-->:
+        <!--[pnformtextinput maxLength="200" group="data" id="LocationAddressbook_search"]-->
+
+        <div id="LocationAddressbook_search_choices" class="LocationAddressbook_search_choices"></div>
+    </div>
+
+    <div  class="pn-formrow">
+            <!--[pnformlabel for="LocationAddressbook_displayMap" text="_TIMEIT_DISPLAYMAP"|pnml]-->:
+            <!--[assign var="mapView" value=$calendar.enableMapView]-->
+            <!--[if $mapView eq true]-->
+                    <!--[pnformcheckbox group="data" id="LocationAddressbook_displayMap"]-->
+            <!--[else]-->
+                    <!--[pnformcheckbox group="data" id="LocationAddressbook_displayMap" disabled="disabled"]-->
+            <!--[/if]-->
+    </div>
+</fieldset>
+
+<!--[pnajaxheader modname=TimeIt]-->
+
+<script type="text/javascript">
+    Event.observe(window, 'load', function() {
+                                       new Ajax.Autocompleter("LocationAddressbook_search", "LocationAddressbook_search_choices", document.location.pnbaseURL+"index.php?module=TimeIt&type=ajax&func=ContactAddressbookSearch", {afterUpdateElement : function(text,li){
+                                                                                                                                                                                                                                                           $('LocationAddressbook_abid').value=li.id;
+                                                                                                                                                                                                                                                           $('LocationAddressbook_ab_current').innerHTML = li.innerHTML;
+                                                                                                                                                                                                                                                     }});
+
+                                    }, false);
+    Event.observe($('LocationAddressbook_ab_current_btnclean'), 'click', function() {
+                                                                            $('LocationAddressbook_abid').value='';
+                                                                            $('LocationAddressbook_ab_current').innerHTML = '-';
+                                                                        }, false);
+
+</script>

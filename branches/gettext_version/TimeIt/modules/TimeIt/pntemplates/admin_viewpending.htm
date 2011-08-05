@@ -1,0 +1,46 @@
+<!--[include file="admin_menu.htm"]-->
+
+<div class="pn-admincontainer">
+<h2>%%%'Pending events'%%%</h2>
+
+<form action="<!--[pnmodurl modname="TimeIt" type="admin" func="delete"]-->" method="post">
+    <table class="pn-admintable">
+        <thead>
+            <tr>
+                <th>%%%'ID'%%%</th>
+                <th>%%%'Title'%%%</th>
+                <th>%%%'Category'%%%</th>
+                <th>%%%'Actions'%%%</th>
+                <th>%%%'Delete'%%%</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--[foreach from=$events item=event]-->
+                <tr class="<!--[cycle values=pn-odd,pn-even]-->">
+                    <td><!--[$event.id|pnvarprepfordisplay]--></td>
+                    <td><!--[$event.title|strip_tags|pnvarprepfordisplay]-->
+                        <!--[if $event.repeatType > 0]-->
+                            <em>(%%%'Event with recurring events'%%%)</em>
+                        <!--[/if]-->
+                    </td>
+                    <td>
+                        <ul>
+                            <!--[ foreach from=$event.__CATEGORIES__ item=cat ]-->
+                                    <li><!--[ $cat.name|pnvarprepfordisplay ]--></li>
+                            <!--[ /foreach ]-->
+                        </ul>
+                    </td>
+                    <td>
+                        <a href="<!--[pnmodurl modname="TimeIt" type="user" func="edit" ot="event" id=$event.id returnTo="adminPending"]-->"><!--[pnimg modname=core set=icons/extrasmall src="xedit.gif"]--></a>
+                    </td>
+                    <td><input type="checkbox" name="delete[]" value="<!--[$event.id]-->" /></td>
+                </tr>
+            <!--[/foreach]-->
+        </tbody>
+    </table>
+
+    <input type="submit" name="submit_delete" value="%%%'Delete'%%%" />
+</form>
+
+<!--[pager display=page rowcount=$pager.numitems limit=$pager.itemsperpage posvar=page]-->
+</div>

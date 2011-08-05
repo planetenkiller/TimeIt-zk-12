@@ -1,0 +1,35 @@
+<span style="font-size: large;">
+    <strong>%%%'The following user are registered to the event:'%%%</strong>
+    <a href="<!--[pnmodurl modname="TimeIt" func="display" ot="event" id=$event.id]-->"><!--[$event.title]--></a>
+</span>
+<!--[nocache]-->
+	<!--[assign var="allowSD" value=$calendar.allowSubscribeDelete]-->
+	<!--[securityutil_checkpermission component="TimeIt:subscribe:" instance="::" level="ACCESS_DELETE" assign="auth"]-->
+	<!--[securityutil_checkpermission component="TimeIt::" instance="::" level="ACCESS_ADMIN" assign="authAdmin"]-->
+<!--[/nocache]-->.
+
+<ul>
+    <!--[foreach name="user" from=$objectArray item="user"]-->
+        <li><!--[if $user.uid == 1]-->
+                <!--[$user.data.name|pnvarprepfordisplay]--> (<!--[$user.name|pnvarprepfordisplay]-->) (<!--[gt text="Registred on %s" tag1=$user.cr_date|pndate_format:'DATETIMEBRIEF' comment="%s is an date"]-->)
+            <!--[else]-->
+                <!--[$user.name|pnvarprepfordisplay]--> (<!--[gt text="Registred on %s" tag1=$user.cr_date|pndate_format:'DATETIMEBRIEF' comment="%s is an date"]-->)
+            <!--[/if]-->
+        <!--[nocache]-->
+            <!--[if $auth || $authAdmin || ($allowSD && $event.cr_uid == $uid)]-->
+                <a href="<!--[pnmodurl modname="TimeIt" func="delete" ot="reg" id=$user.id]-->">%%%'Delete'%%%</a>
+            <!--[/if]-->
+
+            <!--[if $user.status == 0 && ($auth || $authAdmin || $event.cr_uid == $uid) ]-->
+                <a href="<!--[pnmodurl modname="TimeIt" func="delete" ot="reg" id=$user.id pendingState=1]-->">%%%'Unlock'%%%</a>
+            <!--[/if]-->
+        <!--[/nocache]-->
+        </li>
+    <!--[/foreach]-->
+</ul>
+
+<!--[if $smarty.foreach.user.total == 0]-->
+   %%%'No registrations found.'%%%
+<!--[/if]-->
+
+<a href="<!--[pnmodurl modname="TimeIt" func="view" ot="reg" eid=$eid date=$date format="csv"]-->">%%%'Download .csv'%%%</a>

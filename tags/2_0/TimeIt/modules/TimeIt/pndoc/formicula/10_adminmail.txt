@@ -1,0 +1,19 @@
+<!--[ pnmodapifunc modname="TimeIt" func="loadLang" ]-->
+<!--[ pnmodapifunc modname="TimeIt" func="get" id=$custom[0].name dheid=$custom[1].name assign="event"]-->
+<!--[ pnmodapifunc modname="TimeIt" func="getDHE" dheid=$custom[1].name assign="dheobj"]-->
+
+<!--[ pnml name='_FOR_HELLO' ]-->
+
+<!--[ pnml name='_TIMEIT_FORMICULA_ADMINMAIL' ]-->
+
+<!--[ pnml name='_FOR_FORMNUMBER' ]--> : <!--[ $form ]-->
+<!--[ pnml name='_TIMEIT_EVENT' ]--> : <!--[ $event.title ]-->
+<!--[ pnml name='_DATE' ]--> : <!--[ $dheobj.date|pndate_format:'DATEBRIEF']-->
+<!--[ pnml name='_TIMEIT_CONTACT' ]--> : <!--[ $contact.name ]-->
+<!--[ pnml name='_FOR_NAME' ]--> : <!--[ $userdata.uname ]-->
+<!--[ pnml name='_FOR_EMAIL' ]--> : <!--[ $userdata.uemail ]-->
+
+<!--[ pnml name='_FOR_COMMENT' ]--> : <!--[ $userdata.comment ]-->
+
+<!--[ pnml name='_FOR_ADMINMAIL2' ]--> <!--[ $ip ]--> / <!--[ $host ]-->
+

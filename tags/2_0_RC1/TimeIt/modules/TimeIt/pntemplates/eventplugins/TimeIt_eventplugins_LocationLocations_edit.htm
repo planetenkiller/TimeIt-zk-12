@@ -1,0 +1,18 @@
+<fieldset>
+    <legend>Locations <!--["_TIMEIT_LOCATION"|pnml]--></legend>
+    <div  class="pn-formrow">
+            <!--[pnformlabel for="LocationLocations_id" text="_TIMEIT_LOCATION"|pnml]-->:
+            <!--[pnformdropdownlist group="data" id="LocationLocations_id"]-->
+    </div>
+
+    <div  class="pn-formrow">
+            <!--[pnformlabel for="LocationLocations_displayMap" text="_TIMEIT_DISPLAYMAP"|pnml]-->:
+            <!--[assign var="mapView" value=$calendar.enableMapView]-->
+            <!--[if $mapView eq true]-->
+                    <!--[pnformcheckbox group="data" id="LocationLocations_displayMap"]-->
+                    <a href="" onclick="showGoogleMapsMap(true);return false;">Preview</a>
+            <!--[else]-->
+                    <!--[pnformcheckbox group="data" id="LocationLocations_displayMap" disabled="disabled"]-->
+            <!--[/if]-->
+    </div>
+</fieldset>

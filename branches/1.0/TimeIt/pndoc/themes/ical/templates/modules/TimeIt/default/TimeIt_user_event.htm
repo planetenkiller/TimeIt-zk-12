@@ -1,0 +1,12 @@
+BEGIN:VEVENT
+SUMMARY:<!--[$event.title]-->
+DESCRIPTION:<!--[$event.text|replace:"\r":"\n"|replace:"\n":" \n "|wordwrap:70:"\n "]-->
+UID:<!--[$event.id]-->
+URL:<!--[pnmodurl modname="TimeIt" type="user" func="event" id=$event.id]-->
+DTSTART;VALUE=DATE-TIME:<!--[$event.startDate|pndate_format:"%Y%m%dT%H%M%SZ"]-->
+DTEND;VALUE=DATE-TIME:<!--[$event.endDate|pndate_format:"%Y%m%dT%H%M%SZ"]-->
+DTSTAMP:<!--[$event.cr_date|pndate_format:"%Y-%m-%dT%H:%M:%SZ"]-->
+CATEGORIES: <!--[ foreach name="catloop" from=$event.__CATEGORIES__ item=cat ]--><!--[if $smarty.foreach.catloop.first != true]-->, <!--[/if]--><!--[$cat.name]--><!--[ /foreach ]-->
+
+END:VEVENT
+

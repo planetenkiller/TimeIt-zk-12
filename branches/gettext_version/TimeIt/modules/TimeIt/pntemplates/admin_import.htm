@@ -1,0 +1,35 @@
+<!--[include file="admin_menu.htm"]-->
+
+<div class="pn-admincontainer">
+<h2>%%%'Import events'%%%</h2>
+<form enctype="multipart/form-data" id="pnFormForm" class="pn-adminform" action="<!--[pnmodurl modname="TimeIt" type="admin" func="doImport"]-->" method="post">
+
+    %%%'Calendar'%%%:
+    <select name="cid">
+        <!--[foreach from=$calendars item=row]-->
+            <option value="<!--[$row.id]-->"><!--[$row.name]--></option>
+        <!--[/foreach]-->
+    </select>
+
+    <fieldset>
+        <legend>%%%'Import form PostCalendar'%%%</legend>
+            %%%'DB Prefix'%%%:<input name="prefix" type="text" value="<!--[pnconfiggetvar name="prefix"]-->" size="7">
+            <input type="image" name="btn" title="%%%'Import'%%%" value="postcalendar" src="images/icons/small/button_ok.gif"/>
+            %%%'PostCalendar does not have to be installed. Existing tables are sufficient. DB Prefix: Used in table name, [prefix]_postcalendar_events'%%%
+    </fieldset>
+
+    <fieldset>
+        <legend>%%%'Import form PostSchedule'%%%</legend>
+            %%%'DB Prefix'%%%:<input name="prefix2" type="text" value="<!--[pnconfiggetvar name="prefix"]-->" size="7">
+            <input type="image" name="btn" title="%%%'Import'%%%" value="postschedule" src="images/icons/small/button_ok.gif"/>
+    </fieldset>
+
+    <fieldset>
+        <legend>%%%'Import from iCalendar'%%%</legend>
+            <input name="ics" type="file"><br/>
+            %%%'Update existing TimeIt events (synchronisation )'%%%: <input type="checkbox" name="sync"/> <br />
+            <input type="image" name="btn" title="%%%'Import'%%%" value="ical" src="images/icons/small/button_ok.gif"/>
+    </fieldset>
+
+</form>
+</div>

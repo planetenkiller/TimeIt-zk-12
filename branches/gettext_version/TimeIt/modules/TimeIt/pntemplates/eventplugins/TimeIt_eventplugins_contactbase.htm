@@ -1,0 +1,41 @@
+<!--[if $data.contactPerson || $data.email || $data.phoneNr || $data.website || $data.address || $data.zip
+     || $data.city || $data.country || $data.url_details]-->
+    <fieldset>
+        <legend>%%%'Contact'%%%</legend>
+        <!--[if $data.contactPerson]-->
+            <strong>%%%'Name'%%%:</strong> <!--[$data.contactPerson|pnvarprepfordisplay]--><br />
+        <!--[/if]-->
+
+        <!--[if $data.address]-->
+            <strong>%%%'Street & Housenumber'%%%:</strong> <!--[$data.address|pnvarprepfordisplay]--><br />
+        <!--[/if]-->
+
+        <!--[if $data.zip]-->
+            <strong>%%%'ZIP'%%%:</strong> <!--[$data.zip|pnvarprepfordisplay]--><br />
+        <!--[/if]-->
+
+        <!--[if $data.city]-->
+            <strong>%%%'City'%%%:</strong> <!--[$data.city|pnvarprepfordisplay]--><br />
+        <!--[/if]-->
+
+        <!--[if $data.country]-->
+            <strong>%%%'Country'%%%:</strong> <!--[$data.country|pnvarprepfordisplay]--><br />
+        <!--[/if]-->
+
+        <!--[if $data.email]-->
+            <strong>%%%'E-Mail'%%%:</strong> <!--[$data.email|pnvarprepfordisplay]--><br />
+        <!--[/if]-->
+
+        <!--[if $data.phoneNr]-->
+            <strong>%%%'Phone'%%%:</strong> <!--[$data.phoneNr|pnvarprepfordisplay]--><br />
+        <!--[/if]-->
+
+        <!--[if $data.website]-->
+            <strong>%%%'Website'%%%:</strong> <!--[$data.website|pnvarprepfordisplay]--><br />
+        <!--[/if]-->
+
+        <!--[if $data.url_details]-->
+            <strong><!--[gt text="Link to more informations"]-->:</strong> <a href="<!--[$data.url_details|pnvarprepfordisplay]-->">%%%'Link'%%%</a><br />
+        <!--[/if]-->
+    </fieldset>
+ <!--[/if]-->

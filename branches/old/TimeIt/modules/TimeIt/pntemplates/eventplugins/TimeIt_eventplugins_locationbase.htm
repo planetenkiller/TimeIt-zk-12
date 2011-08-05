@@ -1,0 +1,17 @@
+<!--[if $data.name || $data.street || $data.houseNumber || $data.zip || $data.city || $data.phone || $data.fax
+        || $data.url || $data.email || $data.country]-->
+<fieldset>
+    <legend><!--[pnml name="_TIMEIT_LOCATION"]--></legend>
+    <!--[if $data.name]--><strong><!--[$dataIdToML.name|pnvarprepfordisplay]-->:</strong> <!--[$data.name|pnvarprepfordisplay]--><br /><!--[/if]-->
+    <!--[if $data.street]--><strong><!--[$dataIdToML.street|pnvarprepfordisplay]-->:</strong> <!--[$data.street|pnvarprepfordisplay]--><br /><!--[/if]-->
+    <!--[if $data.houseNumber]--><strong><!--[$dataIdToML.houseNumber|pnvarprepfordisplay]-->:</strong> <!--[$data.houseNumber|pnvarprepfordisplay]--><br /><!--[/if]-->
+    <!--[if $data.zip]--><strong><!--[$dataIdToML.zip|pnvarprepfordisplay]-->:</strong> <!--[$data.zip|pnvarprepfordisplay]--><br /><!--[/if]-->
+    <!--[if $data.city]--><strong><!--[$dataIdToML.city|pnvarprepfordisplay]-->:</strong> <!--[$data.city|pnvarprepfordisplay]--><br /><!--[/if]-->
+    <!--[if $data.phone]--><strong><!--[$dataIdToML.phoneNr|pnvarprepfordisplay]-->:</strong> <!--[$data.phone|pnvarprepfordisplay]--><br /><!--[/if]-->
+    <!--[if $data.fax]--><strong><!--[$dataIdToML.fax|pnvarprepfordisplay]-->:</strong> <!--[$data.fax|pnvarprepfordisplay]--><br /><!--[/if]-->
+    <!--[if $data.url]--><strong><!--[$dataIdToML.website|pnvarprepfordisplay]-->:</strong> <a href="<!--[$data.url|pnvarprepfordisplay]-->"><!--[$data.url|pnvarprepfordisplay]--></a><br /><!--[/if]-->
+    <!--[if $data.email]--><strong><!--[$dataIdToML.email|pnvarprepfordisplay]-->:</strong> <!--[$data.email|pnvarprepfordisplay]--><br /><!--[/if]-->
+    <!--[if $data.country]--><strong><!--[$dataIdToML.country|pnvarprepfordisplay]-->:</strong> <!--[$data.country|pnvarprepfordisplay]--><br /><!--[/if]-->
+</fieldset>
+
+<!--[/if]-->

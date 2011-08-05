@@ -1,0 +1,84 @@
+<!--[ include file=10_userheader.html ]-->
+<!--[pnpageaddvar name="javascript" value="javascript/ajax/prototype.js"]-->
+<!--[pnpageaddvar name="javascript" value="javascript/ajax/validation.js"]-->
+<!--[pnpageaddvar name="javascript" value="javascript/ajax/effects.js"]-->
+<!--[pnpageaddvar name="stylesheet" value="modules/formicula/pnstyle/style.css"]-->
+
+<p class="z-informationmsg">
+    <!--[gt text="Mandatory field"]--> <span class="mandatory">*</span>
+</p>
+
+<form  class="z-form" id="contactform" action="<!--[ pnmodurl modname=TimeIt type=user func=formicula_send ]-->" method="post">
+    <fieldset>
+        <input type="hidden" name="authid" value="<!--[insert name="generateauthkey" module="TimeIt"]-->" />
+        <input type="hidden" name="form" value="10" />
+        <input type="hidden" name="cid" value="<!--[$contacts[0].cid]-->" />
+        <input type="hidden" name="adminformat" value="text" />
+        <input type="hidden" name="userformat" value="text" />
+        <input type="hidden" name="timeit_eid" value="<!--[$addinfo.eid]-->" />
+        <input type="hidden" name="timeit_dheid" value="<!--[$addinfo.dheid]-->" />
+        <input type="hidden" name="custom0name" value="<!--[$addinfo.eid]-->" />
+        <input type="hidden" name="custom1name" value="<!--[$addinfo.dheid]-->" />
+
+
+
+        <div class="z-formrow">
+            <label for="uname"><!--[gt text="Your Name"]--><span class="mandatory">*</span></label>
+            <input type="text" class="formborder required" id="uname" name="uname" size="40" maxlength="80" value="<!--[$uname]-->" />
+            <p id="advice-required-uname" class="z-formnote custom-advice" style="display:none"><!--[gt text='This is a mandatory field.']--></p>
+        </div>
+
+
+        <div class="z-formrow">
+            <label for="custom2data"><!--[gt text="Street"]--><span class="mandatory">*</span></label>
+            <input type="text" class="formborder required" id="custom2data" name="custom2data" size="40" maxlength="80" />
+            <input type="hidden" name="custom2name" value="street" />
+            <p id="advice-required-custom2data" class="z-formnote custom-advice" style="display:none"><!--[gt text='This is a mandatory field.']--></p>
+        </div>
+
+
+        <div class="z-formrow">
+            <label for="custom3data"><!--[gt text="Zip City"]--><span class="mandatory">*</span></label>
+            <input type="text" class="formborder required" id="custom3data" name="custom3data" size="40" maxlength="80" />
+            <input type="hidden" name="custom3name" value="plzcity" />
+            <p id="advice-required-custom3data" class="z-formnote custom-advice" style="display:none"><!--[gt text='This is a mandatory field.']--></p>
+        </div>
+
+        <div class="z-formrow">
+            <label for="uemail"><!--[gt text="E-Mail"]--><span class="mandatory">*</span></label>
+            <input type="text" class="formborder required validate-email" id="uemail" name="uemail" size="40" maxlength="40" value="<!--[$uemail]-->" />
+
+            <p id="advice-validate-email-uemail" class="z-formnote custom-advice" style="display:none"><!--[gt text='Please enter a valid E-mail address like user@example.com.']--></p>
+            <p id="advice-required-uemail" class="z-formnote custom-advice" style="display:none"><!--[gt text='This is a mandatory field.']--></p>
+        </div>
+
+
+        <div class="z-formrow">
+            <label for="comment"><!--[gt text="Comment"]--><span class="mandatory">*</span></label>
+            <textarea class="formborder required" rows="6" cols="45" id="comment" name="comment"></textarea>
+
+            <p id="advice-required-comment" class="z-formnote custom-advice" style="display:none"><!--[gt text='This is a mandatory field.']--></p>
+        </div>
+
+
+        <!--[if $spamcheck eq 1]-->
+        <div class="z-formrow">
+            <label for="formicula_captcha"><!--[gt text='Please solve this simple math test']--> <span class="mandatory">*</span></label>
+            <span>
+                <!--[simplecaptcha font='arial' size='12' bgcolor='ffffff' fgcolor='000000']-->
+                <input id="formicula_captcha" name="captcha" type="text" size="5" maxlength="5" value="" />
+            </span>
+        </div>
+        <!--[/if]-->
+
+    </fieldset>
+
+    <div class="z-formbuttons">
+        <input type="submit" name="submit" value="<!--[gt text="Send"]-->" />
+    </div>
+
+    <script type="text/javascript">
+       var valid = new Validation('contactform');
+    </script>
+    
+</form>

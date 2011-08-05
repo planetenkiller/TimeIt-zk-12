@@ -1,0 +1,206 @@
+<!--[pnpageaddvar name="rawtext" value='<link rel="stylesheet" href="modules/TimeIt/pnstyle/style.css" type="text/css" />']-->
+
+<!--[nocache]-->
+<!--[if $adminMode eq true]-->
+	<!--[include file="TimeIt_admin_menu.htm"]-->
+<!--[/if]-->
+<!--[/nocache]-->
+<div class="pn-admincontainer">
+<div class="pn-adminpageicon"><!--[pnimg src=filenew.gif set=icons/large alt='_TIMEIT_NEW_EVENT' altml=true]--></div>
+<h2><!--[pnml name="_TIMEIT_NEW_EVENT"]--></h2>
+
+
+<!--[pnform cssClass="pn-adminform"]-->
+<!--[pnformvalidationsummary]-->
+<div>
+<table style="width:100%;" border="0px">
+<tbody>
+<tr>
+ <td>
+
+<fieldset>
+	<legend><!--["_TITLE"|pnml]--></legend>
+	<div class="pn-adminformrow ti-adminformrow">
+		<!--[pnformlabel for="title" text="_TITLE"|pnml]-->:
+  		<!--[pnformtextinput id="title" mandatory=true maxLength=50 ]-->
+	</div>
+
+	<div class="pn-adminformrow ti-adminformrow">
+		<!--[pnformlabel for="startDate" text="_TIMEIT_EVENTDATE"|pnml]-->:
+	  	<!--[pnformdateinput id="startDate" mandatory=true]--> (yyyy-mm-dd)
+	</div>
+	
+	<div class="pn-adminformrow ti-adminformrow">
+		<!--[pnformlabel for="endDate" text="_TIMEIT_ENDDATE"|pnml]-->:
+		<!--[pnformdateinput id="endDate" mandatory=true]--> (yyyy-mm-dd)
+	</div>
+
+	<div class="pn-adminformrow ti-adminformrow">
+
+		<!--[pnformlabel for="allDay" text="_TIMEIT_EVENTTYPE"|pnml]-->:
+		<!--[pnformradiobutton id="allDay" dataField="allDay" value='1' checked=true mandatory=1]-->
+		<!--[pnml name="_TIMEIT_ALLDAY"]--><br /><br />
+
+		<!--[pnformlabel for="allDay2" html=1 text="&nbsp;"]-->:
+		<!--[pnformradiobutton id="allDay2" dataField="allDay" value="0" mandatory=1]-->
+		<!--[pnml name="_TIMEIT_ALLDAY2"]-->
+		<!--[pnformdropdownlist id="allDayStart_h" width="50px"]--> :
+		<!--[pnformdropdownlist id="allDayStart_m" width="50px"]--><!--[pnml name="_TIMEIT_OCLOCK"]--><br />
+		
+		<!--[pnformlabel for="allDayDur" html=1 text="_TIMEIT_DURATION"|pnml]-->:
+		<!--[pnformintinput id="allDayDur" minValue=1 maxLength=5]--> <!--['_TIMEIT_HOURS'|pnml]-->
+	</div>
+	
+	<div class="pn-adminformrow ti-adminformrow">
+	    <span class="unterstrich"><!--['_CATEGORIES'|pnml]--></span>:<br />
+	    
+	        <!--[foreach name="catFor" from=$categories key=property item=category]-->
+			    <!--[*selector_category category=$category name="cat[$property]" field="id" defaultValue="0"*]-->
+		        <!--[if $smarty.foreach.catFor.first != true]-->
+		            <br />
+		        <!--[/if]-->
+		        <!--[pnformlabel for="cat_$property" text=$smarty.foreach.catFor.iteration]-->:
+		        <!--[pnformcategoryselector includeEmptyElement=true id="cat_$property" group="cats" category=$category]-->
+		    <!--[/foreach]-->
+		
+    </div>
+</fieldset>	
+ </td>
+
+ <td valign="top">
+ <fieldset>
+	<legend><!--["_TIMEIT_SHARING"|pnml]--></legend>
+ 	<div class="pn-adminformrow ti-adminformrow">
+		<!--[pnformlabel for="share" text="_TIMEIT_SHARING"|pnml]-->:
+	  	<!--[pnformdropdownlist id="share"]-->
+	</div>
+	
+	<!--[*<div class="pn-adminformrow ti-adminformrow">
+		<!--[pnformlabel for="language" text="_LANGUAGE"|pnml]-->:
+		<!--[pnformlanguageselector id="language" mandatory=true]-->
+	</div>*]-->
+	
+	<div class="pn-adminformrow ti-adminformrow">
+		<!--[pnformlabel for="group" text="_TIMEIT_GROUP"|pnml]-->:
+		<!--[pnformdropdownlist id="group"]-->
+	</div>
+</fieldset>	<br />
+
+ <fieldset>
+	<legend><!--["_TIMEIT_REPEAT"|pnml]--></legend>
+	<div class="pn-adminformrow ti-adminformrow2">
+		<!--[pnformlabel for="repeat" text="_TIMEIT_REPEAT"|pnml]-->:
+		<!--[pnformradiobutton id="repeat" dataField="repeat" value="0" checked="1"]--> <!--[pnml name="_TIMEIT_NOREPEAT"]-->
+	</div>
+	<div class="pn-adminformrow ti-adminformrow2">
+		<!--[pnformlabel for="repeat1" html=1 text="&nbsp;"]-->:
+		<!--[pnformradiobutton id="repeat1" dataField="repeat" value="1"]--> <!--[pnml name="_TIMEIT_EVERY"]-->
+		<!--[pnformintinput id="repeatFrec" maxLength=3 size=2 minValue=1 maxValue=365]-->
+		<!--[pnformdropdownlist id="repeatFrec1"]-->
+	</div>
+	<div class="pn-adminformrow ti-adminformrow2">
+		<!--[pnformlabel for="repeat2" html=1 text="&nbsp;"]-->:
+		<!--[pnformradiobutton id="repeat2" dataField="repeat" value="2"]--> <!--[pnml name="_TIMEIT_ON"]-->
+		<!--[pnformdropdownlist id="repeat21"]-->
+		<!--[pnformdropdownlist id="repeat22"]--> <!--[pnml name="_TIMEIT_OFMONTHEVERY"]-->
+		<!--[pnformintinput id="repeatFrec2" maxLength=3 size=2 minValue=1 maxValue=12]--> <!--[pnml name="_MONTHS"]-->
+	</div>
+</fieldset>	
+ </td>
+
+</tr>
+<tr>
+	<td colspan="2">
+	 	<fieldset>
+			<legend><!--["_DESCRIPTION"|pnml]--></legend>
+			<div  class="pn-adminformrow ti-adminformrow">
+				<!--[*pnformlabel for="text" text="_DESCRIPTION"|pnml*]-->:
+				<!--[pnformtextinput id="text" textMode="multiline" cols=30 rows=10 mandatory=true]-->
+			</div>
+		</fieldset>	
+	</td>
+</tr>
+
+<tr>
+	<td>
+	 	<fieldset>
+	 		<legend><!--['_TIMEIT_UN_SUBSCRIBE'|pnml]--></legend>
+	 		<div  class="pn-adminformrow ti-adminformrow">
+				<!--[pnformlabel for="subscribeLimit" text="_TIMEIT_LIMIT"|pnml]-->:
+				<!--[pnformintinput  id="subscribeLimit" maxLength="10" minValue="-1"]-->
+			</div>
+			
+			<div  class="pn-adminformrow ti-adminformrow">
+				<!--[pnformlabel for="subscribeWPend" text="_TIMEIT_SUBSCRIBEMODERATE"|pnml]-->:
+				<!--[pnformcheckbox id="subscribeWPend"]-->
+			</div>
+	 	</fieldset><br />
+		
+	 	<fieldset>
+			<legend><!--["_TIMEIT_CONTACT"|pnml]--></legend>
+			<div  class="pn-adminformrow ti-adminformrow">
+				<!--[pnformlabel for="contactPerson" text="_TIMEIT_CONTACTPERSON"|pnml]-->:
+				<!--[pnformtextinput group="data" id="contactPerson" maxLength="50"]-->
+			</div>
+			<div  class="pn-adminformrow ti-adminformrow">
+				<!--[pnformlabel for="email" text="_EMAIL"|pnml]-->:
+				<!--[pnformtextinput group="data" id="email" maxLength="50"]-->
+			</div>
+			<div  class="pn-adminformrow ti-adminformrow">
+				<!--[pnformlabel for="phoneNr" text="_TIMEIT_PHONE"|pnml]-->:
+				<!--[pnformtextinput group="data" id="phoneNr" maxLength="50"]-->
+			</div>
+			<div  class="pn-adminformrow ti-adminformrow">
+				<!--[pnformlabel for="website" text="_TIMEIT_WEBSITE"|pnml]-->:
+				<!--[pnformtextinput group="data" id="website" maxLength="50"]-->
+			</div>
+		</fieldset>	
+	</td>
+	<td>
+	 	<fieldset>
+			<legend><!--["_TIMEIT_LOCATION"|pnml]--></legend>
+			<div  class="pn-adminformrow ti-adminformrow">
+				<!--[pnformlabel for="city" text="_TIMEIT_CITY"|pnml]-->:
+				<!--[pnformtextinput group="data" id="city" maxLength="50"]-->
+			</div>
+			<div  class="pn-adminformrow ti-adminformrow">
+				<!--[pnformlabel for="streat" text="_TIMEIT_STREAT"|pnml]-->:
+				<!--[pnformtextinput group="data" id="streat" maxLength="50"]-->
+			</div>
+			<div  class="pn-adminformrow ti-adminformrow">
+				<!--[pnformlabel for="houseNumber" text="_TIMEIT_HOUSENUMBER"|pnml]-->:
+				<!--[pnformtextinput group="data" id="houseNumber" maxLength="50"]-->
+			</div>
+			<div  class="pn-adminformrow ti-adminformrow">
+				<!--[pnformlabel for="country" text="_TIMEIT_COUNTRY"|pnml]-->:
+				<!--[pnformtextinput group="data" id="country" maxLength="50"]-->
+			</div>
+			<div  class="pn-adminformrow ti-adminformrow">
+				<!--[pnformlabel for="zip" text="_TIMEIT_ZIP"|pnml]-->:
+				<!--[pnformtextinput group="data" id="zip" maxLength="50"]-->
+			</div>
+		</fieldset>	<br />
+		<fieldset>
+			<legend><!--["_TIMEIT_TICKET_PRICE"|pnml]--></legend>
+			<div  class="pn-adminformrow ti-adminformrow">
+				<!--[pnformlabel for="fee" text="_TIMEIT_FEE"|pnml]-->:
+				<!--[pnformtextinput group="data" id="fee" maxLength="50"]-->
+			</div>
+		</fieldset>
+	</td>
+</tr>
+
+
+</tbody>
+</table>
+<fieldset>
+	<legend><!--["_ACTION"|pnml]--></legend>
+		<div class="pn-adminformrow pn-adminformbuttons" style="margin-left: 1em;">
+		<!--[pnformdropdownlist id="wfactions"]-->
+		<!--[pnformimagebutton id="mybtn_create" commandName="create" text="_CREATE"|pnml imageUrl="images/icons/small/button_ok.gif"]-->
+		<!--[pnformimagebutton id="mybtn_cancel" commandName="cancel" text="_CANCEL"|pnml imageUrl="images/icons/small/button_cancel.gif"]-->
+	</div>
+</fieldset>	
+</div>
+<!--[/pnform]-->
+</div>

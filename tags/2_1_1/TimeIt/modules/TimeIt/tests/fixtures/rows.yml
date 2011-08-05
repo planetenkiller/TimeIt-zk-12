@@ -1,0 +1,395 @@
+TimeIt_date_has_events:
+  META:
+    idcolumn: id
+    relations:
+      eid: TimeIt_events
+      cid: TimeIt_calendars
+    hiddenIds: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
+  rows: []
+
+TimeIt_events:
+  META:
+    idcolumn: id
+    hiddenIds: [5,6,8,9,11,12,14,15,17,19,21,23,25,27,29,30,31]
+  rows:
+    one:
+      mid: 123
+      cid: 1
+      title: allday
+      text: 'allday event'
+      allDay: 1
+      repeatType: 0
+      startDate: '2009-01-01'
+      endDate: '2009-01-01'
+      sharing: 3
+      group: all
+      status: 1
+      _WORKFLOW_:
+        schema: standard
+        action: submit
+      __META__:
+        TimeIt:
+            preserveValues: true
+
+    two:
+      mid: 234
+      cid: 1
+      title: 'day with time'
+      text: 'day with time event'
+      allDay: 0
+      allDayStart: 10:00
+      allDayDur: 2,0
+      repeatType: 0
+      startDate: '2009-01-01'
+      endDate: '2009-01-01'
+      sharing: 3
+      group: all
+      status: 1
+      _WORKFLOW_:
+        schema: standard
+        action: submit
+      __META__:
+        TimeIt:
+            preserveValues: true
+    three:
+      cid: 1
+      title: 'allday subscribe'
+      text: 'allday event subscribeable'
+      allDay: 1
+      repeatType: 0
+      startDate: '2009-01-02'
+      endDate: '2009-01-02'
+      sharing: 3
+      group: all
+      subscribeLimit: 3
+      subscribeWPend: 1
+      status: 1
+      _WORKFLOW_:
+        schema: standard
+        action: submit
+      __META__:
+        TimeIt:
+            preserveValues: true
+    four:
+      cid: 1
+      title: multiday
+      text: 'multiday event'
+      allDay: 1
+      repeatType: 0
+      startDate: '2009-01-03'
+      endDate: '2009-01-05'
+      sharing: 3
+      group: all
+      status: 1
+      _WORKFLOW_:
+        schema: standard
+        action: submit
+      __META__:
+        TimeIt:
+            preserveValues: true
+    rec_1:
+      cid: 1
+      title: rep 1 day
+      text: rep day event
+      allDay: 1
+      repeatType: 1
+      repeatSpec: day
+      repeatFrec: 2
+      startDate: '2009-02-02'
+      endDate: '2009-02-06'
+      sharing: 3
+      group: all
+      status: 1
+      _WORKFLOW_:
+        schema: standard
+        action: submit
+      __META__:
+        TimeIt:
+            preserveValues: true
+    rec_2:
+      cid: 1
+      title: rep 1 week
+      text: rep week event
+      allDay: 1
+      repeatType: 1
+      repeatSpec: week
+      repeatFrec: 1
+      startDate: '2009-02-02'
+      endDate: '2009-02-16'
+      sharing: 3
+      group: all
+      status: 1
+      _WORKFLOW_:
+        schema: standard
+        action: submit
+      __META__:
+        TimeIt:
+            preserveValues: true
+    rec_3:
+      cid: 1
+      title: rep 1 month
+      text: rep month event
+      allDay: 1
+      repeatType: 1
+      repeatSpec: month
+      repeatFrec: 1
+      startDate: '2009-02-10'
+      endDate: '2009-04-10'
+      sharing: 3
+      group: all
+      status: 1
+      _WORKFLOW_:
+        schema: standard
+        action: submit
+      __META__:
+        TimeIt:
+            preserveValues: true
+    rec_4:
+      cid: 1
+      title: rep 1 year
+      text: rep year event
+      allDay: 1
+      repeatType: 1
+      repeatSpec: year
+      repeatFrec: 1
+      startDate: '2009-02-02'
+      endDate: '2010-02-05'
+      sharing: 3
+      group: all
+      status: 1
+      _WORKFLOW_:
+        schema: standard
+        action: submit
+      __META__:
+        TimeIt:
+            preserveValues: true
+    rec_5:
+      cid: 1
+      title: rep 2 first mo
+      text: rep first mo event
+      allDay: 1
+      repeatType: 2
+      repeatSpec: '1 1'
+      repeatFrec: 1
+      startDate: '2009-03-01'
+      endDate: '2009-04-30'
+      sharing: 3
+      group: all
+      status: 1
+      _WORKFLOW_:
+        schema: standard
+        action: submit
+      __META__:
+        TimeIt:
+            preserveValues: true
+    rec_6:
+      cid: 1
+      title: rep 2 secound mo
+      text: rep secound mo event
+      allDay: 1
+      repeatType: 2
+      repeatSpec: '2 1'
+      repeatFrec: 1
+      startDate: '2009-03-01'
+      endDate: '2009-04-30'
+      sharing: 3
+      group: all
+      status: 1
+      _WORKFLOW_:
+        schema: standard
+        action: submit
+      __META__:
+        TimeIt:
+            preserveValues: true
+    rec_7:
+      cid: 1
+      title: rep 2 third mo
+      text: rep third mo event
+      allDay: 1
+      repeatType: 2
+      repeatSpec: '3 1'
+      repeatFrec: 1
+      startDate: '2009-03-01'
+      endDate: '2009-04-30'
+      sharing: 3
+      group: all
+      status: 1
+      _WORKFLOW_:
+        schema: standard
+        action: submit
+      __META__:
+        TimeIt:
+            preserveValues: true
+    rec_8:
+      cid: 1
+      title: rep 2 fourth mo
+      text: rep fourth mo event
+      allDay: 1
+      repeatType: 2
+      repeatSpec: '4 1'
+      repeatFrec: 1
+      startDate: '2009-03-01'
+      endDate: '2009-04-30'
+      sharing: 3
+      group: all
+      status: 1
+      _WORKFLOW_:
+        schema: standard
+        action: submit
+      __META__:
+        TimeIt:
+            preserveValues: true
+    rec_9:
+      cid: 1
+      title: rep 2 last mo
+      text: rep last mo event
+      allDay: 1
+      repeatType: 2
+      repeatSpec: '5 1'
+      repeatFrec: 1
+      startDate: '2009-03-01'
+      endDate: '2009-04-30'
+      sharing: 3
+      group: all
+      status: 1
+      _WORKFLOW_:
+        schema: standard
+        action: submit
+      __META__:
+        TimeIt:
+            preserveValues: true
+    rec_10:
+      cid: 1
+      title: rep 3
+      text: rep 3 event
+      allDay: 1
+      repeatType: 3
+      repeatSpec: '2009-05-03,2009-05-09,2009-05-10'
+      startDate: '2009-05-02'
+      endDate: '2009-05-02'
+      sharing: 3
+      group: all
+      status: 1
+      _WORKFLOW_:
+        schema: standard
+        action: submit
+      __META__:
+        TimeIt:
+            preserveValues: true
+    evt_1:
+      cid: 1
+      title: private event
+      text: 'private event'
+      allDay: 1
+      repeatType: 0
+      startDate: '2009-06-20'
+      endDate: '2009-06-20'
+      sharing: 1
+      group: all
+      status: 1
+      _WORKFLOW_:
+        schema: standard
+        action: submit
+      __META__:
+        TimeIt:
+            preserveValues: true
+    evt_2:
+      cid: 1
+      title: pending event
+      text: 'pending event'
+      allDay: 1
+      repeatType: 0
+      startDate: '2009-06-21'
+      endDate: '2009-06-21'
+      sharing: 3
+      group: all
+      status: 1
+      _WORKFLOW_:
+        schema: moderate
+        action: submit
+      __META__:
+        TimeIt:
+            preserveValues: true
+    evt_3:
+      cid: 1
+      title: hidden event
+      text: 'hidden event'
+      allDay: 1
+      repeatType: 0
+      startDate: '2009-06-22'
+      endDate: '2009-06-22'
+      sharing: 3
+      group: all
+      status: 0
+      _WORKFLOW_:
+        schema: standard
+        action: [submit,offline]
+      __META__:
+        TimeIt:
+            preserveValues: true
+
+__META__:
+  removeDataFromCatRegistry: true
+
+TimeIt_calendars:
+  META:
+    idcolumn: id
+  rows:
+    one:
+      name: Test Calendar
+      desc: My test calendar
+      privateCalendar: 0
+      globalCalendar: 1
+      friendCalendar: 0
+      config: '<?php echo serialize(array('workflow'     => 'standard',
+                                  'userCanEditHisEvents'=> false,
+                                  'defaultView'         => 'month',
+                                  'defaultTemplate'     => 'default',
+                                  'useLocations'        => false,
+                                  'enableMapView'       => false,
+                                  'allowSubscribe'      => true,
+                                  'subscribeMode'       => 'timeit',
+                                  'allowSubscribeDelete'=> false,
+                                  'subscribeLimit'      => 0,
+                                  'subscribePending'    => false,
+                                  'formiculaFormId'     => 10,
+                                  'eventPluginsLocation'=> array('TimeIt'),
+                                  'eventPluginsContact' => array('TimeIt')
+                                 )); ?>'
+
+    two:
+      name: Test Calendar 2
+      desc: private calendar
+      privateCalendar: 1
+      globalCalendar: 0
+      friendCalendar: 0
+      config: '<?php echo serialize(array('workflow'     => 'standard',
+                                  'userCanEditHisEvents'=> false,
+                                  'defaultView'         => 'month',
+                                  'defaultTemplate'     => 'default',
+                                  'useLocations'        => false,
+                                  'enableMapView'       => false,
+                                  'allowSubscribe'      => false,
+                                  'subscribeMode'       => 'timeit',
+                                  'allowSubscribeDelete'=> false,
+                                  'subscribeLimit'      => 0,
+                                  'subscribePending'    => false,
+                                  'formiculaFormId'     => 10,
+                                  'eventPluginsLocation'=> array('TimeIt'),
+                                  'eventPluginsContact' => array('TimeIt')
+                                 )); ?>'
+
+TimeIt_regs:
+  META:
+    idcolumn: id
+  rows:
+    one:
+      id: 1
+      eid: 3
+      uid: 1
+      status: 1
+    two:
+      id: 2
+      eid: 3
+      uid: 2
+      status: 0

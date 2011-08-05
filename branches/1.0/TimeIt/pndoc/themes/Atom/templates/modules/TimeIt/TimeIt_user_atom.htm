@@ -1,0 +1,13 @@
+<!--[foreach from=$events item=event]-->
+<entry>
+    <title><!--[$event.title|pnvarprepfordisplay]--></title>
+    <content><!--[$event.title|pnvarprephtmldisplay]--></content>
+    <link><!--[pnmodurl modname="TimeIt" type="user" func="event" id=$event.id]--></link>
+    <author><name><!--[pnusergetvar name="uname" uid=$event.cr_uid]--></name></author>
+    <id><!--[$event.id]--></id>
+    <updated><!--[dateformat datetime=$event.cr_date format="%a, %d %b %Y %H:%M:%S %z"]--></updated>
+    <!--[ foreach from=$event.__CATEGORIES__ item=cat ]-->
+        <category term="<!--[$cat.name]-->"/>
+    <!--[ /foreach ]-->
+</entry>
+<!--[/foreach]-->

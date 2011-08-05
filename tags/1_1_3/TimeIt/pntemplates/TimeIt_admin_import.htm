@@ -1,0 +1,16 @@
+<!--[include file="TimeIt_admin_menu.htm"]-->
+<div class="pn-admincontainer">
+<h2><!--['_TIMEIT_IMPORT'|pnml]--></h2>
+<form enctype="multipart/form-data" id="pnFormForm" class="pn-adminform" action="<!--[pnmodurl modname="TimeIt" type="admin" func="doImport"]-->" method="post">
+<!--[pnml name="_TIMEIT_IMPORT_PC"]-->: 
+Prefix:<input name="prefix" type="text" value="<!--[pnconfiggetvar name="prefix"]-->" size="7">
+<input type="image" name="btn" title="<!--['_TIMEIT_IMPORT'|pnml]-->" alt="<!--['_TIMEIT_IMPORT'|pnml]-->" value="postcalendar" src="images/icons/small/button_ok.gif"/>
+<!--['_TIMEIT_IMPORT_PCINFO'|pnml]-->
+
+
+<br /><br />
+<!--[pnml name="_TIMEIT_IMPORT_ICAL"]-->: <input name="ics" type="file">
+<input type="image" name="btn" title="<!--['_TIMEIT_IMPORT'|pnml]-->" alt="<!--['_TIMEIT_IMPORT'|pnml]-->" value="ical" src="images/icons/small/button_ok.gif"/>
+
+</form>
+</div>

@@ -1,0 +1,16 @@
+<span style="font-size: large;"><strong><!--[pnml name="_TIMEIT_SUBSCRIBED_EVENTS_TITLE"]--></strong></span>
+<br />
+<strong><!--[pnml name="_DATE"]--> <!--[pnml name="_TIME"]--> - <!--[pnml name="_TIMEIT_LOCATION"]--> - <!--[pnml name="_TITLE"]--></strong>
+<ul>
+	<!--[foreach name="events" from=$events item="event"]-->
+		<li>
+                    <!--[$event.startDate|tidate_format:$ticonfig.dateformat]-->  <!--[if $event.allDay eq 0]--><!--[$event.allDayStart|pnvarprepfordisplay]--> <!--[/if]--> -
+                    <!--[$event.plugins.location.name|pnvarprepfordisplay]--> -
+                    <a href="<!--[pnmodurl modname="TimeIt" type="user" func="event" id=$event.id]-->"><!--[$event.title|pnvarprepfordisplay]--></a>
+		</li>
+	<!--[/foreach]-->
+</ul>
+
+<!--[if $smarty.foreach.events.total == 0]-->
+   <!--[pnml name="_TIMEIT_NONE"]-->
+<!--[/if]-->

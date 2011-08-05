@@ -1,0 +1,70 @@
+<?php
+/**
+ * TimeIt Calendar Module
+ *
+ * @copyright (c) TimeIt Development Team
+ * @link http://code.zikula.org/timeit
+ * @version $Id$
+ * @license GNU/GPL - http://www.gnu.org/copyleft/gpl.html
+ * @package TimeIt
+ * @subpackage Config
+ */
+
+// DO NOT CHANGE THE NEXT 4 LINES !!
+$eventplugins = array('contact'=>array(),'location'=>array());
+$themes = array();
+$defaultFormValues = array();
+$defaultFormValueEventPlugins = array('contact'=>null,'location'=>null);
+
+/*********   HELP  ***************************
+ *********************************************
+ ** Remove the // from the beginning of a line to enable a line
+ *********************************************
+ *********************************************/
+
+/***************************************************
+ * Here you can tell TimeIt your contact eventplugins.
+ ***************************************************/
+//$eventplugins['contact'][] = 'ContactMyContactPlugin'; // example
+//$eventplugins['contact'][] = 'ContactMyOtherContactPlugin'; // example
+
+
+/***************************************************
+ * Here you can tell TimeIt your location eventplugins.
+ ***************************************************/
+//$eventplugins['location'][] = 'LocationMyLocationPlugin'; // example
+//$eventplugins['location'][] = 'LocationMyOtherLocationPlugin'; // example
+
+/***************************************************
+ * Here you can tell TimeIt your themes.
+ * TimeIt contains already two themes: table and list.
+ * All themes must be in the pntemplates folder.
+ ***************************************************/
+//$themes[] = array('folder'=>'MyTheme', 'displayName'=>'My display name'); // example
+
+
+/***************************************************
+ * Here you can set custom default values for the event create form.
+ ***************************************************/
+//$defaultFormValues['allDay'] = 0;  // by default not an all day event
+//$defaultFormValues['allDayStart_h'] = 8;  // start hour of the event
+//$defaultFormValues['allDayStart_m'] = 30; // start minute of the event
+//$defaultFormValues['allDayDur'] = 2; // duration of the event: hours part
+//$defaultFormValues['allDayDurMin'] = 45;  // duration of the event: minutes part
+//$defaultFormValues['share'] = 1;  // sharing level (1=private,2=public,3=global,4=friends only)
+//$defaultFormValues['subscribeLimit'] = 10; // registration limit
+//$defaultFormValues['subscribeWPend'] = 1; // 1 = registration with moderation 0 = without
+//$defaultFormValues['fee'] = 10.50;  // default fee
+
+/****************************************************
+ * Here you can set custom default values for the event plugins in the event create form.
+ ****************************************************/
+/*
+ * possible values: TimeIt , Formicula , Addressbook , TiFormiCombi
+ */
+//$defaultFormValueEventPlugins['contact'] = 'Formicula'; // default contact input mode
+
+ /*
+ * possible values: TimeIt , Locations , Addressbook
+ */
+//$defaultFormValueEventPlugins['location'] = 'Locations'; // default location input mode

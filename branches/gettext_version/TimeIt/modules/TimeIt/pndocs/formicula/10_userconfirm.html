@@ -1,0 +1,64 @@
+<!--[include file=10_userheader.html]-->
+<!--[pnmodapifunc modname="TimeIt" func="get" id=$custom[0].name dheid=$custom[1].name assign="event"]-->
+<!--[pnmodapifunc modname="TimeIt" type="subscribe" func="subscribe" id=$custom[1].name name=$userdata.uname street=$custom.2.data plzcity=$custom.3.data email=$userdata.uemail comment=$userdata.comment assign="registred"]-->
+<!--[pnmodapifunc modname="TimeIt" func="getDHE" dheid=$custom[1].name assign="dheobj"]-->
+<!--[pnmodapifunc modname="TimeIt" func="getGTDomain" assign="domain"]-->
+
+<p class="z-informationmsg">
+    <!--[gt text="Thank you for your registation to the event." domain=$domain]-->
+ </p>
+
+<form class="z-form" action="<!--[pnmodurl modname=formicula type=user func=main]-->" method="post">
+    <fieldset>
+        <legend><!--[gt text='This data was sent to us']--></legend>
+
+        <div class="z-formrow">
+            <label><!--[ gt text="Event" domain=$domain]--></label>
+            <span><!--[ $event.title|pnvarprepfordisplay|default:"&nbsp;"]--></span>
+        </div>
+        
+        <div class="z-formrow">
+            <label><!--[ gt text="Date" html=1 domain=$domain ]--></label>
+            <span>
+                <!--[ $dheobj.date]-->
+                <!--[ $dheobj.date|pndate_format:'DATEBRIEF']-->
+            </span>
+        </div>
+        
+        <div class="z-formrow">
+            <label><!--[gt text='Your Name']--></label>
+            <span><!--[$userdata.uname|pnvarprephtmldisplay|default:"&nbsp;"]--></span>
+        </div>
+
+        <div class="z-formrow">
+            <label><!--[gt text='Street']--></label>
+            <span><!--[$custom.2.data|pnvarprephtmldisplay|default:"&nbsp;"]--></span>
+        </div>
+        
+        <div class="z-formrow">
+            <label><!--[gt text='Zip City']--></label>
+            <span><!--[$custom.3.data|pnvarprephtmldisplay|default:"&nbsp;"]--></span>
+        </div>
+        
+        <div class="z-formrow">
+            <label><!--[gt text='E-Mail']--></label>
+            <span><!--[$userdata.uemail|pnvarprephtmldisplay|default:"&nbsp;"]--></span>
+        </div>
+        
+        <div class="z-formrow">
+            <label><!--[gt text='Comment']--></label>
+            <div><!--[$userdata.comment|pnvarprephtmldisplay|nl2br|default:"&nbsp;"]--></div>
+        </div>
+
+    </fieldset>
+</form>
+
+<p class="z-sub z-center">
+    <!--[if $sendtouser==true]-->
+        <!--[gt text='Confirmation of your submission will be mailed to you in a few minutes.']-->
+    <!--[else]-->
+        <!--[gt text='There was an internal error when sending confirmation mail']-->
+    <!--[/if]-->
+    <a href="<!--[pnmodurl modname="TimeIt" func="display" ot="event" id=$event.id dheid=$custom[1].name]-->"><!--[gt text='Back to Contact Form']--></a>
+</p>
+

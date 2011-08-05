@@ -1,0 +1,160 @@
+<!--[templateWithTheme file="TimeIt_user_navigation.htm" theme=$calendar.defaultTemplate assign="templ_navi]-->
+<!--[include file=$templ_navi]-->
+<!--[nocache]-->
+    <!--[pnajaxheader modname=TimeIt filename=user_event.js]-->
+ <!--[/nocache]-->
+<br />
+<div class="vevent">
+<span class="uid" style="display:none;"><!--[$event.id]--></span>
+<table border="0" style="width:100%">
+   <tr>
+        <td  colspan="2">
+            <span style="font-size: large;"><strong><span class="summary"><!--[$event.title|pnvarprepfordisplay]--></span></strong></span>:<span class="category">
+            <!--[pnusergetlang assign="userLang"]-->
+            <!--[foreach name="catList" from=$event.__CATEGORIES__ key=prop item=cat]-->
+                <!--[if $smarty.foreach.catList.first != true]-->
+		            ,
+		<!--[/if]-->
+		        <a href="<!--[pnmodurl modname="TimeIt" func="viewall" cid=$calendar.id filter="category:in:`$cat.id`"]-->">
+                           <!--[if $cat.display_name.$userLang]-->
+                               <!--[$cat.display_name.$userLang|pnvarprepfordisplay]-->
+                           <!--[else]-->
+                               <!--[$cat.name|pnvarprepfordisplay]-->
+                           <!--[/if]-->
+                        </a>
+            <!--[/foreach]--></span>
+            
+            <div><!--[pnml name=_TIMEIT_POSTEDBYANDON username=$event.cr_name date=$event.cr_datetime]--></div>
+            <!--[if $event.repeatType == 1]-->
+                <div><!--['_TIMEIT_REPEAT'|pnml]-->: <!--['_TIMEIT_EVERY'|pnml]--> <!--[$event.repeatFrec|pnvarprepfordisplay]--> <!--[$dayFrec[$event.repeatSpec]|pnvarprepfordisplay]--></div>
+            <!--[elseif $event.repeatType == 2]-->
+                <div><!--['_TIMEIT_REPEAT'|pnml]-->:  <!--['_TIMEIT_ON'|pnml]--> <!---[$frec[$event.repeat21]|pnvarprepfordisplay]--> <!--[$dayNames[$event.repeat22]|pnvarprepfordisplay]--> on every <!---[$event.repeatFrec|pnvarprepfordisplay]--> months</div>
+            <!--[/if]-->
+        </td>
+   </tr>
+   <tr>
+        <td valign="top" style="width:70%">
+            <fieldset>
+                <legend><!--[pnml name="_DESCRIPTION"]--></legend>
+                <div class="description"><!--[$event.text|pnvarprephtmldisplay]--></div>
+            </fieldset>
+            
+            <!--[nocache]-->
+                <!--[securityutil_checkpermission component="TimeIt:subscribe:" instance="::" level="ACCESS_COMMENT" assign="auth"]-->
+                <!--[assign var="allowSubscribe" value=$calendar.allowSubscribe]-->
+                <!--[if $auth && $event.subscribeLimit gt 0 && $allowSubscribe]-->
+                        <!--[pnmodapifunc modname="TimeIt" type="subscribe" func="isSubscribed" id=$dheobj.id assign="isSub"]-->
+                        <br />
+                        <!--[if !$isSub]-->
+                                <!--[pnmodapifunc modname="TimeIt" type="subscribe" func="countUserForEvent" id=$dheobj.id assign="countSub"]-->
+                                <!--[if $countSub lt $event.subscribeLimit]-->
+                                        <!--[assign var="displayS" value="visible"]-->
+                                        <!--[assign var="displayUS" value="none"]-->
+                                <!--[else]-->
+                                        <!--[pnml name="_TIMEIT_SUBSCRIBE]-->: <!--[pnml name="_TIMEIT_FULL]-->
+                                        <!--[assign var="displayS" value="none"]-->
+                                        <!--[assign var="displayUS" value="none"]-->
+                                <!--[/if]-->
+                        <!--[else]-->
+                                <!--[assign var="displayS" value="none"]-->
+                                <!--[assign var="displayUS" value="visible"]-->
+                        <!--[/if]-->
+
+                        <!--[if $displayS eq 'none']-->
+                            <!--[pnml name="_TIMEIT_SUBSCRIBE_HEIS]-->
+                        <!--[/if]-->
+                        
+                        <a id="viewUserLink" href="<!--[pnmodurl modname="TimeIt" type="user" func="viewUserOfSubscribedEvent" id=$dheobj.id]-->"><!--[pnml name="_TIMEIT_SUBSCRIBED_USER"]--></a>
+                        <div id="viewUserList" style="display:none;height:150px;overflow:scroll;"></div>
+                        <br />
+                        <!--[eventplugincall obj=$event.plugins.contact func="displayAfterDesc" args=$smarty_all_vars]-->
+                        <!--[eventplugincall obj=$event.plugins.location func="displayAfterDesc" args=$smarty_all_vars]-->
+                    <!--[/if]-->
+            <!--[/nocache]-->
+   
+        </td>
+        <td style="width:30%" valign="top">  
+                <!--[nocache]-->
+                    <!--[securityutil_checkpermission component="TimeIt::" instance="::" level="ACCESS_MODERATE" assign="auth"]-->
+                    <!--[securityutil_checkpermission component="TimeIt:Group:" instance="`$event.group_name`::" level="ACCESS_MODERATE" assign="auth2"]-->
+                    <!--[securityutil_checkpermission component="TimeIt::" instance="::" level="ACCESS_COMMENT" assign="authAdd"]-->
+                    <!--[securityutil_checkpermission component="TimeIt:Translate:" instance="::" level="ACCESS_EDIT" assign="auth3"]-->
+                    <!--[securityutil_checkpermission component="TimeIt::" instance="::" level="ACCESS_DELETE" assign="authDelete"]-->
+                    <!--[securityutil_checkpermission component="TimeIt:Group:" instance="`$event.group_name`::" level="ACCESS_DELETE" assign="authDelete2"]-->
+
+                    <!--[pnconfiggetvar name="multilingual" assign="siteIsMultilingual"]-->
+                    <!--[assign var="authSelfEdit" value=false]-->
+                    <!--[if $calendar.userCanEditHisEvents && $event.cr_uid == $currentUserId]-->
+                        <!--[assign var="authSelfEdit" value=true]-->
+                    <!--[/if]-->
+
+                    <!--[assign var="edit_event_id" value=$masterEvent.id]-->
+                    <!--[if !$edit_event_id]-->
+                        <!--[assign var="edit_event_id" value=$event.id]-->
+                    <!--[/if]-->
+
+                  <!--[if ($auth || $auth2 || $authSelfEdit) || ($auth3 && $siteIsMultilingual) || $authAdd || ($authDelete || $authDelete2)]-->
+                <fieldset>
+                    <legend><!--[pnml name="_OPTIONS"]--></legend>
+
+                    <!--[if $auth || $auth2 || $authSelfEdit]-->
+                        <a href="<!--[pnmodurl modname="TimeIt" func="modify" eventid=$edit_event_id returnTo="eventDetail" dheid=$dheobj.id]-->" title="<!--['_EDIT'|pnml]-->"><!--[pnimg modname=core set=icons/extrasmall src="xedit.gif" alt='_EDIT'|pnml]--></a>
+                        <!--[if $event.repeatType > 0]-->
+                            <a href="<!--[pnmodurl modname="TimeIt" func="modify" eventid=$event.id returnTo="eventDetail" dheid=$dheobj.id recurrenceOnly=true]-->" title="<!--['_TIMEIT_EDIT_REPEAT'|pnml]-->"><!--[pnimg modname=core set=icons/extrasmall src="edit.gif" alt='_TIMEIT_EDIT_REPEAT'|pnml]--></a>
+                        <!--[/if]-->
+                    <!--[/if]-->
+                    <!--[if $auth3 && $siteIsMultilingual]-->
+                        <a href="<!--[pnmodurl modname="TimeIt" type="admin" func="translate" id=$event.id]-->" title="<!--['_TIMEIT_TRANSLATE'|pnml]-->"><!--[pnimg modname=core set=icons/extrasmall src="flag.gif" alt='_TIMEIT_TRANSLATE'|pnml]--></a>
+                    <!--[/if]-->
+                    <!--[if $authAdd]-->
+                        <a href="<!--[pnmodurl modname="TimeIt" func="new" returnTo="eventDetail" copy=$edit_event_id]-->" title="<!--['_TIMEIT_NEW_COPY'|pnml]-->"><!--[pnimg modname=core set=icons/extrasmall src="editcopy.gif" alt='_TIMEIT_NEW_COPY'|pnml]--></a>
+                    <!--[/if]-->
+                    <!--[if $authDelete || $authDelete2]-->
+                        <form style="display:inline;" id="timeit_delete_form" action="<!--[pnmodurl modname="TimeIt" type="user" func="delete"]-->" method="post">
+                              <input type="hidden" name="eid" value="<!--[$event.id]-->" />
+                              <a href="#" id="timeit_delete_button"><img src="images/icons/extrasmall/14_layer_deletelayer.gif" alt="<!--['_DELETE'|pnml]-->" /></a>
+                        </form>
+                    <!--[/if]-->
+                </fieldset>
+                  <!--[/if]-->
+                <!--[/nocache]-->
+            <fieldset>
+                <legend><!--[pnml name="_TIMEIT_EVENTDETAILS"]--></legend>
+                <!--[if $event.allDay eq 0]-->
+                	<strong><!--[pnml name="_TIMEIT_ALLDAY2"]-->:</strong> <!--[$event.allDayStart|pnvarprepfordisplay]--><br />
+                	<strong><!--[pnml name="_TIMEIT_DURATION"]-->:</strong> <!--[$event.allDayDur.0|pnvarprepfordisplay]--> h <!--[$event.allDayDur.1|pnvarprepfordisplay]--> min<br />
+                <!--[/if]-->
+                <!--[if $event.sharing eq 1]-->
+                	<strong><!--[pnml name="_TIMEIT_PRVATEEVENT"]--></strong>
+                <!--[elseif $event.sharing eq 2]-->
+                	<strong><!--[pnml name="_TIMEIT_PUBLICEVENT"]--></strong>
+               	<!--[elseif $event.sharing eq 3]-->
+                	<strong><!--[pnml name="_TIMEIT_GLOBALEVENT"]--></strong>
+                <!--[/if]-->
+                <br /><strong><!--['_DATE'|pnml]-->:</strong> <abbr class="dtstart" title="<!--[$viewDate|pnvarprepfordisplay]-->"><!--[$viewDate|tidate_format:$tiConfig.dateformat]--></abbr>
+                <abbr style="display:none;" class="dtend" title="<!--[$viewDate|pnvarprepfordisplay]-->"><!--[$viewDate|tidate_format:$tiConfig.dateformat]--></abbr>
+                <br /><!--[if $event.data.fee]--><strong><!--[$dataIdToML.fee|pnvarprepfordisplay]-->:</strong> <!--[$event.data.fee|pnvarprepfordisplay]--><!--[/if]-->
+            </fieldset><br />
+
+            <!--[eventplugincall obj=$event.plugins.contact func="display"]-->
+            <!--[eventplugincall obj=$event.plugins.location func="display"]-->
+        </td>
+   </tr>
+</table>
+</div>
+
+
+<!--[showMapForAddress obj=$event]-->
+
+
+<!--[pnmodurl modname=TimeIt func=event id=$event.id date=$viewDate assign=returnurl]-->
+<!--[pnmodcallhooks hookobject=item hookaction=display hookid=$masterEvent.id module=TimeIt returnurl=$returnurl]-->
+
+<script type="text/javascript">
+    Event.observe(window, 'load', initSubscriptionLink, false);
+    var timeIt_event_id = <!--[$event.id]-->;
+    var timeIt_dheobj_id = <!--[$dheobj.id]-->;
+    var timeIt_viewdate = "<!--[$viewDate]-->";
+</script>
+
+            

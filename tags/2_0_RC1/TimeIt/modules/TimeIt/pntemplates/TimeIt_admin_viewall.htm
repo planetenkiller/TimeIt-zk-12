@@ -1,0 +1,48 @@
+<!--[include file="TimeIt_admin_menu.htm"]-->
+<div class="pn-admincontainer">
+<h2>Pending Events</h2>
+
+<form action="<!--[pnmodurl modname="TimeIt" type="admin" func="viewall"]-->" method="POST">
+    <!--['_TIMEIT_CALENDAR'|pnml]-->:
+    <select name="cid">
+        <!--[foreach from=$calendars item=row]-->
+        <option value="<!--[$row.value]-->"<!--[if $calendar == $row.value]--> selected="selected"<!--[/if]-->><!--[$row.text]--></option>
+        <!--[/foreach]-->
+    </select>
+    <input type="submit" name="submit" value="<!--[pnml name="_SUBMIT"]-->" />
+</form>
+<form action="<!--[pnmodurl modname="TimeIt" type="admin" func="delete" returnto="viewall"]-->" method="POST">
+    <table class="pn-admintable">
+        <thead>
+            <tr>
+                <th><!--[pnml name="_ID"]--></th>
+                <th><!--[pnml name="_TITLE"]--></th>
+                <th><!--[pnml name="_CATEGORY"]--></th>
+                <th><!--[pnml name="_ACTIONS"]--></th>
+                <th><!--[pnml name="_DELETE"]--></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--[foreach from=$events item=event]-->
+                <tr class="<!--[cycle values=pn-odd,pn-even]-->">
+                    <td><!--[$event.id|pnvarprepfordisplay]--></td>
+                    <td><!--[$event.title|strip_tags|pnvarprepfordisplay]--></td>
+                    <td>
+                        <!--[ foreach from=$event.__CATEGORIES__ item=cat ]-->
+                            <!--[ $cat.name|pnvarprepfordisplay ]-->
+                        <!--[ /foreach ]-->
+                    </td>
+                    <td>
+                        <a href="<!--[pnmodurl modname="TimeIt" type="user" func="modify" eventid=$event.id returnTo="adminviewall"]-->"><!--[pnimg modname=core set=icons/extrasmall src="xedit.gif" alt=_EDIT]--></a>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="delete[]" value="<!--[$event.id]-->" />
+                    </td>
+                </tr>
+            <!--[/foreach]-->
+        </tbody>
+    </table>
+    <input type="submit" name="submit_delete" value="<!--[pnml name="_DELETE"]-->" />
+</form>
+<!--[pager display=page rowcount=$pager.numitems limit=$pager.itemsperpage posvar=page]-->
+</div>

@@ -1,0 +1,15 @@
+
+<!--[foreach from=$events item=event]-->
+    <entry>
+        <title><!--[$event.title|pnvarprepfordisplay]--></title>
+        <content><!--[$event.text|pnvarprephtmldisplay]--></content>
+        <link rel="alternate" type="text/html" href="<!--[pnmodurl modname="TimeIt" type="user" func="event" fqurl=true id=$event.id]-->"/>
+        <author><name><!--[pnusergetvar name="uname" uid=$event.cr_uid]--></name></author>
+        <id><!--[pnmodurl modname="TimeIt" type="user" func="event" fqurl=true id=$event.id]--></id>
+        <updated><!--[$event.lu_date|updated]--></updated>
+        <published><!--[$event.cr_date|published]--></published>
+<!--[ foreach from=$event.__CATEGORIES__ item=cat ]-->
+            <category term="<!--[$cat.name]-->"/>
+<!--[ /foreach ]-->
+    </entry>
+<!--[/foreach]-->

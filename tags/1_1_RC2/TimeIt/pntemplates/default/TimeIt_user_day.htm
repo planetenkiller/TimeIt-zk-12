@@ -1,0 +1,20 @@
+<!--[templateWithTheme file="TimeIt_user_navigation.htm" assign="templ_navi]-->
+<!--[include file=$templ_navi]-->
+
+<!--[navigationDateMover date=$dayAsDate viewType=$viewType]--></td>
+
+		<!--[if $dayAsDate eq $dayNumNow]-->
+			<!--[assign var="color" value="padding:1px;"]-->
+		<!--[/if]-->
+
+		<!--[if $events]-->
+			<div style="border-width:1px; border-style: solid;<!--[if $dayAsDate eq $dayNumNow]--> border-color: <!--[$monthtoday]-->;<!--[/if]-->">
+				<!--[foreach from=$events item=obj]-->
+					
+					<!--[if $obj.allDay eq 0]--><!--[$obj.allDayStart|pnvarprepfordisplay]--> <!--[/if]--><a style="font-size: x-small;" href="<!--[pnmodurl modname="TimeIt" type="user" func="event" id=$obj.id]-->" <!--[*popup text=$obj.text|pnvarprepfordisplay caption=$obj.title|pnvarprepfordisplay*]--> ><!--[$obj.title|pnvarprepfordisplay]--></a><br/>
+				<!--[/foreach]-->
+
+			</div>
+		<!--[else]-->
+			<!--['_TIMEIT_NOEVENTS'|pnml]-->
+		<!--[/if]-->

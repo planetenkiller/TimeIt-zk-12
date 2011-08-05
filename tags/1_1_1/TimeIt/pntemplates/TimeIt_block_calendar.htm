@@ -1,0 +1,34 @@
+<!--[if $showError]-->
+	<!--[pnml name="_TIMEIT_NONE"]-->
+<!--[else]-->
+
+	<!--[if $viewType eq "today"]-->
+		<!--[if $do eq "nothing"]-->
+	    	<br /><br /><!--[pnml name="_TIMEIT_NONE"]--><br />
+		<!--[else]-->
+	    	<ul>
+	        	<!--[section name=event loop=$events max=5 step=1]-->
+	            	<li><a href="<!--[pnmodurl modname="TimeIt" func="event" id=$events[event].id]-->" <!--[if $tiConfig.popupOnHover eq true]--><!--[pnpageaddvar name="javascript" value="javascript/overlib/overlib.js"]--><!--[popup text=$events[event].text|pnvarprepfordisplay caption=$events[event].title|pnvarprepfordisplay]--><!--[/if]-->><!--[$events[event].title|pnvarprepfordisplay]--></a><br /><!--[$events[event].allDayStart|pnvarprepfordisplay]--> <!--[pnml name="_TIMEIT_OCLOCK"]--></li>
+	            	<!--[if $smarty.section.event.rownum eq 5]-->
+	                	<li><a href="<!--[urlToDay date=$asDate]-->"><!--[pnml name="_TIMEIT_MORE"]--></a></li>
+	            	<!--[/if]-->
+	        	<!--[/section]-->
+	    	</ul>
+		<!--[/if]-->
+	<!--[elseif $viewType eq "upcoming"]-->
+		<!--[if $do eq "nothing"]-->
+		    	<br /><br /><!--[pnml name="_TIMEIT_NONE"]--><br />
+		<!--[else]-->
+			<!--[assign var="date" value=""]-->
+			<!--[foreach from=$events item=objs key=stamp]-->
+				<strong><!--[$stamp|date_format:"%d. %m. %Y"]--></strong><br />
+				<ul style="list-style-position:inside; list-style-type:circle;">
+				<!--[foreach from=$objs item=event]-->
+					<li><a href="<!--[pnmodurl modname="TimeIt" func="event" id=$event.id]-->" <!--[if $tiConfig.popupOnHover eq true]--><!--[pnpageaddvar name="javascript" value="javascript/overlib/overlib.js"]--><!--[popup text=$event.text|pnvarprepfordisplay caption=$event.title|pnvarprepfordisplay]--><!--[/if]-->><!--[$event.title|pnvarprepfordisplay]--></a> <!--[$event.allDayStart|pnvarprepfordisplay]--> <!--[pnml name="_TIMEIT_OCLOCK"]--></li>
+				<!--[/foreach]-->
+				</ul>
+			<!--[/foreach]-->
+		<!--[/if]-->
+	<!--[/if]-->
+
+<!--[/if]-->

@@ -1,0 +1,45 @@
+<!--[templateWithTheme file="TimeIt_user_navigation.htm" assign="templ_navi]-->
+<!--[include file=$templ_navi]-->
+
+<div class="ti-weekTable">
+<!--[navigationDateMover date=$dayAsDate viewType=$viewType]-->
+<!--[strip]-->
+<!--[foreach name=weekforeach from=$events item=days key=week]-->	
+		<!--[foreach name=dayforeach from=$days item=objs key=day]-->
+			<!--[assign var="dayNum" value=$day|substr:8:2]-->
+
+			<!--[if $day eq $dayNumNow]-->
+				<!--[assign var="color" value="padding:1px;"]-->
+			<!--[elseif $day < $month_startDate || $day > $month_endDate]-->
+				<!--[assign var="color" value="background-color: $monthoff;"]-->
+			<!--[else]-->
+				<!--[assign var="color" value="background-color: $monthon;"]-->
+			<!--[/if]-->
+			<!--[if $objs]-->
+			  <div class="ti-day<!--[if $day eq $dayNumNow]--> ti-today<!--[/if]-->">
+				<div class="ti-daynum"><a href="<!--[urlToDay date=$day]-->"><!--[tiDate_format date=$day format="datelong"]--></a> 
+					<!--[nocache]-->
+						<!--[securityutil_checkpermission component="TimeIt::" instance="::" level="ACCESS_COMMENT" assign="authAdd"]-->
+						<!--[if $authAdd]--> <a href="<!--[pnmodurl modname="TimeIt" type="admin" func="new" date=$day]-->">+</a><!--[/if]-->
+					<!--[/nocache]-->
+				</div>
+				
+				<div class="ti-eventlist">
+				<!--[foreach from=$objs item=objs2]-->
+				    <!--[if $tiConfig.colorCats && $objs2.info.color neq null]-->
+				    	<div style="border:1px solid <!--[$objs2.info.color]-->"><div style="background-color:<!--[$objs2.info.color]-->;"><!--[$objs2.info.name|pnvarprepfordisplay]--></div>
+					<!--[/if]-->
+					<!--[foreach from=$objs2.data item=obj]-->
+						<!--[if $obj.allDay eq 0]--><!--[$obj.allDayStart|pnvarprepfordisplay]--> <!--[/if]--><a style="font-size: x-small;" href="<!--[pnmodurl modname="TimeIt" type="user" func="event" id=$obj.id]-->" <!--[if $tiConfig.popupOnHover eq true]--><!--[pnpageaddvar name="javascript" value="javascript/overlib/overlib.js"]--><!--[popup text=$obj.text|pnvarprepfordisplay caption=$obj.title|pnvarprepfordisplay]--><!--[/if]--> ><!--[$obj.title|pnvarprepfordisplay]--></a><br/>
+					<!--[/foreach]-->
+					<!--[if $objs2.info.color neq null]-->
+						</div>
+					<!--[/if]-->
+				<!--[/foreach]-->
+				</div>
+			  </div>
+			<!--[/if]-->
+		<!--[/foreach]-->
+<!--[/foreach]-->
+</div>
+<!--[/strip]-->

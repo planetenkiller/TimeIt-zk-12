@@ -1,0 +1,31 @@
+<!--[templateWithTheme file="TimeIt_user_navigation.htm" assign="templ_navi]-->
+<!--[include file=$templ_navi]-->
+
+<!--[navigationDateMover date=$dayAsDate viewType=$viewType]-->
+<!--[strip]-->
+<!--[foreach name=weekforeach from=$events item=objs key=day]-->
+
+		<!--[assign var="dayNum" value=$day|substr:8:2]-->
+
+		<!--[if $day eq $dayNumNow]-->
+				<!--[assign var="color" value="padding:1px;"]-->
+		<!--[elseif ($day < $month_startDate || $day > $month_endDate)]-->
+				<!--[assign var="color" value="background-color: $monthoff;"]-->
+		<!--[else]-->
+				<!--[assign var="color" value="background-color: $monthon;"]-->
+		<!--[/if]-->
+
+		<!--[if $objs]-->
+				<div style="border-width:1px; border-style: solid;<!--[if $day eq $dayNumNow]--> border-color: <!--[$monthtoday]-->;<!--[/if]-->">
+				<div style="background-color:#d4d2d2;">
+					<a href="<!--[urlToDay date=$day]-->"><!--[tiDate_format date=$day format="datelong"]--></a><br />
+				</div>
+				<!--[foreach from=$objs item=obj]-->
+					
+					<!--[if $obj.allDay eq 0]--><!--[$obj.allDayStart|pnvarprepfordisplay]--> <!--[/if]--><a style="font-size: x-small;" href="<!--[pnmodurl modname="TimeIt" type="user" func="event" id=$obj.id]-->" <!--[*popup text=$obj.text|pnvarprepfordisplay caption=$obj.title|pnvarprepfordisplay*]--> ><!--[$obj.title|pnvarprepfordisplay]--></a><br/>
+				<!--[/foreach]-->
+
+				</div>
+		<!--[/if]-->
+<!--[/foreach]-->
+<!--[/strip]-->

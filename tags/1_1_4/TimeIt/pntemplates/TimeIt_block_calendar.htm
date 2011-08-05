@@ -1,0 +1,39 @@
+<!--[if $showError]-->
+	<!--[pnml name="_TIMEIT_NONE"]-->
+<!--[else]-->
+
+	<!--[if $viewType eq "today"]-->
+		<!--[if $do eq "nothing"]-->
+	    	<br /><br /><!--[pnml name="_TIMEIT_NONE"]--><br />
+		<!--[else]-->
+	    	<ul>
+	        	<!--[foreach from=$events item=objs]-->
+	        	<!--[section name=event loop=$objs.data max=5 step=1]-->
+	            	<li><a href="<!--[pnmodurl modname="TimeIt" func="event" id=$objs.data[event].id]-->" <!--[if $tiConfig.popupOnHover eq true]--><!--[pnpageaddvar name="javascript" value="javascript/overlib/overlib.js"]--><!--[popup text=$objs.data[event].text|pnvarprepfordisplay caption=$objs.data[event].title|pnvarprepfordisplay]--><!--[/if]-->><!--[$objs.data[event].title|pnvarprepfordisplay]--></a><br /><!--[$objs.data[event].allDayStart|pnvarprepfordisplay]--> <!--[pnml name="_TIMEIT_OCLOCK"]--></li>
+	            	<!--[if $smarty.section.event.rownum eq 5]-->
+	                	<li><a href="<!--[urlToDay date=$asDate]-->"><!--[pnml name="_TIMEIT_MORE"]--></a></li>
+	            	<!--[/if]-->
+	        	<!--[/section]-->
+	        	<!--[/foreach]-->
+	    	</ul>
+		<!--[/if]-->
+	<!--[elseif $viewType eq "upcoming"]-->
+		<!--[if $do eq "nothing"]-->
+		    	<br /><br /><!--[pnml name="_TIMEIT_NONE"]--><br />
+		<!--[else]-->
+			<!--[assign var="date" value=""]-->
+			<!--[foreach from=$events item=objs2 key=stamp]-->
+			
+				<!--[foreach from=$objs2 item=objs]-->
+					<strong><!--[$stamp|date_format:"%d. %m. %Y"]--></strong><br />
+					<ul style="list-style-position:inside; list-style-type:circle;">
+					<!--[foreach from=$objs.data item=event]-->
+						<li><a href="<!--[pnmodurl modname="TimeIt" func="event" id=$event.id]-->" <!--[if $tiConfig.popupOnHover eq true]--><!--[pnpageaddvar name="javascript" value="javascript/overlib/overlib.js"]--><!--[popup text=$event.text|pnvarprepfordisplay caption=$event.title|pnvarprepfordisplay]--><!--[/if]-->><!--[$event.title|pnvarprepfordisplay]--></a> <!--[$event.allDayStart|pnvarprepfordisplay]--> <!--[pnml name="_TIMEIT_OCLOCK"]--></li>
+					<!--[/foreach]-->
+					</ul>
+				<!--[/foreach]-->
+			<!--[/foreach]-->
+		<!--[/if]-->
+	<!--[/if]-->
+
+<!--[/if]-->

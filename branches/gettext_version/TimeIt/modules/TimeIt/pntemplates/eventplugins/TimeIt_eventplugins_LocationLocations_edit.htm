@@ -1,0 +1,20 @@
+<fieldset>
+    <legend>Locations %%%'Location'%%%</legend>
+    <div  class="z-formrow">
+            <!--[pnformlabel for="LocationLocations_id" __text="Location"]-->
+            <!--[pnformdropdownlist group="data" id="LocationLocations_id"]-->
+    </div>
+
+    <!--[assign var="mapView" value=$calendar.enableMapView]-->
+    <!--[if $mapView eq true]-->
+        <div  class="z-formrow">
+            <!--[pnformlabel for="LocationLocations_displayMap" __text="Display map"]-->
+            <!--[pnformcheckbox group="data" id="LocationLocations_displayMap"]-->
+        </div>
+
+        <div  class="z-formrow">
+            <!--[pnformlabel for="LocationLocations_zoomFactor" __text="Zoom (Map)"]-->
+            <!--[pnformdropdownlist items=$LocationLocations_zoomFactorItems group="data" id="LocationLocations_zoomFactor" maxLength="100"]-->
+        </div>
+    <!--[/if]-->
+</fieldset>

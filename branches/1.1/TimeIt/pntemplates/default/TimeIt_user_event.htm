@@ -1,0 +1,136 @@
+<!--[templateWithTheme file="TimeIt_user_navigation.htm" assign="templ_navi]-->
+<!--[include file=$templ_navi]-->
+<!--[nocache]-->
+	<!--[pnajaxheader modname=TimeIt filename=user_event.js]-->
+	<!--[pnpageaddvar name="javascript" value="modules/TimeIt/pnjavascript/user_edit.js"]-->
+ <!--[/nocache]-->
+<br />
+<table border="0" style="width:100%">
+   <tr>
+        <td  colspan="2">
+            <span style="font-size: large;"><strong><!--[$event.title|pnvarprepfordisplay]--></strong></span>:
+            <!--[foreach name="catList" from=$event.__CATEGORIES__ key=name item=cat]-->
+                <!--[if $smarty.foreach.catList.first != true]-->
+		            ,
+		        <!--[/if]-->
+		        <!--[$cat.name|pnvarprepfordisplay]-->
+            <!--[/foreach]-->
+            
+            <div><!--[pnml name=_TIMEIT_POSTEDBYANDON username=$event.cr_name date=$event.cr_datetime]--></div>
+            <!--[if $event.repeatType == 1]-->
+                <div>Repeat: every <!--[$event.repeatFrec|pnvarprepfordisplay]--> <!--[$dayFrec[$event.repeatSpec]|pnvarprepfordisplay]--></div>
+            <!--[elseif $event.repeatType == 2]-->
+                <div>Repeat:  on<!---[$frec[$event.repeat21]|pnvarprepfordisplay]--> <!--[$dayNames[$event.repeat22]|pnvarprepfordisplay]--> on every <!---[$event.repeatFrec|pnvarprepfordisplay]--> months</div>
+            <!--[/if]-->
+            <!--[nocache]-->
+				<!--[securityutil_checkpermission component="TimeIt:subscribe:" instance="::" level="ACCESS_COMMENT" assign="auth"]-->
+				<!--[pnmodgetvar module="TimeIt" name="allowSubscribe" assign="allowSubscribe"]-->
+				<!--[if $auth && $event.subscribeLimit gt 0 && $allowSubscribe]-->
+					<!--[pnmodapifunc modname="TimeIt" type="subscribe" func="isSubscribed" eid=$event.id assign="isSub"]-->
+					<br />
+					<!--[if !$isSub]-->
+						<!--[pnmodapifunc modname="TimeIt" type="subscribe" func="countUserForEvent" eid=$event.id assign="countSub"]-->
+						<!--[if $countSub lt $event.subscribeLimit]-->
+							<!--[assign var="displayS" value="visible"]-->
+							<!--[assign var="displayUS" value="none"]-->
+						<!--[else]-->
+							<!--[pnml name="_TIMEIT_SUBSCRIBE]-->: <!--[pnml name="_TIMEIT_FULL]-->
+							<!--[assign var="displayS" value="none"]-->
+							<!--[assign var="displayUS" value="none"]-->
+						<!--[/if]-->
+					<!--[else]-->
+						<!--[assign var="displayS" value="none"]-->
+						<!--[assign var="displayUS" value="visible"]-->
+					<!--[/if]-->
+					
+					<a style="display:<!--[$displayS]-->;" id="subscribeLink" href="<!--[pnmodurl modname="TimeIt" type="user" func="subscribe" id=$event.id]-->"><!--[pnml name="_TIMEIT_SUBSCRIBE"]--></a>
+					<a style="display:<!--[$displayUS]-->;" id="unsubscribeLink" href="<!--[pnmodurl modname="TimeIt" type="user" func="unsubscribe" id=$event.id]-->"><!--[pnml name="_TIMEIT_UNSUBSCRIBE"]--></a>
+					
+					<a id="viewUserLink" href="<!--[pnmodurl modname="TimeIt" type="user" func="viewUserOfSubscribedEvent" id=$event.id]-->"><!--[pnml name="_TIMEIT_SUBSCRIBED_USER"]--></a>
+					<div id="viewUserList" style="display:none;height:150px;
+ overflow:scroll;"></div>
+				<!--[/if]-->
+			<!--[/nocache]-->
+        </td>
+   </tr>
+   <tr>
+        <td valign="top" style="width:70%">
+            <fieldset>
+                <legend><!--[pnml name="_DESCRIPTION"]--></legend>
+                <div><!--[$event.text|pnvarprephtmldisplay]--></div>
+            </fieldset>
+        </td>
+        <td style="width:30%">
+            <fieldset>
+                <legend><!--[pnml name="_TIMEIT_EVENTDETAILS"]--></legend>
+                <!--[if $event.allDay eq 0]-->
+                	<strong><!--[pnml name="_TIMEIT_ALLDAY2"]-->:</strong> <!--[$event.allDayStart|pnvarprepfordisplay]--><br />
+                	<strong><!--[pnml name="_TIMEIT_DURATION"]-->:</strong> <!--[$event.allDayDur.0|pnvarprepfordisplay]--> h <!--[$event.allDayDur.1|pnvarprepfordisplay]--> min<br />
+                <!--[/if]-->
+                <!--[if $event.sharing eq 1]-->
+                	<strong><!--[pnml name="_TIMEIT_PRVATEEVENT"]--></strong>
+                <!--[elseif $event.sharing eq 2]-->
+                	<strong><!--[pnml name="_TIMEIT_PUBLICEVENT"]--></strong>
+               	<!--[elseif $event.sharing eq 3]-->
+                	<strong><!--[pnml name="_TIMEIT_GLOBALEVENT"]--></strong>
+                <!--[/if]-->
+                <br /><strong><!--['_TIMEIT_EVENTDATE'|pnml]-->:</strong> <!--[$event.startDate|pnvarprepfordisplay]-->
+                <br /><strong><!--['_TIMEIT_ENDDATE'|pnml]-->:</strong> <!--[$event.endDate|pnvarprepfordisplay]-->
+            </fieldset><br />
+            <fieldset>
+                <legend><!--[pnml name="_TIMEIT_ADDITIONALINFO"]--></legend>
+                <!--[if !$tiConfig.useLocations || !$locations]-->
+	                <!--[assign var="addInfosFound" value=false]-->
+	                <!--[foreach name="addInfos" from=$event.data key="name" item="value"]-->
+			       		<!--[if $value && $name != 'displayMap' && $name != 'lat' && $name != 'lng' && $name != 'locations']-->
+			       			<strong><!--[$dataIdToML.$name|pnvarprepfordisplay]-->:</strong> <!--[$value|pnvarprepfordisplay]--><br />
+	            			<!--[assign var="addInfosFound" value=true]-->
+	            		<!--[/if]-->
+	            	<!--[/foreach]-->
+	            	
+	            	<!--[if $addInfosFound eq false]-->
+   						<!--[pnml name="_TIMEIT_NONE"]-->
+					<!--[/if]-->
+	            <!--[else]-->
+	            	<!--[if $locations.name]--><strong><!--[$dataIdToML.name|pnvarprepfordisplay]-->:</strong> <!--[$locations.name|pnvarprepfordisplay]--><br /><!--[/if]-->
+	            	<!--[if $locations.street]--><strong><!--[$dataIdToML.streat|pnvarprepfordisplay]-->:</strong> <!--[$locations.street|pnvarprepfordisplay]--><br /><!--[/if]-->
+	            	<!--[if $locations.zip]--><strong><!--[$dataIdToML.zip|pnvarprepfordisplay]-->:</strong> <!--[$locations.zip|pnvarprepfordisplay]--><br /><!--[/if]-->
+            		<!--[if $locations.city]--><strong><!--[$dataIdToML.city|pnvarprepfordisplay]-->:</strong> <!--[$locations.city|pnvarprepfordisplay]--><br /><!--[/if]-->
+            		<!--[if $locations.phone]--><strong><!--[$dataIdToML.phoneNr|pnvarprepfordisplay]-->:</strong> <!--[$locations.phone|pnvarprepfordisplay]--><br /><!--[/if]-->
+            		<!--[if $locations.fax]--><strong><!--[$dataIdToML.fax|pnvarprepfordisplay]-->:</strong> <!--[$locations.fax|pnvarprepfordisplay]--><br /><!--[/if]-->
+            		<!--[if $locations.url]--><strong><!--[$dataIdToML.website|pnvarprepfordisplay]-->:</strong> <a href="<!--[$locations.url|pnvarprepfordisplay]-->"><!--[$locations.url|pnvarprepfordisplay]--></a><br /><!--[/if]-->
+            		<!--[if $locations.email]--><strong><!--[$dataIdToML.email|pnvarprepfordisplay]-->:</strong> <!--[$locations.email|pnvarprepfordisplay]--><br /><!--[/if]-->
+            		<!--[if $locations.country]--><strong><!--[$dataIdToML.country|pnvarprepfordisplay]-->:</strong> <!--[$locations.country|pnvarprepfordisplay]--><br /><!--[/if]-->
+            		<!--[if $locations.state]--><strong><!--[$dataIdToML.state|pnvarprepfordisplay]-->:</strong> <!--[$locations.state|pnvarprepfordisplay]--><br /><!--[/if]-->
+            		<!--[if $event.data.fee]--><strong><!--[$dataIdToML.fee|pnvarprepfordisplay]-->:</strong> <!--[$event.data.fee|pnvarprepfordisplay]--><br /><!--[/if]-->
+            	<!--[/if]-->
+            	
+            </fieldset>
+        </td>
+   </tr>
+</table>
+<!--[nocache]-->
+	<!--[securityutil_checkpermission component="TimeIt::" instance="::" level="ACCESS_MODERATE" assign="auth"]-->
+	<!--[securityutil_checkpermission component="TimeIt:Group:" instance="`$event.group_name`::" level="ACCESS_MODERATE" assign="auth2"]-->
+	<!--[assign var="authSelfEdit" value=false]-->
+	<!--[if $tiConfig.userCanEditHisEvents && $event.cr_uid == $currentUserId]-->
+		<!--[assign var="authSelfEdit" value=true]-->
+	<!--[/if]-->
+	<!--[if $auth || $auth2 || $authSelfEdit]-->
+		<a href="<!--[pnmodurl modname="TimeIt" type="admin" func="modify" eventid=$event.id]-->"><!--[pnml name="_EDIT"]--></a>
+	<!--[/if]-->
+<!--[/nocache]-->
+
+<!--[if $tiConfig.useLocations && $locations && $event.data.displayMap]-->
+	<!--[showMapForLocations obj=$locations]-->
+<!--[else]-->
+	<!--[showMapForAddress obj=$event]-->
+<!--[/if]-->
+
+<!--[pnmodurl modname=TimeIt func=event id=$event.id assign=returnurl]-->
+<!--[pnmodcallhooks hookobject=item hookaction=display hookid=$event.id module=TimeIt returnurl=$returnurl]-->
+
+<script type="text/javascript">
+    Event.observe(window, 'load', initSubscriptionLink, false);
+    var timeIt_event_id = <!--[$event.id]-->;
+</script>

@@ -1,0 +1,4 @@
+name;email;date
+<!--[foreach name="user" from=$users item="user"]-->
+"<!--[$user.name]-->";"<!--[$user.email]-->";"<!--[$user.cr_date|pndate_format:"datetimebrief"]-->"
+<!--[/foreach]-->

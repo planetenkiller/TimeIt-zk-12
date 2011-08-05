@@ -1,0 +1,15 @@
+<fieldset>
+    <legend>Locations <!--["_TIMEIT_LOCATION"|pnml]--></legend>
+    <div  class="pn-formrow">
+            <!--[pnformlabel for="LocationLocations_id" text="_TIMEIT_LOCATION"|pnml]-->:
+            <!--[pnformdropdownlist group="data" id="LocationLocations_id"]-->
+    </div>
+
+    <!--[assign var="mapView" value=$calendar.enableMapView]-->
+    <!--[if $mapView eq true]-->
+        <div  class="pn-formrow">
+            <!--[pnformlabel for="LocationLocations_displayMap" text="_TIMEIT_DISPLAYMAP"|pnml]-->:
+            <!--[pnformcheckbox group="data" id="LocationLocations_displayMap"]-->
+        </div>
+    <!--[/if]-->
+</fieldset>

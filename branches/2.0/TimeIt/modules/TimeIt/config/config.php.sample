@@ -1,0 +1,34 @@
+<?php
+/**
+ * TimeIt Calendar Module
+ *
+ * @copyright (c) TimeIt Development Team
+ * @link http://code.zikula.org/timeit
+ * @version $Id$
+ * @license GNU/GPL - http://www.gnu.org/copyleft/gpl.html
+ * @package TimeIt
+ * @subpackage Config
+ */
+
+$eventplugins = array('contact'=>array(),'location'=>array());
+$themes = array();
+
+/*
+ * Here you can tell TimeIt your contact eventplugins.
+ */
+//$eventplugins['contact'][] = 'ContactMyContactPlugin'; // example
+//$eventplugins['contact'][] = 'ContactMyOtherContactPlugin'; // example
+
+
+/*
+ * Here you can tell TimeIt your location eventplugins.
+ */
+//$eventplugins['location'][] = 'LocationMyLocationPlugin'; // example
+//$eventplugins['location'][] = 'LocationMyOtherLocationPlugin'; // example
+
+/*
+ * Here you cann tell TimeIt your themes.
+ * TimeIt contains already two themes: default and list.
+ * All themes must be in the pntemplates folder.
+ */
+//$themes[] = array('folder'=>'MyTheme', 'displayName'=>'My display name'); // example

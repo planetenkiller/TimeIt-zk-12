@@ -1,0 +1,86 @@
+<!--[pnpageaddvar name="stylesheet" value='modules/TimeIt/pnstyle/style.css']-->
+<!--[insert name="getstatusmsg"]-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td valign="bottom" align="left">
+		    <form action="<!--[pnmodurl modname="TimeIt" type="user" func="view"]-->" method="post">
+		    <div>
+		    <!--[pnmodgetvar module="TimeIt" name="privateCalendar" assign="allowPC"]-->
+      		<!--[if $allowPC]-->
+		        <input type="text" name="user" value="<!--[if $selectedUser neq NULL]--><!--[$selectedUser|pnvarprepfordisplay]--><!--[else]-->User Name<!--[/if]-->" onblur="if(this.value=='')this.value='User Name';" onfocus="if(this.value=='User Name')this.value='';" size="15" />
+		    <!--[/if]-->
+		    <select name="share">
+      			<option value="0">all</option>
+      		<!--[pnmodgetvar module="TimeIt" name="globalCalendar" assign="allowGC"]-->
+      		<!--[if $allowGC]-->
+      			<option value="3"<!--[if $selectedShare eq 3]--> selected="selected"<!--[/if]-->>global</option>
+      		<!--[/if]-->
+      		<!--[pnmodgetvar module="TimeIt" name="friendCalendar" assign="allowFC"]-->
+      		<!--[if $allowFC]-->
+      			<option value="4"<!--[if $selectedShare eq 4]--> selected="selected"<!--[/if]-->>friends only</option>
+      		<!--[/if]-->
+      		<!--[if $allowPC]-->
+      			<option value="2"<!--[if $selectedShare eq 2]--> selected="selected"<!--[/if]-->>public</option>
+      			<option value="1"<!--[if $selectedShare eq 1]--> selected="selected"<!--[/if]-->>private</option>
+    		<!--[/if]-->
+    		</select>
+			    <!--[foreach from=$categories key=property item=category]-->
+				    <!--[selector_category selectedValue=$selectedCats.$property defaultValue="0" defaultText="all" category=$category name="cat[$property]" field="id" defaultValue="0"]-->
+			    <!--[/foreach]-->
+		 	    <input type="submit" name="submit" value="filter" /><br />
+		 	    <!--[navigationDateJumper day=$dayAsNum month=$month year=$year viewType=$viewType]--><input type="submit" name="submit" value="wechseln" />
+		    </div>
+		    </form>
+		</td>
+		<td valign="bottom" align="right">
+            <!--[if $viewType == "month"]-->
+            	<!--[pnml name="_TIMEIT_TEMPLATE"]-->:
+            	<a href="<!--[pnmodurl modname="TimeIt" type="user" func="view" viewType="month" month=$month year=$year template="default"]-->">Default</a>
+            	<a href="<!--[pnmodurl modname="TimeIt" type="user" func="view" viewType="month" month=$month year=$year template="list"]-->">List</a>
+            <!--[elseif $viewType == "week"]-->
+            	<!--[pnml name="_TIMEIT_TEMPLATE"]-->:
+            	<a href="<!--[pnmodurl modname="TimeIt" type="user" func="view" viewType="week" week=$week year=$year template="default"]-->">Default</a>
+            	<a href="<!--[pnmodurl modname="TimeIt" type="user" func="view" viewType="week" week=$week year=$year template="dist"]-->">List</a>
+            <!--[elseif $viewType == "day"]-->
+            	<!--[pnml name="_TIMEIT_TEMPLATE"]-->:
+            	<a href="<!--[pnmodurl modname="TimeIt" type="user" func="view" viewType="day" day=$day month=$month year=$year template="default"]-->">Default</a>
+            	<a href="<!--[pnmodurl modname="TimeIt" type="user" func="view" viewType="day" day=$day month=$month year=$year template="list"]-->">List</a>
+            <!--[/if]-->
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            
+            <a href="<!--[pnmodurl modname="TimeIt" type="user" func="rss" theme="RSS"]-->"><!--[pnimg modname="TimeIt" src="rss.png"]--></a>
+			<a href="<!--[pnmodurl modname="TimeIt" type="user" func="atom" theme="Atom"]-->"><!--[pnimg modname="TimeIt" src="atom.png"]--></a>
+            <!--[if $viewType == "month"]-->
+            	<a href="<!--[pnmodurl modname="TimeIt" type="user" func="view" viewType="month" month=$month year=$year theme="ical"]-->"><!--[pnimg modname="TimeIt" src="ical.png"]--></a><br />
+            <!--[elseif $viewType == "week"]-->
+            	<a href="<!--[pnmodurl modname="TimeIt" type="user" func="view" viewType="week" week=$week year=$year theme="ical"]-->"><!--[pnimg modname="TimeIt" src="ical.png"]--></a><br />
+            <!--[elseif $viewType == "day"]-->
+            	<a href="<!--[pnmodurl modname="TimeIt" type="user" func="view" viewType="day" day=$day month=$month year=$year theme="ical"]-->"><!--[pnimg modname="TimeIt" src="ical.png"]--></a><br />
+            <!--[else]-->
+            	<a href="<!--[pnmodurl modname="TimeIt" type="user" func="event" id=$event.id theme="ical"]-->"><!--[pnimg modname="TimeIt" src="ical.png"]--></a><br />
+            <!--[/if]-->
+            <table id="bnav" class="bnav" border="0" cellpadding="3" cellspacing="0">
+                <tr>
+                    <td align="center" valign="bottom" class="<!--[if $viewType eq 'day']-->snav<!--[else]-->nav<!--[/if]-->">
+                        <a class="nav" href="<!--[pnmodurl modname="TimeIt" type="user" func="view" viewType="day" day=$dayAsNum month=$month year=$year]-->"><!--[pnml name="_DAY"]--></a>
+                    </td>
+                    <td align="center" valign="bottom" class="<!--[if $viewType eq 'week']-->snav<!--[else]-->nav<!--[/if]-->">
+                        <a class="nav" href="<!--[pnmodurl modname="TimeIt" type="user" func="view"  viewType="week" week=$week year=$year]-->"><!--[pnml name="_WEEK"]--></a>
+                    </td>
+                    <td align="center" valign="bottom" class="<!--[if $viewType eq 'month']-->snav<!--[else]-->nav<!--[/if]-->">
+                        <a class="nav" href="<!--[pnmodurl modname="TimeIt" type="user" func="view"  viewType="month" month=$month year=$year]-->"><!--[pnml name="_MONTH"]--></a>
+                    </td>
+                    <td align="center" valign="bottom" class="<!--[if $viewType eq 'year']-->snav<!--[else]-->nav<!--[/if]-->">
+                        <a class="nav" href="<!--[pnmodurl modname="TimeIt" type="user" func="view"  viewType="year" year=$year]-->"><!--[pnml name="_YEAR"]--></a>
+                    </td>
+                    <td align="center" valign="bottom" class="nav">
+                        <a class="nav" href="<!--[pnmodurl modname="TimeIt" type="admin" func="new"]-->"><!--[pnml name="_ADD"]--></a>
+                    </td>
+                    <td align="center" valign="bottom" class="rnav">
+                        <a class="nav" href="<!--[pnmodurl modname="Search"]-->"><!--[pnml name="_SEARCH"]--></a>
+                    </td>
+				</tr>
+           </table>
+        </td>
+	</tr>
+</table>

@@ -1,0 +1,28 @@
+<table border="0" style="width:100%">
+   <tr>
+        <td>
+            <span style="font-size: large;"><strong><a href="<!--[pnmodurl modname="TimeIt" type="user" func="event" id=$event.id]-->"><!--[$event.title|pnvarprepfordisplay]--></a></strong></span>:
+            <!--[foreach name="catList" from=$event.__CATEGORIES__ key=name item=cat]-->
+                <!--[if $smarty.foreach.catList.first != true]-->
+		            ,
+		        <!--[/if]-->
+		        <!--[$cat.name|pnvarprepfordisplay]-->
+            <!--[/foreach]-->
+            
+            <div><!--[gt text='Posted by %1$s on %2$s' tag1=$event.cr_name tag2=$event.cr_datetime comment="%1$s is an username and %2$s is an date"]--></div>
+            <!--[if $event.repeatType == 1]-->
+                <div><!--[gt text='Recurrence: every %1$s %2$s' tag1=$event.repeatFrec|pnvarprepfordisplay tag2=$dayFrec[$event.repeatSpec]|pnvarprepfordisplay comment="%1$s is an number and %2$s is one of: days,weeks,months or years"]--></div>
+            <!--[elseif $event.repeatType == 2]-->
+                <div><!--[gt text='Recurrence: on %1$s %2$s every %3$s months' tag1=$frec[$event.repeat21]|pnvarprepfordisplay tag2=$dayNames[$event.repeat22]|pnvarprepfordisplay tag3=$event.repeatFrec|pnvarprepfordisplay comment="%1$s is something like first,secound,... and %2$s is a dayname (mon, tue,..) and %3$s is a number"]--></div>
+            <!--[/if]-->
+        </td>
+   </tr>
+   <tr>
+        <td valign="top" style="width:70%">
+            <fieldset>
+                <legend>%%%'Description'%%%</legend>
+                <div><!--[$event.text|pnvarprephtmldisplay]--></div>
+            </fieldset>
+        </td>
+   </tr>
+</table>

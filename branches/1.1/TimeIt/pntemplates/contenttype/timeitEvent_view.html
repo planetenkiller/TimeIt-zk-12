@@ -1,0 +1,28 @@
+<table border="0" style="width:100%">
+   <tr>
+        <td>
+            <span style="font-size: large;"><strong><a href="<!--[pnmodurl modname="TimeIt" type="user" func="event" id=$event.id]-->"><!--[$event.title|pnvarprepfordisplay]--></a></strong></span>:
+            <!--[foreach name="catList" from=$event.__CATEGORIES__ key=name item=cat]-->
+                <!--[if $smarty.foreach.catList.first != true]-->
+		            ,
+		        <!--[/if]-->
+		        <!--[$cat.name|pnvarprepfordisplay]-->
+            <!--[/foreach]-->
+            
+            <div><!--[pnml name=_TIMEIT_POSTEDBYANDON username=$event.cr_name date=$event.cr_datetime]--></div>
+            <!--[if $event.repeatType == 1]-->
+                <div>Repeat: every <!--[$event.repeatFrec|pnvarprepfordisplay]--> <!--[$dayFrec[$event.repeatSpec]|pnvarprepfordisplay]--></div>
+            <!--[elseif $event.repeatType == 2]-->
+                <div>Repeat:  on<!---[$frec[$event.repeat21]|pnvarprepfordisplay]--> <!--[$dayNames[$event.repeat22]|pnvarprepfordisplay]--> on every <!---[$event.repeatFrec|pnvarprepfordisplay]--> months</div>
+            <!--[/if]-->
+        </td>
+   </tr>
+   <tr>
+        <td valign="top" style="width:70%">
+            <fieldset>
+                <legend><!--[pnml name="_DESCRIPTION"]--></legend>
+                <div><!--[$event.text|pnvarprephtmldisplay]--></div>
+            </fieldset>
+        </td>
+   </tr>
+</table>

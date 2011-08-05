@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow>
+    <title>moderate</title>
+    <description>This is a two staged workflow with stages for untrusted submissions and finally approved publications.  It does not allow untrusted corrections to published pages.</description>
+
+    <states>
+        <state id="initial">
+            <title>Initial</title>
+            <description>Initial State</description>
+        </state>
+
+        <state id="waiting">
+            <title>Waiting</title>
+            <description>Content has been submitted and is waiting for acceptance</description>
+        </state>
+
+        <state id="approved">
+            <title>Approved</title>
+            <description>Content has been approved is available online</description>
+        </state>
+    </states>
+    
+    <actions>
+        <!-- begin actions for initial state -->
+        <action id="submit">
+            <title>_SUBMIT</title>
+            <description>Submit new content for acceptance by the local moderator</description>
+            <permission>comment</permission>
+            <state>initial</state>
+            <nextState>waiting</nextState>
+            <operation>sendMail</operation>
+            <operation online='0' repeat='0'>createEvent</operation>
+        </action>
+
+        <action id="approve">
+            <title>_TIMEIT_WK_SUBMITAPPROVE</title>
+            <description>Submit new content and approve immediately</description>
+            <permission>moderate</permission>
+            <state>initial</state>
+            <nextState>approved</nextState>
+            <operation online='1' repeat='1'>createEvent</operation>
+        </action>
+        <!-- end actions for initial state -->
+
+        <!-- begin actions for waiting state -->
+        <action id="approve">
+            <title>_TIMEIT_WK_APPROVE</title>
+            <description>Approve publication for immediate publishing</description>
+            <permission>moderate</permission>
+            <state>waiting</state>
+            <nextState>approved</nextState>
+            <operation online='1' repeat='1'>updateEvent</operation>
+        </action>
+
+        <action id="reject">
+            <title>_TIMEIT_WK_REJECT</title>
+            <description>Reject and delete submitted content</description>
+            <permission>delete</permission>
+            <state>waiting</state>
+            <operation>deleteEvent</operation>
+        </action>
+
+        <action id="update">
+            <title>_UPDATE</title>
+            <description>Save content with no workflow change</description>
+            <permission>moderate</permission>
+            <state>waiting</state>
+            <nextState>waiting</nextState>
+            <operation>updateEvent</operation>
+        </action>
+        <!-- end actions for waiting state -->
+
+        <!-- begin actions for approved state -->
+        <action id="updateApprove">
+            <title>_TIMEIT_WK_UPDATEAPPROVE</title>
+            <description>Update content and approve for immediate publishing</description>
+            <permission>moderate</permission>
+            <state>approved</state>
+            <nextState>approved</nextState>
+            <operation online='1'>updateEvent</operation>
+        </action>
+
+        <action id="updateNoApprove">
+            <title>_TIMEIT_WK_UPDATENOAPPROVE</title>
+            <description>Update content for later publishing</description>
+            <permission>moderate</permission>
+            <state>approved</state>
+            <nextState>waiting</nextState>
+            <operation online='0' deleterepeats='1'>updateEvent</operation>
+        </action>
+
+        <action id="delete">
+            <title>_DELETE</title>
+            <description>Delete publication</description>
+            <permission>delete</permission>
+            <state>approved</state>
+            <operation>deleteEvent</operation>
+        </action>
+
+        <action id="online">
+            <title>_ACTIVATE</title>
+            <description>Set publication online</description>
+            <permission>moderate</permission>
+            <state>approved</state>
+            <operation online='1'>updateStatus</operation>
+        </action>
+
+        <action id="offline">
+            <title>_DEACTIVATE</title>
+            <description>Set publication offline</description>
+            <permission>moderate</permission>
+            <state>approved</state>
+            <operation online='0'>updateStatus</operation>
+        </action>
+        <!-- end actions for approved state -->
+    </actions>
+</workflow>

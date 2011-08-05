@@ -1,0 +1,64 @@
+
+<!--[ pnmodapifunc modname="TimeIt" func="loadLang" ]-->
+<!--[ include file=10_userheader.html ]-->
+<!--[pnpageaddvar name="javascript" value="javascript/ajax/prototype.js"]-->
+<!--[pnpageaddvar name="javascript" value="javascript/ajax/validation.js"]-->
+<!--[pnpageaddvar name="javascript" value="javascript/ajax/effects.js"]-->
+<!--[pnpageaddvar name="stylesheet" value="modules/formicula/pnstyle/style.css"]-->
+
+
+<form id="contactform" action="<!--[ pnmodurl modname=TimeIt type=user func=formicula_send ]-->" method="post">
+<div>
+<input type="hidden" name="authid" value="<!--[ pnsecgenauthkey module="TimeIt" ]-->" />
+<input type="hidden" name="form" value="10" />
+<input type="hidden" name="cid" value="<!--[$contacts[0].cid]-->" />
+<input type="hidden" name="adminformat" value="text" />
+<input type="hidden" name="userformat" value="text" />
+<input type="hidden" name="timeit_eid" value="<!--[$addinfo.eid]-->" />
+<input type="hidden" name="timeit_dheid" value="<!--[$addinfo.dheid]-->" />
+<input type="hidden" name="custom0name" value="<!--[$addinfo.eid]-->" />
+<input type="hidden" name="custom1name" value="<!--[$addinfo.dheid]-->" />
+
+
+<p>
+    <span class="mandatory"><!--[ pnml name="_FOR_MUSTBE" html=1 ]--></span>
+</p>
+
+<p>
+    <label class="mandatory" for="uname"><!--[ pnml name="_FOR_NAME" html=1 ]-->&nbsp;:</label><br />
+    <input type="text" class="formborder required" id="uname" name="uname" size="40" maxlength="80" value="<!--[ $uname ]-->" />
+</p>
+<p id="advice-required-uname" class="custom-advice" style="display:none"><!--[ pnml name='_FOR_ADVICE_MANDATORY' ]--></p>
+
+<p>
+    <label class="mandatory" for="uemail"><!--[ pnml name="_FOR_EMAIL" html=1 ]-->&nbsp;:</label><br />
+    <input type="text" class="formborder required validate-email" id="uemail" name="uemail" size="40" maxlength="40" value="<!--[ $uemail ]-->" />
+</p>
+<p id="advice-validate-email-uemail" class="custom-advice" style="display:none"><!--[ pnml name='_FOR_ADVICE_EMAIL' ]--></p>
+<p id="advice-required-uemail" class="custom-advice" style="display:none"><!--[ pnml name='_FOR_ADVICE_MANDATORY' ]--></p>
+
+
+<p>
+    <label class="mandatory" for="comment"><!--[ pnml name="_FOR_COMMENT" html=1 ]-->&nbsp;:</label><br />
+    <textarea class="formborder required" rows="6" cols="45" id="comment" name="comment"></textarea>
+</p>
+<p id="advice-required-comment" class="custom-advice" style="display:none"><!--[ pnml name='_FOR_ADVICE_MANDATORY' ]--></p>
+
+
+<!--[ if $spamcheck eq 1 ]-->
+<p>
+    <label class="mandatory" for="formicula_captcha"><!--[ pnml name='_FOR_SIMPLEMATHEQUATION' ]--> : </label> <!--[ simplecaptcha font='arial' size='12' bgcolor='ffffff' fgcolor='000000']--> <input id="formicula_captcha" name="captcha" type="text" size="5" maxlength="5" value="" />
+
+</p>
+<!--[ /if ]-->
+
+<p>
+    <input type="submit" name="submit" value="<!--[ pnml name="_FOR_SEND" ]-->" />
+</p>
+
+<script type="text/javascript">
+   var valid = new Validation('contactform');
+</script>
+
+</div>
+</form>

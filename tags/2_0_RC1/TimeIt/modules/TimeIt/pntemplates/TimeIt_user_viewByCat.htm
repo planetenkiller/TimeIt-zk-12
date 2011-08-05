@@ -1,0 +1,12 @@
+<!--[insert name="getstatusmsg"]-->
+<h2><!--['_TIMEIT_EVENTSINCAT'|pnml]--> <!--[$category.name]--></h2>
+
+<ul>
+<!--[foreach from=$events item=event]-->
+    <li><a href="<!--[pnmodurl modname="TimeIt" func="event" id=$event.id]-->">
+        <!--[$event.title|strip_tags|pnvarprepfordisplay]-->
+    </a></li>
+<!--[/foreach]-->
+</ul>
+
+<!--[pager display=page rowcount=$pager.numitems limit=$pager.itemsperpage posvar=page]-->

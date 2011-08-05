@@ -1,0 +1,21 @@
+<h2><!--[$calendar.name|pnvarprepfordisplay]--></h2>
+<p><!--[$calendar.desc|pnvarprepfordisplay]--></p>
+
+<!--[pnml name="_TIMEIT_CONTENTTYPESAPI_HEADER"]-->
+<ul style="list-style-type:circle;margin-left:20px;">
+<!--[foreach from=$events item=cats key=timestamp]-->
+<!--[foreach from=$cats item=cat]-->
+<!--[foreach from=$cat.data item=event]-->
+
+    <li><b><!--[$event.title]--></b> - <!--[pnml name="_BY"]--> <!--[pnusergetvar name="uname" uid=$event.cr_uid]-->
+         <!--[if $event.subscribeLimit > 0]-->
+            - <!--[pnml name="_TIMEIT_SUBSCRIBED"]-->:
+            <!--[pnmodapifunc modname="TimeIt" type="subscribe" func="countUserForEvent" eid=$event.id]-->(<!--[$event.subscribeLimit]-->)
+            <a href="<!--[pnmodurl modname="TimeIt" type="user" func="event" id=$event.id date=$timestamp|pndate_format:$smarty.const._DATEINPUT]-->"><!--[pnml name="_TIMEIT_SUBSCRIBE"]--></a>
+         <!--[/if]-->
+    </li>
+
+<!--[/foreach]-->
+<!--[/foreach]-->
+<!--[/foreach]-->
+</ul>

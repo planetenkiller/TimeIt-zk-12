@@ -1,0 +1,26 @@
+<span style="font-size: large;"><strong><!--[pnml name="_TIMEIT_SUBSCRIBED_USER_TITLE"]--></strong></span>
+<!--[nocache]-->
+	<!--[pnmodgetvar module="TimeIt" name="allowSubscribeDelete" assign="allowSD"]-->
+	<!--[securityutil_checkpermission component="TimeIt:subscribe:" instance="::" level="ACCESS_DELETE" assign="auth"]-->
+	<!--[securityutil_checkpermission component="TimeIt::" instance="::" level="ACCESS_ADMIN" assign="authAdmin"]-->
+<!--[/nocache]-->.
+
+<ul>
+	<!--[foreach name="user" from=$users item="user"]-->
+		<li><!--[$user.name|pnvarprepfordisplay]--> 
+		<!--[nocache]-->
+			<!--[if $auth || $authAdmin || ($allowSD && $event.cr_uid == $uid)]-->
+					<a href="<!--[pnmodurl modname="TimeIt" func="deleteSubscribUser" id=$user.id]-->"><!--[pnml name="_DELETE"]--></a>
+			<!--[/if]-->
+			
+			<!--[if $user.status == 0 && ($auth || $authAdmin || $event.cr_uid == $uid) ]-->
+					<a href="<!--[pnmodurl modname="TimeIt" func="deletePendingStateOfSubscribedUser" id=$user.id]-->"><!--[pnml name="_TIMEIT_UNLOCK"]--></a>
+			<!--[/if]-->
+		<!--[/nocache]-->
+		</li>
+	<!--[/foreach]-->
+</ul>
+
+<!--[if $smarty.foreach.user.total == 0]-->
+   <!--[pnml name="_TIMEIT_NONE"]-->
+<!--[/if]-->

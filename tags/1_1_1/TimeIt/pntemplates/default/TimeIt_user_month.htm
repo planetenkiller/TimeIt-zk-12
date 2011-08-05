@@ -1,0 +1,59 @@
+<!--[templateWithTheme file="TimeIt_user_navigation.htm" assign="templ_navi]-->
+<!--[include file=$templ_navi]-->
+<table width="100%" border="1" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="7" align="center">
+		<!--[navigationDateMover date=$dayAsDate viewType=$viewType]-->
+		</td>
+	</tr>
+	<tr>
+		<td align="center" style="width:14%;"><!--[weekdayName weekday=1]--></td>
+		<td align="center" style="width:14%;"><!--[weekdayName weekday=2]--></td>
+		<td align="center" style="width:14%;"><!--[weekdayName weekday=3]--></td>
+		<td align="center" style="width:14%;"><!--[weekdayName weekday=4]--></td>
+		<td align="center" style="width:14%;"><!--[weekdayName weekday=5]--></td>
+		<td align="center" style="width:14%;"><!--[weekdayName weekday=6]--></td>
+		<td align="center" style="width:14%;"><!--[weekdayName weekday=7]--></td>
+	</tr>
+
+
+	<!--[foreach name=weekforeach from=$events item=days key=week]-->
+
+	<tr>
+		<!--[foreach name=dayforeach from=$days item=objs key=day]-->
+			<!--[assign var="dayNum" value=$day|substr:8:2]-->
+
+			<!--[if $day eq $dayNumNow]-->
+				<!--[assign var="color" value="padding:1px;"]-->
+			<!--[elseif $day < $month_startDate || $day > $month_endDate]-->
+				<!--[assign var="color" value="background-color: $monthoff;"]-->
+			<!--[else]-->
+				<!--[assign var="color" value="background-color: $monthon;"]-->
+			<!--[/if]-->
+
+			<td style="height:75px; <!--[$color]-->" align="left" valign="top">
+				<!--[if $day eq $dayNumNow]-->
+				  	<div style="border-width:2px; border-style: dashed; border-color: <!--[$monthtoday]-->;">
+				<!--[/if]-->
+
+				<a href="<!--[urlToDay date=$day]-->"><!--[$dayNum]--></a>
+
+				<!--[if $smarty.foreach.dayforeach.first]-->
+				<a href="<!--[ pnmodurl modname="TimeIt" type="user" func="view" viewType="week" week=$week year=$year ]-->">[<!--['_WEEK'|pnml]-->]</a>
+				<!--[/if]-->
+				<br/>
+				
+				<!--[foreach from=$objs item=obj]-->
+					&raquo;<a style="font-size: x-small;" href="<!--[pnmodurl modname="TimeIt" type="user" func="event" id=$obj.id]-->" <!--[if $tiConfig.popupOnHover eq true]--><!--[pnpageaddvar name="javascript" value="javascript/overlib/overlib.js"]--><!--[popup text=$obj.text|pnvarprepfordisplay caption=$obj.title|pnvarprepfordisplay]--><!--[/if]--> ><!--[$obj.title|pnvarprepfordisplay]--></a><br />
+				<!--[/foreach]-->
+				
+				<!--[if $day eq $dayNumNow]-->
+					</div>
+				<!--[/if]-->
+			</td>
+		<!--[/foreach]-->
+	</tr>
+
+	<!--[/foreach]-->
+
+</table>

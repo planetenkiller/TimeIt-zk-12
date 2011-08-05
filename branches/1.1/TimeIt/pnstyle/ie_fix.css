@@ -1,0 +1,14 @@
+
+legend {
+    position:absolute;
+    top: -1.2em;
+    left: .5em;
+}
+
+fieldset {
+    position: relative;
+    margin-top:1em;
+    display:block;
+    padding-top:.75em;
+}
+

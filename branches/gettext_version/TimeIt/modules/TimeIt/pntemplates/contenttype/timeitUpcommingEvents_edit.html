@@ -1,0 +1,33 @@
+<div class="z-formrow">
+    <!--[gt text="Widget title" domain="module_timeit" assign="ti_lang"]-->
+    <!--[pnformlabel for=tiWidgetTitle text=$ti_lang]-->
+    <!--[pnformtextinput id=tiWidgetTitle group=data maxLength="255"]-->
+</div>
+
+<div class="z-formrow">
+    <!--[gt text="Calendar" domain="module_timeit" assign="ti_lang"]-->
+    <!--[pnformlabel for=calid text=$ti_lang]-->
+    <!--[pnformdropdownlist id=calid group=data items=$calidItems mandatory=true]-->
+</div>
+
+<div class="z-formrow">
+    <!--[gt text="Category" domain="module_timeit" assign="ti_lang"]-->
+    <!--[pnformlabel text=$ti_lang]-->
+    <!--[foreach from=$tiregistries item=catId key=registry]-->
+        <div class="z-formnote">
+            <!--[pnformcategoryselector selectionMode="multiple" id=$registry group="data" category=$catId]-->
+        </div>
+    <!--[/foreach]-->
+</div>
+
+<div class="z-formrow">
+    <!--[gt text="Number of events" domain="module_timeit" assign="ti_lang"]-->
+    <!--[pnformlabel for=tinumevents text=$ti_lang]-->
+    <!--[pnformintinput id=tinumevents group=data items=$tinumeventsItems mandatory=true]-->
+</div>
+
+<div class="z-formrow">
+    <!--[gt text="How many days ahead to query for upcoming events" domain="module_timeit" assign="ti_lang"]-->
+    <!--[pnformlabel for=timaxdays text=$ti_lang]-->
+    <!--[pnformintinput id=timaxdays group=data items=$timaxdaysItems mandatory=true]-->
+</div>

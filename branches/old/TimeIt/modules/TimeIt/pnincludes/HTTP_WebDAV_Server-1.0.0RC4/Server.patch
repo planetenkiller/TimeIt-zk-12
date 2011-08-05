@@ -1,0 +1,25 @@
+Index: Server.php
+===================================================================
+--- Server.php	(revision 52467)
++++ Server.php	(working copy)
+@@ -1180,7 +1180,8 @@
+                     if (is_numeric($matches[3])) {
+                         $range["total_length"] = $matches[3];
+                     }
+-                    $option["ranges"][] = $range;
++                    if(!isset($options['ranges'])){ $options['ranges']=array(); }
++                    $options["ranges"][] = $range;
+ 
+                     // TODO make sure the implementation supports partial PUT
+                     // this has to be done in advance to avoid data being overwritten
+@@ -1214,8 +1215,8 @@
+ 
+                 if (!empty($options["ranges"])) {
+                     // TODO multipart support is missing (see also above)
+-                    if (0 == fseek($stream, $range[0]["start"], SEEK_SET)) {
+-                        $length = $range[0]["end"]-$range[0]["start"]+1;
++                    if (0 == fseek($stream, $options['ranges'][0]["start"], SEEK_SET)) {
++                        $length = $options['ranges'][0]["end"]-$options['ranges'][0]["start"]+1;
+                         if (!fwrite($stream, fread($options["stream"], $length))) {
+                             $stat = "403 Forbidden"; 
+                         }

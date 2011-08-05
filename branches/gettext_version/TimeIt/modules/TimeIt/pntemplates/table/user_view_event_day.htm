@@ -1,0 +1,34 @@
+<!--[templateWithTheme file="user_view_event_navigation.htm" theme=$template assign="tpl_view"]-->
+<!--[include file=$tpl_view]-->
+
+<!--[if $viewed_date eq $date_today]-->
+    <!--[assign var="color" value="padding:1px;"]-->
+<!--[/if]-->
+
+<div class="ti-dayTable ti-day<!--[if $viewed_date eq $date_today]--> ti-today<!--[/if]-->">
+    <div class="ti-daynum">
+        <!--[navigationDateMover date=$viewed_date viewType=$viewType cid=$calendar.id filter_obj_url=$filter_obj_url template=$template]-->
+    </div>
+
+    <!--[if $objectArray]-->
+        <div class="ti-eventlist">
+            <!--[foreach from=$objectArray item=cat]-->
+                <!--[if $modvars.colorCats && $cat.info.color neq null]-->
+                    <div style="border:1px solid <!--[$cat.info.color]-->"><div style="background-color:<!--[$cat.info.color]-->;"><!--[$cat.info.name|pnvarprepfordisplay]--></div>
+                <!--[/if]-->
+
+                <!--[foreach from=$cat.data item=obj]-->
+                        &raquo; <!--[if $obj.allDay eq 0]--><!--[$obj.allDayStart|pnvarprepfordisplay]--> <!--[/if]--><a style="font-size: x-small;" href="<!--[pnmodurl modname="TimeIt" type="user" func="display" ot="event" id=$obj.id dheid=$obj.dhe_id]-->" <!--[if $modvars.popupOnHover eq true]--><!--[pnpageaddvar name="javascript" value="modules/TimeIt/pnjavascript/overlib.js"]--><!--[popup text=$obj.text|pnvarprepfordisplay caption=$obj.title|pnvarprepfordisplay]--><!--[/if]--> ><!--[$obj.title|pnvarprepfordisplay]--></a><br/>
+                <!--[/foreach]-->
+
+                <!--[if $cat.info.color neq null]-->
+                        </div>
+                <!--[/if]-->
+            <!--[/foreach]-->
+        </div>
+    <!--[else]-->
+        <!--[gt text="No events for this day found."]-->
+    <!--[/if]-->
+
+</div>
+                        

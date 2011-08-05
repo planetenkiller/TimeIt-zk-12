@@ -1,0 +1,29 @@
+<!--[if $viewType eq "today"]-->
+	<!--[if $do eq "nothing"]-->
+    	<br /><br /><!--[pnml name="_TIMEIT_NONE"]--><br />
+	<!--[else]-->
+    	<ul>
+        	<!--[section name=event loop=$events max=5 step=1]-->
+            	<li><a href="<!--[pnmodurl modname="TimeIt" func="event" id=$events[event].id]-->"><!--[$events[event].title|pnvarprepfordisplay]--></a><br /><!--[$events[event].allDayStart]--> <!--[pnml name="_TIMEIT_OCLOCK"]--></li>
+            	<!--[if $smarty.section.event.rownum eq 5]-->
+                	<li><a href="<!--[pnmodurl modname=TimeIt func=view viewType=day day=$day month=$month year=$year]-->"><!--[pnml name="_TIMEIT_MORE"]--></a></li>
+            	<!--[/if]-->
+        	<!--[/section]-->
+    	</ul>
+	<!--[/if]-->
+<!--[elseif $viewType eq "upcoming"]-->
+	<!--[if $do eq "nothing"]-->
+	    	<br /><br /><!--[pnml name="_TIMEIT_NONE"]--><br />
+	<!--[else]-->
+		<!--[assign var="date" value=""]-->
+		<!--[foreach from=$events item=objs key=stamp]-->
+			<strong><!--[$stamp|date_format:"%d. %m. %Y"]--></strong><br />
+			<ul style="list-style-position:inside; list-style-type:circle;">
+			<!--[foreach from=$objs item=event]-->
+				<li><a href="<!--[pnmodurl modname="TimeIt" func="event" id=$event.id]-->"><!--[$event.title|pnvarprepfordisplay]--></a> <!--[$event.allDayStart|pnvarprepfordisplay]--> <!--[pnml name="_TIMEIT_OCLOCK"]--></li>
+			<!--[/foreach]-->
+			</ul>
+		<!--[/foreach]-->
+	<!--[/if]-->
+<!--[/if]-->
+<!--[*pndebug*]-->

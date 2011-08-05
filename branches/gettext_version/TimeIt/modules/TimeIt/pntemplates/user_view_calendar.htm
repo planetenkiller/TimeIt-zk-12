@@ -1,0 +1,54 @@
+<!--[pnvarcleanfrominput name="type" assign="typeParam"]-->
+<!--[if $typeParam == 'admin']-->
+    <!--[include file="admin_menu.htm"]-->
+    <div class="pn-admincontainer">
+<!--[else]-->
+    <div>
+<!--[/if]-->
+
+<h2>%%%'Calendars'%%%</h2>
+
+<!--[insert name="getstatusmsg"]-->
+
+<p>[<a href="<!--[pnmodurl modname="TimeIt" func="edit" ot="calendar"]-->">%%%'Create calendar'%%%</a>]</p>
+
+<table class="pn-datatable">
+    <thead>
+	<tr>
+            <th>%%%'ID'%%%</th>
+            <th>%%%'Name'%%%</th>
+            <th>%%%'URL'%%%</th>
+            <th>%%%'Actions'%%%</th>
+	</tr>
+    </thead>
+    <tbody>
+	<!--[foreach from=$objectArray item=cal]-->
+            <tr class="<!--[cycle values=pn-odd,pn-even]-->">
+                <td><!--[$cal.id|pnvarprepfordisplay]--></td>
+                <td><!--[$cal.name|strip_tags|pnvarprepfordisplay]--></td>
+                <td><!--[pnmodurl modname="TimeIt" cid=$cal.id]--></td>
+                <td>
+                    <a href="<!--[pnmodurl modname="TimeIt" type="admin" func="calendarEdit" ot="calendar" id=$cal.id]-->" title="%%%'Edit'%%%"><!--[pnimg modname=core set=icons/extrasmall src="xedit.gif"]--></a>
+
+                    <!--[if $cal.id != $modvars.defaultCalendar && $cal.id != $modvars.defaultPrivateCalendar]-->
+                        <a href="<!--[pnmodurl modname="TimeIt" func="delete" ot="calendar" id=$cal.id]-->" title="%%%'Delete'%%%"
+                           onclick="return confirm('%%%'Realy delete the calendar and all its events?'%%%');"><!--[pnimg modname=core set=icons/extrasmall src="14_layer_deletelayer.gif"]--></a>
+                    <!--[/if]-->
+
+                    <a href="<!--[pnmodurl modname="TimeIt" type="admin" func="calendarsClear" id=$cal.id]-->" title="%%%'Delete old events'%%%"><!--[pnimg modname=core set=icons/extrasmall src="folder_outbox.gif"]--></a>
+                </td>
+            </tr>
+	<!--[/foreach]-->
+    </tbody>
+</table>
+
+<p><h3>Tipps</h3>
+<ul>
+    <li>%%%'Calendar specific categories'%%% <!--[tihelp mode="btn"]-->
+        <br />
+        <!--[tihelp __text="Go to the categories manager and set for the category specified in the category registry the attribute with the name calendarid and an ID from above as value."]-->
+    </li>
+</ul>
+
+</p>
+</div>

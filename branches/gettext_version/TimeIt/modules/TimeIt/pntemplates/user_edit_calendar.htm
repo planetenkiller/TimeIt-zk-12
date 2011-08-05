@@ -1,0 +1,183 @@
+<!--[pnvarcleanfrominput name="type" assign="typeParam"]-->
+<!--[if $typeParam == 'admin']-->
+    <!--[include file="admin_menu.htm"]-->
+    <div class="pn-admincontainer">
+<!--[else]-->
+    <div>
+<!--[/if]-->
+
+<!--[if $mode eq 'edit']-->
+    <h2>%%%'Edit calendar'%%%</h2>
+<!--[else]-->
+    <h2>%%%'Create calendar'%%%</h2>
+<!--[/if]-->
+
+<!--[insert name="getstatusmsg"]-->
+
+<!--[pnform cssClass="z-form"]-->
+<!--[pnformvalidationsummary]-->
+<div>
+    <fieldset>
+	<legend>%%%'Basic'%%%</legend>
+        <div  class="z-formrow">
+            <!--[pnformlabel for="name" __text="Name"]-->
+            <!--[pnformtextinput id="name" mandatory=true maxLength=255 ]-->
+        </div>
+        <div  class="z-formrow">
+            <!--[pnformlabel for="desc" __text="Description"]-->
+            <!--[pnformtextinput id="desc" textMode="multiline" cols=40 rows=10 ]-->
+        </div>
+
+        <div class="z-formrow">
+            <!--[pnformlabel for="workflow" __text="Workflow"]-->
+            <div>
+                <!--[pnformdropdownlist group="config" id="workflow"]-->
+                <!--[tihelp mode="btn"]-->
+            </div>
+            <!--[tihelp __text="The workflow to use for new events. <ul><li><strong>standard:</strong> All events will be available immediately<li>  <li><strong>moderate:</strong> Every new event must be activated by a moderator</ul>"]-->
+        </div>
+
+        <div class="z-formrow">
+                <!--[pnformlabel for="userCanEditHisEvents" __text="Can users edit their own events?"]-->
+                <!--[pnformcheckbox group="config" id="userCanEditHisEvents"]-->
+        </div>
+
+        <div class="z-formrow">
+                <!--[pnformlabel for="defaultView" __text="Default view"]-->
+                <!--[pnformdropdownlist group="config" id="defaultView"]-->
+        </div>
+
+        <div class="z-formrow">
+                <!--[pnformlabel for="defaultTemplate" __text="Default template"]-->
+                <!--[pnformdropdownlist group="config" id="defaultTemplate"]-->
+        </div>
+    </fieldset>
+
+    <fieldset>
+	<legend>%%%'Sharing'%%%</legend>
+        <div  class="z-formrow">
+            <!--[pnformlabel for="privateCalendar" __text="Allow private events"]-->
+            <!--[pnformcheckbox id="privateCalendar"]-->
+        </div>
+        <div  class="z-formrow">
+            <!--[pnformlabel for="globalCalendar" __text="Allow global events"]-->
+            <!--[pnformcheckbox id="globalCalendar"]-->
+        </div>
+
+        <div  class="z-formrow">
+            <!--[pnformlabel for="friendCalendar" __text="Allow events with sharing [Only for friends]"]-->
+            <!--[if $ContactListModuleOK eq true]-->
+                    <!--[pnformcheckbox id="friendCalendar"]-->>
+            <!--[else]-->
+                    %%%'Module ContactList is not installed.'%%%
+            <!--[/if]-->
+        </div>
+    </fieldset>
+
+    <fieldset>
+	<legend>%%%'Google Maps / Address'%%%</legend>
+	<div class="z-formrow">
+		<!--[pnformlabel for="eventPluginsLocation" __text="Allowed location input modes"]-->
+                <div>
+                   <!--[tihelp mode="btn"]-->
+                </div>
+                <!--[tihelp __text="Here you can specify the possbile location input possibilities. <ul><li><strong>TimeIt:</strong> Adds text fields to specify the location</li>   <li><strong>Location:</strong> Allows to choose a location from the locations-Module</li>  <li><strong>Addressbook:</strong> Allows to choose a location from the Adressbook-Module</li></ul>"]-->
+	</div>
+
+        <div class="z-formlist">
+            <!--[pnformcheckboxlist group="config" id="eventPluginsLocation" items=$config.eventPluginsLocationItems]-->
+            
+            <!--[if !$locationsModuleOK || !$AddressbookModuleOK]-->
+                <strong>%%%'Some options are not available:'%%%</strong>
+                <ul>
+                    <li>
+                        <!--[if $locationsModuleOK eq false]-->
+                            %%%'Module locations is not installed.'%%%
+                        <!--[/if]-->
+                    </li>
+                    <li>
+                        <!--[if $AddressbookModuleOK eq false]-->
+                            %%%'Module Addressbook is not installed.'%%%
+                        <!--[/if]-->
+                    </li>
+                </ul>
+            <!--[/if]-->
+        </div>
+
+        <div class="z-formrow">
+		<!--[pnformlabel for="enableMapView" __text="Should maps in events be possible?"]-->
+  		<!--[pnformcheckbox group="config" id="enableMapView"]-->
+	</div>
+    </fieldset>
+
+    <fieldset>
+	<legend>%%%'Registration'%%%</legend>
+
+        <fieldset>
+            <legend>%%%'Basic'%%%</legend>
+            <div class="z-formrow">
+                    <!--[pnformlabel for="allowSubscribe" __text="Allow users to register to events"]-->
+                    <!--[pnformcheckbox group="config" id="allowSubscribe"]-->
+            </div>
+
+            <div class="z-formrow">
+                    <!--[pnformlabel for="eventPluginsContact" __text="Allowed contact input modes"]-->
+                    <div>
+                        <!--[tihelp mode="btn"]-->
+                    </div>
+                    <!--[tihelp __text="Here you can specify the possbile contact input possibilities. <ul><li><strong>TimeIt:</strong> Adds text fields to specify the contact</li>  <li><strong>Formicula:</strong> Allows to choose an contact from the Formicula-Module. Additionally this mode displays a form on the event details page for registration.</li>  <li><strong>Addressbook:</strong> Allows to choose a location from the Addressbook-Module</li>  <li><strong>TimeIt/Formicula:</strong> Combination of TimeIt and Formicula. The contact comes from the Formicula-Module. Registred users see the normal register/unregister links whereby unregistred users see a Formicula form.</li> </ul>"]-->
+            </div>
+            <div class="z-formlist">
+                <!--[pnformcheckboxlist group="config" id="eventPluginsContact" items=$config.eventPluginsContactItems]-->
+                
+                <!--[if !$formiculaModuleOk || !$AddressbookModuleOK]-->
+                    <strong>%%%'Some options are not available:'%%%</strong>
+                    <ul>
+                        <li>
+                            <!--[if $formiculaModuleOk eq false]-->
+                                %%%'Module Formicula is not installed.'%%%
+                            <!--[/if]-->
+                        </li>
+                        <li>
+                            <!--[if $AddressbookModuleOK eq false]-->
+                                %%%'Module Addressbook is not installed.'%%%
+                            <!--[/if]-->
+                        </li>
+                    </ul>
+                <!--[/if]--><br/>
+            </div>
+
+            <div class="z-formrow">
+                    <!--[pnformlabel for="allowSubscribeDelete" __text="Allow event creators to delete registated users"]-->
+                    <!--[pnformcheckbox group="config" id="allowSubscribeDelete"]-->
+            </div>
+
+            <b>%%%'Default'%%%</b>:
+            <div class="z-formrow">
+                    <!--[pnformlabel for="subscribeLimit" __text="Limit (0 = disable registration)"]-->
+                    <!--[pnformintinput group="config" id="subscribeLimit"]-->
+            </div>
+            <div class="z-formrow">
+                    <!--[pnformlabel for="subscribePending" __text="Moderate registered user"]-->
+                    <!--[pnformcheckbox group="config" id="subscribePending"]-->
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Formicula</legend>
+            %%%'To use Formicula copy the formicula templates from the modules/TimeIt/pndocs/formicula folder to modules/formicula/pntemplates folder please.'%%%
+            <div class="z-formrow">
+                    <!--[pnformlabel for="formiculaFormId" __text="Formicula form id (number on the start of the template names)"]-->
+                    <!--[pnformintinput group="config" id="formiculaFormId"]-->
+            </div>
+        </fieldset>
+    </fieldset>
+    
+
+    <div class="z-formbuttons">
+        <!--[pnformimagebutton id="mybtn_create" commandName="create" __text="Create" imageUrl="images/icons/small/button_ok.gif"]-->
+        <!--[pnformimagebutton id="mybtn_cancel" commandName="cancel" __text="Cancel" imageUrl="images/icons/small/button_cancel.gif"]-->
+    </div>
+</div>
+<!--[/pnform]-->
+</div>

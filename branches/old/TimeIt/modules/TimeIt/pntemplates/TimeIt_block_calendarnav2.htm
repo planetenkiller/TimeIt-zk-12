@@ -1,0 +1,49 @@
+<div style="text-align:center;">
+<a href="<!--[$befor2]-->">&laquo;</a>&nbsp;
+<a href="<!--[$befor1]-->">&lsaquo;</a>&nbsp;
+<a href="<!--[pnmodurl modname="TimeIt" type="user" func="view" cid=$vars.calendar year=$year month=$month]-->"><!--[$monthName]-->, <!--[$year]--></a>
+&nbsp;<a href="<!--[$after1]-->">&rsaquo;</a>&nbsp;
+<a href="<!--[$after2]-->">&raquo;</a>
+</div>
+<table class="TICalendarnav2Block" width="95%" cellpadding="2" cellspacing="0">
+	<thead>
+            <tr>
+                <!--[foreach from=$weekDayNames item=wd]-->
+                    <td><!--[$wd|pnvarprepfordisplay]--></td>
+                <!--[/foreach]-->
+            </tr>
+	</thead>
+	<tbody>
+            <!--[foreach from=$daysArray item=week]-->
+                <tr>
+                    <!--[foreach from=$week key=day1 item=events]-->
+                            <!--[if $day1 eq $dayAsDate]-->
+                                    <!--[assign var="color" value=" background-color: $monthtoday;"]-->
+                            <!--[elseif $events eq true]-->
+                                    <!--[assign var="color" value=" background-color:#93D0F3;"]-->
+                            <!--[elseif $day1 < $month_startDate || $day1 > $month_endDate]-->
+                                    <!--[assign var="color" value=" background-color: $monthoff;"]-->
+                            <!--[else]-->
+                                    <!--[assign var="color" value=" background-color: $monthon;"]-->
+                            <!--[/if]-->
+
+                            <!--[if $vars.displayIfThereEvents]-->
+                                <!--[capture name="popup_text" assign="popup_text"]-->
+                                    <!--[foreach from=$events item=events2]-->
+                                    <!--[foreach from=$events2.data item=event]-->
+                                        &raquo; <!--[if $event.allDay eq 0]--><!--[$event.allDayStart|pnvarprepfordisplay]--> <!--[/if]--><!--[$event.title|pnvarprepfordisplay]--><br />
+                                    <!--[/foreach]-->
+                                    <!--[/foreach]-->
+                                <!--[/capture]-->
+                            <!--[/if]-->
+                            <td style="<!--[$color]-->">
+                                <a href="<!--[urlToDay date=$day1 cid=$vars.calendar]-->" <!--[if $vars.displayIfThereEvents && $popup_text|trim]--><!--[pnpageaddvar name="javascript" value="modules/TimeIt/pnjavascript/overlib.js"]--><!--[popup text=$popup_text|trim caption="_TIMEIT_EVENTS"|pnml]--><!--[/if]-->>
+                                    <!--[$day1|substr:8:2|pnvarprepfordisplay]-->
+                                </a>
+                            </td>
+                    <!--[/foreach]-->
+                </tr>
+            <!--[/foreach]-->
+ 	</tbody>
+</table>
+<!--[*pndebug*]-->

@@ -1,0 +1,9 @@
+<!--[include file="TimeIt_admin_menu.htm"]-->
+<div class="pn-admincontainer">
+<h2>TimeIt Administation</h2>
+
+<!--[pnmodapifunc modname="TimeIt" type="user" func="countPendingEvents" assign="count"]-->
+<!--[if $count > 0]-->
+	<!--[pnml name="_TIMEIT_ADMIN_COUNTPENDING" i=$count]-->
+<!--[/if]-->
+</div>

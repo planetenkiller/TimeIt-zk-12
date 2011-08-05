@@ -1,0 +1,45 @@
+<!--[pnpageaddvar name="javascript" value="javascript/ajax/prototype.js"]-->
+<!--[pnpageaddvar name="javascript" value="modules/TimeIt/pnjavascript/translation_edit.js"]-->
+
+<div class="pn-frontendcontainer">
+<h2>%%%'Translate event'%%%</h2>
+
+<!--[pnform cssClass="z-form"]-->
+<!--[pnformvalidationsummary]-->
+    <fieldset>
+	<legend>%%%'Original event details'%%%</legend>
+        <b>%%%'Title'%%%:</b> <!--[$event.title|pnvarprepfordisplay]--><br />
+        <b>%%%'Description'%%%:</b><br /><!--[$event.text|pnvarprephtmldisplay]-->
+    </fieldset>
+
+    <!--[foreach from=$languages item="lang"]-->
+        <fieldset class="timeit_translate_lang" id="timeit_translate_lang_<!--[$langkey]-->">
+            <legend><!--[gt text="Translated event details (%s)" tag1=$languageNames[$lang] comment="%s is an language"]-->
+                    <img src="images/icons/extrasmall/1downarrow.gif" />
+            </legend>
+            <div>
+
+            <div class="pn-adminformrow">
+                <!--[pnformlabel for="title_`$lang`" __text="Title"]-->
+                <!--[pnformtextinput group=$lang id="title_`$lang`" dataField="title" maxLength=50 ]-->
+            </div>
+
+            <div  class="pn-adminformrow ti-adminformrow">
+                <!--[pnformlabel for="text_`$lang`" __text="Description"]-->
+                <!--[pnformtextinput group=$lang id="text_`$lang`" dataField="text" textMode="multiline" cols=30 rows=10]-->
+            </div>
+
+            </div>
+        </fieldset>
+    <!--[/foreach]-->
+
+    <div class="pn-adminformrow pn-adminformbuttons" style="margin-left: 1em;">
+        <!--[pnformimagebutton commandName="update" __text="Update" imageUrl="images/icons/small/button_ok.gif"]-->
+        <!--[pnformimagebutton commandName="cancel" __text="Cancel" imageUrl="images/icons/small/button_cancel.gif"]-->
+    </div>
+<!--[/pnform]-->
+</div>
+
+<script type="text/javascript">
+    Event.observe(window, 'load', timeitTraslationEditInit, false);
+</script>

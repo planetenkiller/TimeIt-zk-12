@@ -1,0 +1,88 @@
+<!--[pnpageaddvar name="stylesheet" value='modules/TimeIt/pnstyle/style.css']-->
+<!--[insert name="getstatusmsg"]-->
+<div id="timeit_ajax_content"></div>
+<h2><!--[$calendar.name|pnvarprepfordisplay]--></h2>
+<p><!--[$calendar.desc|pnvarprepfordisplay]--></p>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td valign="bottom" align="left">
+		    <form action="index.php" method="get">
+		    <div>
+		    <input type="hidden" name="module" value="TimeIt" />
+		    <input type="hidden" name="func" value="view" />
+                    <input type="hidden" name="cid" value="<!--[$calendar.id]-->" />
+                    <!--[if $calendar.privateCalendar]-->
+		        <input type="text" name="user" value="User Name" onblur="if(this.value=='')this.value='User Name';" onfocus="if(this.value=='User Name')this.value='';" size="15" />
+		    <!--[/if]-->
+		    <select name="share">
+      			<option value="">all</option>
+      		<!--[if $calendar.globalCalendar]-->
+      			<option value="3"<!--[if $selectedShare eq 3]--> selected="selected"<!--[/if]-->><!--['_TIMEIT_SHARING_GLOBAL'|pnml]--></option>
+      		<!--[/if]-->
+      		<!--[if $calendar.friendCalendar]-->
+      			<option value="4"<!--[if $selectedShare eq 4]--> selected="selected"<!--[/if]-->><!--['_TIMEIT_SHARING_FRIENDSONLY'|pnml]--></option>
+      		<!--[/if]-->
+      		<!--[if $calendar.privateCalendar]-->
+      			<option value="2"<!--[if $selectedShare eq 2]--> selected="selected"<!--[/if]-->><!--['_TIMEIT_SHARING_PUBLIC'|pnml]--></option>
+      			<option value="1"<!--[if $selectedShare eq 1]--> selected="selected"<!--[/if]-->><!--['_TIMEIT_SHARING_PRIVATE'|pnml]--></option>
+    		<!--[/if]-->
+    		</select>
+<!--[php]-->
+//HACK: disable attribution for table categories_category. it gives a performance boost. attribution isn't needed here because they are already loaded
+$categories_category_db_extra_enable_attribution = $GLOBALS['pntables']["categories_category_db_extra_enable_attribution"];
+$GLOBALS['pntables']["categories_category_db_extra_enable_attribution"] = false;
+<!--[/php]-->
+                            <!--[assign var="filter_cat" value=""]-->
+			    <!--[foreach from=$categories key=property item=category]-->
+                                    <!--[assign var="filter_cat" value=''|cat:$filter_cat|cat:',category:in:$cat_'|cat:$property']-->
+				    <!--[selector_category selectedValue=$selectedCats.$property defaultValue="0" defaultText="all" category=$category name="cat_$property" field="id" defaultValue=""]-->
+			    <!--[/foreach]-->
+<!--[php]-->
+// restore default
+$GLOBALS['pntables']["categories_category_db_extra_enable_attribution"] = $categories_category_db_extra_enable_attribution;
+<!--[/php]-->
+                            <input type="hidden" name="filter" value="cr_uid:eq:$user,sharing:eq:$share<!--[$filter_cat]-->" />
+		 	    <input type="submit" name="submit" value="<!--[pnml name="_TIMETT_FILTER"]-->" /><br />
+		 	    <!--[navigationDateJumper day=$dayAsNum month=$month year=$year viewType=$viewType]--><input type="submit" name="submit" value="<!--['_TIMEIT_JUMP'|pnml]-->" />
+		    </div>
+		    </form>
+		</td>
+		<td valign="bottom" align="right">
+                    <!--[navigationThemeLinks viewType=$viewType day=$dayAsNum month=$month year=$year cid=$calendar.id filter_obj_url=$filter_obj_url]-->
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            
+            <a href="<!--[pnmodurl modname="TimeIt" type="user" func="feed" viewType="month" cid=$calendar.id]-->"><!--[pnimg modname="TimeIt" src="rss.png"]--></a>
+            <!--[if $viewType == "month"]-->
+            	<a href="<!--[pnmodurl modname="TimeIt" type="user" func="view" viewType="month" day=$dayAsNum month=$month year=$year ical=1 cid=$calendar.id]-->&<!--[$filter_obj_url]-->"><!--[pnimg modname="TimeIt" src="ical.png"]--></a><br />
+            <!--[elseif $viewType == "week"]-->
+            	<a href="<!--[pnmodurl modname="TimeIt" type="user" func="view" viewType="week" day=$dayAsNum month=$month year=$year ical=1 cid=$calendar.id]-->&<!--[$filter_obj_url]-->"><!--[pnimg modname="TimeIt" src="ical.png"]--></a><br />
+            <!--[elseif $viewType == "day"]-->
+            	<a href="<!--[pnmodurl modname="TimeIt" type="user" func="view" viewType="day" day=$dayAsNum month=$month year=$year ical=1 cid=$calendar.id]-->&<!--[$filter_obj_url]-->"><!--[pnimg modname="TimeIt" src="ical.png"]--></a><br />
+            <!--[else]-->
+            	<a href="<!--[pnmodurl modname="TimeIt" type="user" func="event" id=$event.id ical=1]-->"><!--[pnimg modname="TimeIt" src="ical.png"]--></a><br />
+            <!--[/if]-->
+            <table id="bnav" class="bnav" border="0" cellpadding="3" cellspacing="0">
+                <tr>
+                    <td align="center" valign="bottom" class="<!--[if $viewType eq 'day']-->snav<!--[else]-->nav<!--[/if]-->">
+                        <a class="nav" href="<!--[pnmodurl modname="TimeIt" type="user" func="view" cid=$calendar.id viewType="day" day=$dayAsNum month=$month year=$year template=$TiTheme]-->&<!--[$filter_obj_url]-->" title="<!--[pnml name="_DAY"]-->"><!--[pnimg modname="TimeIt" src="day.gif"]--></a>
+                    </td>
+                    <td align="center" valign="bottom" class="<!--[if $viewType eq 'week']-->snav<!--[else]-->nav<!--[/if]-->">
+                        <a class="nav" href="<!--[pnmodurl modname="TimeIt" type="user" func="view" cid=$calendar.id viewType="week" day=$dayAsNum month=$month year=$year template=$TiTheme]-->&<!--[$filter_obj_url]-->" title="<!--[pnml name="_WEEK"]-->"><!--[pnimg modname="TimeIt" src="week.gif"]--></a>
+                    </td>
+                    <td align="center" valign="bottom" class="<!--[if $viewType eq 'month']-->snav<!--[else]-->nav<!--[/if]-->">
+                        <a class="nav" href="<!--[pnmodurl modname="TimeIt" type="user" func="view" cid=$calendar.id viewType="month" day=$dayAsNum month=$month year=$year template=$TiTheme]-->&<!--[$filter_obj_url]-->" title="<!--[pnml name="_MONTH"]-->"><!--[pnimg modname="TimeIt" src="month.gif"]--></a>
+                    </td>
+                    <td align="center" valign="bottom" class="<!--[if $viewType eq 'year']-->snav<!--[else]-->nav<!--[/if]-->">
+                        <a class="nav" href="<!--[pnmodurl modname="TimeIt" type="user" func="view" cid=$calendar.id viewType="year" day=$dayAsNum month=$month year=$year template=$TiTheme]-->&<!--[$filter_obj_url]-->" title="<!--[pnml name="_YEAR"]-->"><!--[pnimg modname="TimeIt" src="year.gif"]--></a>
+                    </td>
+                    <td align="center" valign="bottom" class="nav">
+                        <a class="nav" href="<!--[pnmodurl modname="TimeIt" func="new" cid=$calendar.id]-->" title="<!--[pnml name="_ADD"]-->"><!--[pnimg modname="TimeIt" src="add.gif"]--></a>
+                    </td>
+                    <td align="center" valign="bottom" class="rnav">
+                        <a class="nav" href="<!--[pnmodurl modname="Search"]-->" title="<!--[pnml name="_SEARCH"]-->"><!--[pnimg modname="TimeIt" src="search.gif"]--></a>
+                    </td>
+                </tr>
+           </table>
+        </td>
+	</tr>
+</table>

@@ -1,0 +1,41 @@
+<!--[if $data.contactPerson || $data.email || $data.phoneNr || $data.website || $data.address || $data.zip
+     || $data.city || $data.country || $data.url_details]-->
+    <fieldset>
+        <legend><!--[pnml name="_TIMEIT_CONTACT"]--></legend>
+        <!--[if $data.contactPerson]-->
+            <strong><!--[$dataIdToML.name|pnvarprepfordisplay]-->:</strong> <!--[$data.contactPerson|pnvarprepfordisplay]--><br />
+        <!--[/if]-->
+
+        <!--[if $data.address]-->
+            <strong><!--[$dataIdToML.street|pnvarprepfordisplay]--> &amp; <!--[$dataIdToML.houseNumber|pnvarprepfordisplay]-->:</strong> <!--[$data.address|pnvarprepfordisplay]--><br />
+        <!--[/if]-->
+
+        <!--[if $data.zip]-->
+            <strong><!--[$dataIdToML.zip|pnvarprepfordisplay]-->:</strong> <!--[$data.zip|pnvarprepfordisplay]--><br />
+        <!--[/if]-->
+
+        <!--[if $data.city]-->
+            <strong><!--[$dataIdToML.city|pnvarprepfordisplay]-->:</strong> <!--[$data.city|pnvarprepfordisplay]--><br />
+        <!--[/if]-->
+
+        <!--[if $data.country]-->
+            <strong><!--[$dataIdToML.country|pnvarprepfordisplay]-->:</strong> <!--[$data.country|pnvarprepfordisplay]--><br />
+        <!--[/if]-->
+
+        <!--[if $data.email]-->
+            <strong><!--[$dataIdToML.email|pnvarprepfordisplay]-->:</strong> <!--[$data.email|pnvarprepfordisplay]--><br />
+        <!--[/if]-->
+
+        <!--[if $data.phoneNr]-->
+            <strong><!--[$dataIdToML.phoneNr|pnvarprepfordisplay]-->:</strong> <!--[$data.phoneNr|pnvarprepfordisplay]--><br />
+        <!--[/if]-->
+
+        <!--[if $data.website]-->
+            <strong><!--[$dataIdToML.website|pnvarprepfordisplay]-->:</strong> <!--[$data.website|pnvarprepfordisplay]--><br />
+        <!--[/if]-->
+
+        <!--[if $data.url_details]-->
+            <strong><!--['_TIMEIT_LINKDETAILS'|pnml]-->:</strong> <a href="<!--[$data.url_details|pnvarprepfordisplay]-->"><!--['_TIMEIT_LINK'|pnml]--></a><br />
+        <!--[/if]-->
+    </fieldset>
+ <!--[/if]-->

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+       "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Java-Applets einbinden</title>
+<meta http-equiv="Cache-Control" content="no-cache, no-store" />
+<meta http-equiv="Pragma" content="no-cache, no-store" />
+</head>
+<body>
+<p>
+Type: 1
+<a href="#" onclick="document.titest.setRecurrence(1, 'day', '2', '2008-10-01', '2008-10-31')">day</a>
+<a href="#" onclick="document.titest.setRecurrence(1, 'week', '1', '2008-10-01', '2008-10-31')">week</a>
+<a href="#" onclick="document.titest.setRecurrence(1, 'month', '1', '2008-10-01', '2008-11-31')">month</a>
+<a href="#" onclick="document.titest.setRecurrence(1, 'year', '1', '2008-10-01', '2010-10-01')">year</a>
+<p>
+<p>
+Type: 2
+<a href="#" onclick="document.titest.setRecurrence(2, '1,2,3,4,5 0', '1', '2008-10-01', '2008-10-31')">sunday</a>
+<a href="#" onclick="document.titest.setRecurrence(2, '1,2,3,4,5 1', '1', '2008-10-01', '2008-10-31')">monday</a>
+<a href="#" onclick="document.titest.setRecurrence(2, '1,2,3,4,5 2', '1', '2008-10-01', '2008-10-31')">tuesday</a>
+<a href="#" onclick="document.titest.setRecurrence(2, '1,2,3,4,5 3', '1', '2008-10-01', '2008-10-31')">wednesday</a>
+<a href="#" onclick="document.titest.setRecurrence(2, '1,2,3,4,5 4', '1', '2008-10-01', '2008-10-31')">thursday</a>
+<a href="#" onclick="document.titest.setRecurrence(2, '1,2,3,4,5 5', '1', '2008-10-01', '2008-10-31')">friday</a>
+<a href="#" onclick="document.titest.setRecurrence(2, '1,2,3,4,5 6', '1', '2008-10-01', '2008-10-31')">saturday</a>
+</p>
+<p>
+Type: 3
+<a href="#" onclick="document.titest.setRecurrence(3, '2008-09-30,2008-10-02,2008-10-15,2008-10-16', '', '2008-10-01', '2008-10-31')">do</a>
+</p>
+  <applet name="titest" code="org/zikula/timeit/Main.class" archive="dist/TimeItRecurrenceViewer.jar" width="190" height="220">
+  </applet>
+</p>
+
+</body>
+</html>
+

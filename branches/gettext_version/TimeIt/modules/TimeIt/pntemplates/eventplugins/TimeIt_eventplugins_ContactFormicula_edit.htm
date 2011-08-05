@@ -1,0 +1,23 @@
+ <fieldset>
+    <legend>formicula %%%'Contact'%%%</legend>
+    <div class="z-formrow" style="display:none;">
+        <!--[pnformlabel for="formicula_contact_choose" __text="Mode"]-->
+        <!--[pnformradiobutton group="data" id="formicula_contact_choose" value="choose" dataField=ContactFormicula_contact]--> %%%'Serach'%%%
+    </div>
+
+    <!--[*<div class="pn-formrow">
+        <!--[pnformlabel for="formicula_contact_add" __text="Mode"]-->
+        <!--[pnformradiobutton group="data" id="formicula_contact_add" value="add" dataField=ContactFormicula_contact]--> Create contact
+    </div>*]-->
+    <div id="formicula_contact_choose_content" style="<!--[if $data.ContactFormicula_contact neq 'choose']-->display:none;<!--[/if]-->">
+        <div class="z-formrow">
+            <!--[pnformlabel for="ContactFormicula_cid" __text="Contact"]-->
+            <!--[pnformdropdownlist group="data" id="ContactFormicula_cid"]-->
+        </div>
+    </div>
+    <div id="formicula_contact_add_content" style="<!--[if $data.ContactFormicula_contact neq 'add']-->display:none;<!--[/if]-->">add</div>
+</fieldset>
+
+<script type="text/javascript">
+    Event.observe(window, 'load', eventEditInitBoxes, false);
+</script>

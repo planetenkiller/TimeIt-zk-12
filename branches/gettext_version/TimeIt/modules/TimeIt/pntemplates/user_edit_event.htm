@@ -1,0 +1,312 @@
+<!--[if $calendar.enableMapView]-->
+    <!--[includeGoogleMapsJS]-->
+<!--[/if]-->
+<!--[*pnpageaddvar name="rawtext" value='<link rel="stylesheet" href="modules/TimeIt/pnstyle/style.css" type="text/css" />'*]-->
+<!--[pnpageaddvar name="javascript" value="javascript/ajax/prototype.js"]-->
+<!--[pnpageaddvar name="javascript" value="modules/TimeIt/pnjavascript/event_edit.js"]-->
+<!--[pnpageaddvar name="rawtext" value="`$conditionalComments_opentag`if IE]><link rel=\"stylesheet\" href=\"modules/TimeIt/pnstyle/ie_fix.css\" type=\"text/css\" /><![endif`$conditionalComments_closetag`"]-->
+
+<div class="pn-frontendcontainer">
+<h2><!--[if $mode == 'create']--><!--[gt text="Create a new event"]--><!--[else]--><!--[gt text="Edit an event"]--><!--[/if]--></h2>
+
+<!--[pnform cssClass="z-form"]-->
+<!--[pnformvalidationsummary]-->
+
+
+
+<!--[pnformtabbedpanelset]-->
+    <!--[pnformtabbedpanel title="Basic"]-->
+        <table border="0" width="100%">
+            <tr>
+                <td style="width: 50%;" valign="top">
+                    <fieldset id="timeit_new_box_title">
+                        <legend><!--[gt text="Event name and date"]--></legend>
+                        <div class="z-formrow">
+                            <!--[pnformlabel for="title" __text="Title"]-->
+                            <!--[pnformtextinput id="title" mandatory=true maxLength=50 ]-->
+                        </div>
+
+                        <div class="z-formrow">
+                            <!--[pnformlabel for="startDate" __text="Date"]-->
+                            <!--[tiformdateinput id="startDate" mandatory=true]-->
+                        </div>
+
+
+                        <!--[if $modvars.enablecategorization]-->
+                            <div class="z-formrow">
+                                <span class="unterstrich"><!--[gt text="Categories"]--></span>
+                                <br />
+                                <!--[foreach name="catFor" from=$categories key=property item=category]-->
+                                    <!--[if $smarty.foreach.catFor.first != true]--><br /><!--[/if]-->
+
+                                    <!--[pnformlabel for="cat_$property" text=$category.name]-->
+                                    <!--[tiformcategoryselector includeEmptyElement=true id="cat_$property" group="cats" category=$category.id]-->
+                                <!--[/foreach]-->
+                            </div>
+                        <!--[/if]-->
+                    </fieldset>
+
+                    <fieldset>
+                        <legend><!--[gt text="Time"]--></legend>
+                        <div class="z-formrow">
+                            <!--[pnformlabel for="allDay" __text="All day"]-->
+                            <!--[pnformcheckbox id="allDay" mandatory=1]-->
+
+                            <div id="timeit_form_time">
+                                <!--[if $event.allDayStartOrig]-->
+                                    <p><!--[gt text="<strong>Warning:</strong> The original start time has been created by an user in an other timezone.<br/> Original start time: %s" tag1=$event.allDayStartOrig]--></p>
+                                <!--[/if]-->
+
+                                <!--[pnformlabel for="allDayStart_h" __text="Start time"]-->
+                                <!--[pnformdropdownlist id="allDayStart_h" width="50px"]--> :
+                                <!--[pnformdropdownlist id="allDayStart_m" width="50px"]--><br />
+
+                                <!--[pnformlabel for="allDayDur" html=1 __text="Duration"]-->
+                                <!--[pnformintinput id="allDayDur" minValue=0 maxLength=2 size=2]--> <!--[gt text="Hours"]-->
+                                <!--[pnformintinput id="allDayDurMin" minValue=0 maxValue=59 size=2]--> <!--[gt text="Minutes"]-->
+                            </div>
+                        </div>
+                    </fieldset>
+                </td>
+
+
+                <td style="width: 50%;" valign="top">
+                    <fieldset<!--[if $groupItemsHide && $shareItemsHide]--> style="display:none;"<!--[/if]-->>
+                        <legend><!--[gt text="Permissions"]--></legend>
+                        <div class="z-formrow"<!--[if !$groupItemsHide && $shareItemsHide]--> style="display:none;"<!--[/if]-->>
+                            <!--[pnformlabel for="share" __text="Sharing"]-->
+                            <div>
+                                <!--[pnformdropdownlist id="share"]-->
+                                <!--[tihelp mode="btn"]-->
+                            </div>
+                            <!--[tihelp __text="The sharing field allows you to limit the access of this event: <ul><li><strong>Private:</strong> A private event, you are the only person that can see this event</li> <li><strong>Public:</strong> A public visible private event</li>  <li><strong>Global:</strong> A global event which is not specific to a user</li>  <li><strong>Only for friends:</strong> Limits the access to all contacts in your contact list.</li></ul>"]-->
+                        </div>
+
+                        <div class="z-formrow"<!--[if $groupItemsHide && !$shareItemsHide]--> style="display:none;"<!--[/if]-->>
+                            <!--[pnformlabel for="group" __text="Group"]-->
+                            <div>
+                                <!--[pnformdropdownlist id="group" selectionMode="multiple"]-->
+                                <!--[tihelp mode="btn"]-->
+                            </div>
+                            <!--[tihelp __text="The group field allows you to limit the access of this event to the specified groups."]-->
+                        </div>
+                    </fieldset>
+
+
+                    <!--[assign var="allowSubscribe" value=$calendar.allowSubscribe]-->
+                    <fieldset<!--[if !$calendar.allowSubscribe]--> style="display:none;"<!--[/if]-->>
+                        <legend><!--[gt text="Registration"]--></legend>
+                        <div  class="z-formrow">
+                            <!--[pnformlabel for="subscribeLimit" __text="Limit (0 = disable registration)"]-->
+                            <!--[pnformintinput  id="subscribeLimit" maxLength="10" minValue="-1"]-->
+                        </div>
+
+                        <div  class="z-formrow">
+                            <!--[pnformlabel for="subscribeWPend" __text="Moderate registrations"]-->
+                            <!--[pnformcheckbox id="subscribeWPend"]-->
+                        </div>
+                    </fieldset>
+                </td>
+            </tr>
+        </table>
+
+        <fieldset id="timeIt_new_box_description">
+            <legend><!--[gt text="Description"]--></legend>
+            <div  class="z-formrow">
+                <!--[pnformtextinput id="text" textMode="multiline" cols=30 rows=10]-->
+            </div>
+
+            <div  class="z-formrow">
+                <!--[pnformlabel for="text_type1" text="Plain Text"]-->
+                <!--[pnformradiobutton id="text_type1" dataField="text_type" value="0" checked=true]-->
+            </div>
+            
+            <div  class="z-formrow">
+                <!--[pnformlabel for="text_type2" text="HTML"]-->
+                <!--[pnformradiobutton id="text_type2" dataField="text_type" value="1"]-->
+            </div>
+
+            <!--[if $mode eq 'create']-->
+                    <!--[pnmodcallhooks hookobject=item hookaction=new module=TimeIt]-->
+            <!--[elseif $mode eq 'edit' && $recurrenceOnly == false]-->
+                    <!--[pnmodcallhooks hookobject=item hookaction=modify hookid=$event.id module=TimeIt]-->
+            <!--[/if]-->
+        </fieldset>
+
+
+        <table border="0" width="100%">
+            <tr>
+                <td valign="top" style="width:50%">
+                     <!--[foreach name="ep_contact" from=$eventPlugins.contact item=plugin]-->
+                        <!--[if $plugin.edit]-->
+                            <!--[pnformlabel for="eventplugin_contact_`$plugin.name`" text=$plugin.displayname]-->:
+                            <!--[pnformradiobutton group="data" id="eventplugin_contact_`$plugin.name`" value=$plugin.name dataField="eventplugin_contact"]-->
+                            <script type="text/javascript">
+                                Event.observe($('eventplugin_contact_<!--[$plugin.name]-->'), 'click', function(event) {
+                                                                $$('div.timeit_eventplugin_contact').each(Element.hide);
+                                                                $('eventplugin_<!--[$plugin.name]-->').show();
+                                                             }, false);
+                            </script>
+                        <!--[/if]-->
+                    <!--[/foreach]-->
+
+                    <!--[if $smarty.foreach.ep_contact.total]-->
+                        <script type="text/javascript">
+                            Event.observe(window, 'load', function(){
+                                $('eventplugin_contact_<!--[$data.eventplugin_contact]-->').click()
+                            }, false);
+                        </script>
+                    <!--[/if]-->
+
+                    <!--[foreach from=$eventPlugins.contact item=plugin]-->
+                        <!--[if $plugin.edit]-->
+                            <div id="eventplugin_<!--[$plugin.name]-->" class="timeit_eventplugin_contact">
+                                <!--[include file="eventplugins/TimeIt_eventplugins_`$plugin.name`_edit.htm"]-->
+                            </div>
+                        <!--[/if]-->
+                    <!--[/foreach]-->
+
+
+                    <fieldset>
+                        <legend><!--[gt text="Ticket / Price"]--></legend>
+                        <div  class="z-formrow">
+                            <!--[pnformlabel for="fee" __text="Fee"]-->
+                            <!--[pnformtextinput group="data" id="fee" maxLength="100"]-->
+                        </div>
+                    </fieldset>
+                </td>
+
+                <td valign="top" style="width:50%">
+                    <div id="gmap" style="width:300px; height:300px;display:none;"></div>
+
+                    <div id="timeit_address_box">
+                        <!--[foreach name="ep_location" from=$eventPlugins.location item=plugin]-->
+                            <!--[if $plugin.edit]-->
+                                <!--[pnformlabel for="eventplugin_location_`$plugin.name`" text=$plugin.displayname]-->:
+                                <!--[pnformradiobutton group="data" id="eventplugin_location_`$plugin.name`" value=$plugin.name dataField="eventplugin_location"]-->
+                                <script type="text/javascript">
+                                    Event.observe($('eventplugin_location_<!--[$plugin.name]-->'), 'click', function(event) {
+                                                                    $$('div.timeit_eventplugin_location').each(Element.hide);
+                                                                    $('eventplugin_<!--[$plugin.name]-->').show();
+                                                                 }, false);
+                                </script>
+                            <!--[/if]-->
+                        <!--[/foreach]-->
+
+                        <!--[if $smarty.foreach.ep_location.total]-->
+                            <script type="text/javascript">
+                                Event.observe(window, 'load', function(){
+                                    $('eventplugin_location_<!--[$data.eventplugin_location]-->').click()
+                                }, false);
+                            </script>
+                        <!--[/if]-->
+
+                        <!--[foreach from=$eventPlugins.location item=plugin]-->
+                            <!--[if $plugin.edit]-->
+                                <div id="eventplugin_<!--[$plugin.name]-->" class="timeit_eventplugin_location">
+                                    <!--[include file="eventplugins/TimeIt_eventplugins_`$plugin.name`_edit.htm"]-->
+                                </div>
+                            <!--[/if]-->
+                        <!--[/foreach]-->
+                    </div>
+                 </td>
+             </tr>
+         </table>
+
+    <!--[/pnformtabbedpanel]-->
+
+    
+    <!--[pnformtabbedpanel __title="Recurrence"]-->
+        <!--[if $recurrenceOnly == true]-->
+            <div id="timeIt_new_box_repeat_info">
+                <strong>%%%'You are editing a recurrence of an recurring event so you can not change any recurrence settings.'%%%</strong>
+            </div>
+        <!--[/if]-->
+
+        <div id="timeIt_new_box_repeat" <!--[if $recurrenceOnly == true]-->style="display:none;"<!--[/if]-->>
+            <!--[if $mode eq 'edit']--><!--[gt text="<b>Warning:</b> TimeIt deletes all modified occurrences if you change the recurrence specification." html=1]--><!--[/if]-->
+
+            <div class="z-formrow">
+                <!--[pnformlabel for="endDate" __text="End date"]-->
+                <div>
+                    <!--[tiformdateinput id="endDate"]-->
+                    <!--[tihelp mode="btn"]-->
+                </div>
+                <!--[tihelp __text="If you leave this field empty, the start date is used."]-->
+            </div>
+
+            <div class="z-formrow">
+                <!--[gt text="Recurrence" assign="gt_recurrence"]-->
+                <!--[pnformlabel for="repeat" text=$gt_recurrence]-->
+                <div>
+                    <!--[pnformradiobutton id="repeat" dataField="repeat" value="0" checked="1"]-->
+                    <!--[gt text="No recurrence"]-->
+                </div>
+            </div>
+
+            <div class="z-formrow">
+                <!--[pnformlabel for="repeat1" html=1 text=$gt_recurrence]-->
+                <div>
+                    <!--[pnformradiobutton id="repeat1" dataField="repeat" value="1"]--> <!--[gt text="every" ]-->
+                    <!--[pnformintinput id="repeatFrec" maxLength=3 size=2 minValue=1 maxValue=365]-->
+                    <!--[pnformdropdownlist id="repeatFrec1"]-->
+                </div>
+            </div>
+
+            <div class="z-formrow">
+                <!--[pnformlabel for="repeat2" html=1 text=$gt_recurrence]-->
+                <!--[pnformradiobutton id="repeat2" dataField="repeat" value="2"]--> <!--[gt text="on" ]-->
+            </div>
+
+            <div class="z-formlist">
+                <!--[pnformcheckboxlist id="repeat21" repeatColumns=3]-->
+            </div>
+            <div class="z-formlist">
+                 <!--[pnformdropdownlist id="repeat22"]--> <!--[gt text="of the month every" ]-->
+                 <!--[pnformintinput id="repeatFrec2" maxLength=3 size=2 minValue=1 maxValue=12 mandatory=false]--> %%%'months'%%%
+            </div>
+
+            <div class="z-formrow">
+                <!--[pnformlabel for="repeat3" html=1 text=$gt_recurrence]-->
+                <div>
+                <!--[pnformradiobutton id="repeat3" dataField="repeat" value="3"]--> <!--[gt text="every" ]-->
+                <!--[tiformdateinput id="repeat3Dates" multipleTime=true mandatory=false]--></div>
+            </div>
+
+            <div class="z-formrow">
+                <!--[pnformlabel for="noReapeats" __text="No recurrence at (comma separated list)"]-->
+                <div>
+                    <!--[tiformdateinput id="noReapeats" multipleTime=true]-->
+                    <!--[tihelp mode="btn"]-->
+                </div>
+                <!--[tihelp __text="Every date in this list will be ignored as recurrence date."]-->
+            </div>
+        </div>
+    <!--[/pnformtabbedpanel]-->
+<!--[/pnformtabbedpanelset]-->
+
+
+ 
+<fieldset id="buttonsBox">
+    <legend><!--[gt text="Action"]--></legend>
+    <img id="timeit_geocode_indicator" style="display:none;" src="<!--[pngetbaseurl]-->images/ajax/indicator.white.gif"/>
+
+    <div class="z-formbuttions" style="margin-left: 1em;">
+        <!--[if $wfactionsItemsCount == 1]--><div style="display:none;"><!--[/if]-->
+        <!--[pnformdropdownlist id="wfactions"]-->
+        <!--[if $wfactionsItemsCount == 1]--></div><!--[/if]-->
+
+        <span id="timeit_submit_btn">
+            <!--[pnformimagebutton id="mybtn_create" commandName="create" __text="Create" imageUrl="images/icons/small/button_ok.gif"]-->
+        </span>
+        <!--[pnformimagebutton id="mybtn_cancel" commandName="cancel" __text="Cancel" imageUrl="images/icons/small/button_cancel.gif"]-->
+    </div>
+</fieldset>	
+
+
+<!--[/pnform]-->
+</div>
+
+<script type="text/javascript">
+    Event.observe(window, 'load', eventEditInitJS, false);
+</script>

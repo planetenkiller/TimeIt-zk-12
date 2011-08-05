@@ -1,0 +1,81 @@
+--- Server.php	2008-11-21 20:23:58.000000000 -0500
++++ Server.php	2008-11-21 20:41:17.000000000 -0500
+@@ -592,7 +592,7 @@
+         }
+         
+         // collect namespaces here
+-        $ns_hash = array();
++        $ns_hash = array('DAV:' => 'D');
+         
+         // Microsoft Clients need this special namespace for date and time values
+         $ns_defs = "xmlns:ns0=\"urn:uuid:c2f41010-65b3-11d1-a29f-00aa00c14882/\"";    
+@@ -652,7 +652,7 @@
+                 if (isset($ns_hash[$ns])) continue; // already known
+ 
+                 // register namespace 
+-                $ns_name = "ns".(count($ns_hash) + 1);
++                $ns_name = "ns".(count($ns_hash));
+                 $ns_hash[$ns] = $ns_name;
+                 $ns_defs .= " xmlns:$ns_name=\"$ns\"";
+             }
+@@ -692,7 +692,7 @@
+ 
+                             // register property namespace if not known yet
+                             if ($reqprop["xmlns"] != "DAV:" && !isset($ns_hash[$reqprop["xmlns"]])) {
+-                                $ns_name = "ns".(count($ns_hash) + 1);
++                                $ns_name = "ns".(count($ns_hash));
+                                 $ns_hash[$reqprop["xmlns"]] = $ns_name;
+                                 $ns_defs .= " xmlns:$ns_name=\"$reqprop[xmlns]\"";
+                             }
+@@ -789,16 +789,7 @@
+                             break;
+                         }
+                     } else {
+-                        // properties from namespaces != "DAV:" or without any namespace 
+-                        if ($prop["ns"]) {
+-                            echo "     <" . $ns_hash[$prop["ns"]] . ":$prop[name]>"
+-                                . $this->_prop_encode(htmlspecialchars($prop['val']))
+-                                . "</" . $ns_hash[$prop["ns"]] . ":$prop[name]>\n";
+-                        } else {
+-                            echo "     <$prop[name] xmlns=\"\">"
+-                                . $this->_prop_encode(htmlspecialchars($prop['val']))
+-                                . "</$prop[name]>\n";
+-                        }                               
++                        echo $this->_prop2xml($prop, $ns_hash);
+                     }
+                 }
+ 
+@@ -2118,6 +2109,33 @@
+             return $this->_slashify($parent).$child;
+         }
+     }
++
++    function _prop2xml($prop, $ns_hash)
++    {
++        $res = '';
++
++        // properties from namespaces != "DAV:" or without any namespace 
++        if ($prop["ns"]) {
++            $res .= "     <" . $ns_hash[$prop["ns"]] . ":$prop[name]>";
++        } else {
++            $res .= "     <$prop[name] xmlns=\"\">";
++        }
++
++        // Check for and handle nested properties
++        if (is_array($prop['val'])) {
++            $res .= $this->_prop2xml($prop['val'], $ns_hash);
++        } else {
++            $res .= $this->_prop_encode(htmlspecialchars($prop['val']));
++        }
++
++        if ($prop["ns"]) {
++            $res .= "</" . $ns_hash[$prop["ns"]] . ":$prop[name]>\n";
++        } else {
++            $res .= "</$prop[name]>\n";
++        } 
++
++        return $res;
++    }
+     
+     /**
+      * mbstring.func_overload save strlen version: counting the bytes not the chars

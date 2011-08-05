@@ -1,0 +1,7 @@
+<!--[pnuserloggedin assign="userLoggedIt"]-->
+<!--[if $userLoggedIt == false]-->
+    <!--[pnml name='_TIMEIT_SUBSCRIBE_NOAUTH' html=1]-->
+<!--[else]-->
+    <a style="display:<!--[$displayS]-->;" id="subscribeLink" href="<!--[pnmodurl modname="TimeIt" type="user" func="subscribe" id=$dheobj.id]-->"><!--[pnml name="_TIMEIT_SUBSCRIBE"]--></a>
+     | <a style="display:<!--[$displayUS]-->;" id="unsubscribeLink" href="<!--[pnmodurl modname="TimeIt" type="user" func="unsubscribe" id=$dheobj.id]-->"><!--[pnml name="_TIMEIT_UNSUBSCRIBE"]--></a>
+<!--[/if]-->

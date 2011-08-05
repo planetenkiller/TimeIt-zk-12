@@ -1,0 +1,20 @@
+<!--[ pnmodapifunc modname="TimeIt" func="get" id=$custom[0].name dheid=$custom[1].name assign="event"]-->
+<!--[ pnmodapifunc modname="TimeIt" func="getDHE" dheid=$custom[1].name assign="dheobj"]-->
+<!--[pnmodapifunc modname="TimeIt" func="getGTDomain" assign="domain"]-->
+
+
+<!--[gt text='Hello,']-->
+
+<!--[ gt text="A visitor of the web site used the form for register to an event:" domain=$domain]-->
+
+<!--[ gt text="Event" domain=$domain]--> : <!--[ $event.title ]-->
+<!--[ gt text="Date" domain=$domain ]--> : <!--[ $dheobj.date|pndate_format:'DATEBRIEF']-->
+<!--[gt text='Contact']--> : <!--[ $contact.name ]-->
+<!--[gt text='Your Name']--> : <!--[ $userdata.uname ]-->
+<!--[gt text='E-Mail']--> : <!--[ $userdata.uemail ]-->
+
+<!--[gt text='Comment']-->  :
+<!--[ $userdata.comment|pnvarprepfordisplay ]-->
+
+<!--[gt text='The']--> <!--[ $sitename ]--> <!--[gt text='Team']-->
+

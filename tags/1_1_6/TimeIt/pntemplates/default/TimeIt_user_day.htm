@@ -1,0 +1,29 @@
+<!--[templateWithTheme file="TimeIt_user_navigation.htm" assign="templ_navi]-->
+<!--[include file=$templ_navi]-->
+
+		<!--[if $dayAsDate eq $dayNumNow]-->
+			<!--[assign var="color" value="padding:1px;"]-->
+		<!--[/if]-->
+
+		<!--[if $events]-->
+			<div class="ti-dayTable ti-day<!--[if $dayAsDate eq $dayNumNow]--> ti-today<!--[/if]-->">
+				<div class="ti-daynum"><!--[navigationDateMover date=$dayAsDate viewType=$viewType]--></div>
+				
+				<div class="ti-eventlist">
+				<!--[foreach from=$events item=objs2]-->
+					<!--[if $tiConfig.colorCats && $objs2.info.color neq null]-->
+				    	<div style="border:1px solid <!--[$objs2.info.color]-->"><div style="background-color:<!--[$objs2.info.color]-->;"><!--[$objs2.info.name|pnvarprepfordisplay]--></div>
+					<!--[/if]-->
+					<!--[foreach from=$objs2.data item=obj]-->
+						<!--[if $obj.allDay eq 0]--><!--[$obj.allDayStart|pnvarprepfordisplay]--> <!--[/if]--><a style="font-size: x-small;" href="<!--[pnmodurl modname="TimeIt" type="user" func="event" id=$obj.id]-->" <!--[if $tiConfig.popupOnHover eq true]--><!--[pnpageaddvar name="javascript" value="javascript/overlib/overlib.js"]--><!--[popup text=$obj.text|pnvarprepfordisplay caption=$obj.title|pnvarprepfordisplay]--><!--[/if]--> ><!--[$obj.title|pnvarprepfordisplay]--></a><br/>
+					<!--[/foreach]-->
+					<!--[if $objs2.info.color neq null]-->
+						</div>
+					<!--[/if]-->
+				<!--[/foreach]-->
+				</div>
+
+			</div>
+		<!--[else]-->
+			<!--['_TIMEIT_NOEVENTS'|pnml]-->
+		<!--[/if]-->

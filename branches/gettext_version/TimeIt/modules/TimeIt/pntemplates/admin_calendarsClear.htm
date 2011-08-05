@@ -1,0 +1,17 @@
+<h2><!--[gt text="Delete old events of the Calendar '%s'" tag1=$calendar.name]--></h2>
+
+<p><!--[gt text="<b>Warning:</b>This deletes all events before the selected date!" html=1]--></p>
+
+<!--[pnform cssClass="z-form"]-->
+    <!--[pnformvalidationsummary]-->
+
+    <div class="z-formrow">
+            <!--[pnformlabel for="date" __text="Date (yyyy-mm-dd)"]-->
+            <!--[tiformdateinput id="date" mandatory=true]-->
+    </div>
+    
+    <div class="z-formbuttons">
+        <!--[pnformimagebutton id="mybtn_delete" commandName="delete" __text="Delete" imageUrl="images/icons/small/button_ok.gif"]-->
+        <!--[pnformimagebutton id="mybtn_cancel" commandName="cancel" __text="Cancel" imageUrl="images/icons/small/button_cancel.gif"]-->
+    </div>
+<!--[/pnform]-->

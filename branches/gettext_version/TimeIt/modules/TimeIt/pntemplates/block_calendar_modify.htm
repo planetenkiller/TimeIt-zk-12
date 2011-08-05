@@ -1,0 +1,63 @@
+<div class="pn-adminformrow">
+    <label for="TimeIt_calendar">%%%'Calendar'%%%</label>
+    <select id="TimeIt_calendar" name="calendar" size="1">
+    <!--[foreach from=$calendars item=row]-->  	
+        <option value="<!--[$row.value]-->" ><!--[$row.text|pnvarprephtmldisplay]--></option>
+    <!--[/foreach]-->  	
+    </select>
+</div>
+
+<div class="pn-adminformrow">
+    <label for="TimeIt_viewType">%%%'Display mode'%%%</label>
+	<select id="TimeIt_viewType" name="viewType" size="1">
+		<option value="today" <!--[if $viewType eq "today"]-->selected="selected"<!--[/if]-->>%%%"Today's events"%%%</option>
+      	<option value="upcoming" <!--[if $viewType eq "upcoming"]-->selected="selected"<!--[/if]-->>%%%"Today's events with upcomming events"%%%</option>
+	</select>
+</div>
+
+<div class="pn-adminformrow">
+    <label for="TimeIt_forUser">%%%'Display only private/public events of the logged in user?'%%%</label>
+    <input type="checkbox" id="TimeIt_forUser" name="forUser" value="1"<!--[if $forUser]--> checked="checked"<!--[/if]-->>
+</div>
+
+<div class="pn-adminformrow">
+    <label for="TimeIt_forUserHide">%%%'Hide block for unregestred users (with above option only)?'%%%</label>
+	<input type="checkbox" id="TimeIt_forUserHide" name="forUserHide" value="1"<!--[if $forUserHide]--> checked="checked"<!--[/if]-->>
+</div>
+
+<div class="pn-adminformrow">
+    <label for="TimeIt_catFilter">%%%'Show only events of this category'%%%</label>
+	<select id="TimeIt_catFilter" name="catFilter">
+		<option value="">%%%'All'%%%</option>
+		<!--[foreach from=$regedcats item=prop]-->
+			<option value="<!--[$prop.value]-->"<!--[if $catFilter eq $prop.value]--> selected="selected"<!--[/if]-->><!--[$prop.text]--></option>
+		<!--[/foreach]-->
+	</select>
+</div>
+
+<div class="pn-adminformrow">
+    <label for="TimeIt_filter">%%%'Filter'%%%</label>
+    <input id="TimeIt_filter" type="text" name="tifilter" value="<!--[$tifilter]-->" size="20" />
+</div>
+
+
+<div class="pn-adminformrow">
+    <strong>%%%"Settings for the [Today's events with upcomming events] display mode"%%%</strong><br />
+    <label for="TimeIt_maxEvents">%%%'Limit the number of events displayed'%%%</label>
+    <input id="TimeIt_maxEvents" type="text" name="maxEvents" value="<!--[$maxEvents|pnvarprephtmldisplay]-->" size="5" maxlength="2" />
+</div>
+
+
+<div class="pn-adminformrow">
+    <label for="TimeIt_maxUnit">%%%'Unit to use to query for upcoming events (for option below)?'%%%</label>
+    <select id="TimeIt_maxUnit" name="maxUnit">
+        <option value="months"<!--[if $maxUnit eq "months" || $maxUnit eq "" || $maxUnit eq null]--> selected="selected"<!--[/if]-->>%%%'Months'%%%</option>
+        <option value="days"<!--[if $maxUnit eq "days"]--> selected="selected"<!--[/if]-->>%%%'Days'%%%</option>
+    </select>
+</div>
+
+<div class="pn-adminformrow">
+    <label for="TimeIt_maxMonths">%%%'How many months / days (option above) ahead to query for upcoming events?'%%%</label>
+    <input id="TimeIt_maxMonths" type="text" name="maxMonths" value="<!--[$maxMonths|pnvarprephtmldisplay]-->" size="5" maxlength="2" />
+</div>
+

@@ -1,0 +1,20 @@
+<!--[include file="TimeIt_admin_menu.htm"]-->
+<div class="pn-admincontainer">
+<div class="pn-adminpageicon"><!--[pnimg src=editdelete.gif set=icons/large alt='_DELETE' altml=true]--></div>
+<h2><!--[pnml name="_TIMEIT_CLEAR_CALENDAR" cal=$calendar.name]--></h2>
+
+<p><!--[pnml name="_TIMEIT_CLEAR_CALENDAR_INFO" html=1]--></p>
+
+<!--[pnform cssClass="pn-adminform"]-->
+    <!--[pnformvalidationsummary]-->
+
+    <div class="pn-adminformrow">
+            <!--[pnformlabel for="date" text="_DATE"|pnml]-->:
+            <!--[pnformdateinput id="date" mandatory=true]--> (yyyy-mm-dd)
+    </div>
+    
+    <div class="pn-adminformrow pn-adminformbuttons">
+        <!--[pnformimagebutton id="mybtn_delete" commandName="delete" text="_DELETE"|pnml imageUrl="images/icons/small/button_ok.gif"]-->
+        <!--[pnformimagebutton id="mybtn_cancel" commandName="cancel" text="_CANCEL"|pnml imageUrl="images/icons/small/button_cancel.gif"]-->
+    </div>
+<!--[/pnform]-->

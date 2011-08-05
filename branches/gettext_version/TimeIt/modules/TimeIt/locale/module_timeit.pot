@@ -1,0 +1,1552 @@
+# TimeIt pot
+# Copyright (C) 2010 planetenkiller
+# This file is distributed under the same license as the PACKAGE package.
+# plantenkiller , 2010.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Zikula 1.2.x\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-01-31 14:26+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: pnadmin.php:91
+msgid "Done! Items deleted."
+msgstr ""
+
+#: workflows/gt.php:7
+msgid "Submit"
+msgstr ""
+
+#: workflows/gt.php:8 pntemplates/user_edit_event_translate.htm:37
+msgid "Update"
+msgstr ""
+
+#: workflows/gt.php:9 pntemplates/ajax_view_userOfReg.htm:17
+#: pntemplates/user_view_reg_user.htm:20
+#: pntemplates/admin_calendarsClear.htm:14
+msgid "Delete"
+msgstr ""
+
+#: workflows/gt.php:10
+msgid "Activate"
+msgstr ""
+
+#: workflows/gt.php:11
+msgid "Deactivate"
+msgstr ""
+
+#: workflows/gt.php:12
+msgid "Submit and approve event"
+msgstr ""
+
+#: workflows/gt.php:13
+msgid "Approve"
+msgstr ""
+
+#: workflows/gt.php:14
+msgid "Reject and delete"
+msgstr ""
+
+#: workflows/gt.php:15
+msgid "Update and approve"
+msgstr ""
+
+#: workflows/gt.php:16
+msgid "Update with no approve"
+msgstr ""
+
+#: workflows/operations/function.createEvent.php:34
+msgid ""
+"Event created successfully. Your event will be verified as soon as possible."
+msgstr ""
+
+#: workflows/operations/function.createEvent.php:36
+msgid "Event created successfully."
+msgstr ""
+
+#: pnajax.php:20 pnajax.php:45 pnajax.php:56 pnajax.php:66 pnajax.php:75
+#: pnsubscribeapi.php:26 pnsubscribeapi.php:50 pnuser.php:377 pnuser.php:386
+#: pnuser.php:400 pnuser.php:410
+#: classes/domain/TimeItCalendarManager.class.php:118
+#: classes/domain/TimeItEventManager.class.php:23
+#: classes/domain/TimeItEventManager.class.php:63
+#: classes/domain/TimeItEventManager.class.php:117
+#: classes/domain/TimeItEventManager.class.php:187
+#: classes/domain/TimeItEventManager.class.php:207
+#: classes/domain/TimeItEventManager.class.php:275
+#: classes/domain/TimeItEventManager.class.php:328
+#: classes/domain/TimeItEventManager.class.php:362
+#: classes/domain/TimeItEventManager.class.php:405
+#: classes/domain/TimeItEventManager.class.php:430
+#: classes/domain/TimeItEventManager.class.php:786
+#: classes/domain/TimeItEventManager.class.php:864
+#: classes/domain/TimeItEventManager.class.php:898
+msgid "Error! Could not do what you wanted. Please check your input."
+msgstr ""
+
+#: pnajax.php:53 pnuser.php:383
+msgid "Error! Registration to the event faild."
+msgstr ""
+
+#: pnversion.php:16
+msgid "TimeIt Calendar"
+msgstr ""
+
+#: pnversion.php:17
+msgid ""
+"TimeIt is a calendar module with multiple calendars support (and much more)."
+msgstr ""
+
+#: pnversion.php:18
+msgid "TimeIt"
+msgstr ""
+
+#: pntemplates/plugins/function.monthName.php:21 pnblocks/calendarnav2.php:89
+msgid "January"
+msgstr ""
+
+#: pntemplates/plugins/function.monthName.php:22 pnblocks/calendarnav2.php:90
+msgid "February"
+msgstr ""
+
+#: pntemplates/plugins/function.monthName.php:23 pnblocks/calendarnav2.php:91
+msgid "March"
+msgstr ""
+
+#: pntemplates/plugins/function.monthName.php:24 pnblocks/calendarnav2.php:92
+msgid "April"
+msgstr ""
+
+#: pntemplates/plugins/function.monthName.php:25 pnblocks/calendarnav2.php:93
+msgid "May"
+msgstr ""
+
+#: pntemplates/plugins/function.monthName.php:26 pnblocks/calendarnav2.php:94
+msgid "June"
+msgstr ""
+
+#: pntemplates/plugins/function.monthName.php:27 pnblocks/calendarnav2.php:95
+msgid "July"
+msgstr ""
+
+#: pntemplates/plugins/function.monthName.php:28 pnblocks/calendarnav2.php:96
+msgid "August"
+msgstr ""
+
+#: pntemplates/plugins/function.monthName.php:29 pnblocks/calendarnav2.php:97
+msgid "September"
+msgstr ""
+
+#: pntemplates/plugins/function.monthName.php:30 pnblocks/calendarnav2.php:98
+msgid "October"
+msgstr ""
+
+#: pntemplates/plugins/function.monthName.php:31 pnblocks/calendarnav2.php:99
+msgid "November"
+msgstr ""
+
+#: pntemplates/plugins/function.monthName.php:32 pnblocks/calendarnav2.php:100
+msgid "December"
+msgstr ""
+
+#: pntemplates/plugins/function.tiformdateinput.php:68
+msgid "%A, %B %d, %Y - %I:%M %p"
+msgstr ""
+
+#: pntemplates/plugins/function.tiformdateinput.php:68
+msgid "%A, %B %d, %Y"
+msgstr ""
+
+#: pntemplates/plugins/function.tiformdateinput.php:208
+#: pntemplates/plugins/function.tiformdateinput.php:234
+#: pntemplates/plugins/function.tiformdateinput.php:294
+#: pntemplates/plugins/function.tiformdateinput.php:300
+msgid "%Y-%m-%d"
+msgstr ""
+
+#: pntemplates/plugins/function.tiformdateinput.php:221
+#: pntemplates/plugins/function.tiformdateinput.php:294
+msgid "%Y-%m-%d %H:%M"
+msgstr ""
+
+#: pntemplates/plugins/function.tiformdateinput.php:284
+msgid "Error! Invalid date."
+msgstr ""
+
+#: pntemplates/plugins/function.weekdayName.php:21
+#: classes/FormHandler/TimeIt_FormHandler_Edit_config.class.php:59
+msgid "Sunday"
+msgstr ""
+
+#: pntemplates/plugins/function.weekdayName.php:22
+#: classes/FormHandler/TimeIt_FormHandler_Edit_config.class.php:60
+msgid "Monday"
+msgstr ""
+
+#: pntemplates/plugins/function.weekdayName.php:23
+#: classes/FormHandler/TimeIt_FormHandler_Edit_config.class.php:61
+msgid "Tuesday"
+msgstr ""
+
+#: pntemplates/plugins/function.weekdayName.php:24
+#: classes/FormHandler/TimeIt_FormHandler_Edit_config.class.php:62
+msgid "Wednesday"
+msgstr ""
+
+#: pntemplates/plugins/function.weekdayName.php:25
+#: classes/FormHandler/TimeIt_FormHandler_Edit_config.class.php:63
+msgid "Thursday"
+msgstr ""
+
+#: pntemplates/plugins/function.weekdayName.php:26
+#: classes/FormHandler/TimeIt_FormHandler_Edit_config.class.php:64
+msgid "Friday"
+msgstr ""
+
+#: pntemplates/plugins/function.weekdayName.php:27
+#: classes/FormHandler/TimeIt_FormHandler_Edit_config.class.php:65
+msgid "Saturday"
+msgstr ""
+
+#: pntemplates/plugins/function.weekdayName.php:29
+#: pntemplates/plugins/function.weekdayName.php:35
+msgid "S"
+msgstr ""
+
+#: pntemplates/plugins/function.weekdayName.php:30
+msgid "M"
+msgstr ""
+
+#: pntemplates/plugins/function.weekdayName.php:31
+#: pntemplates/plugins/function.weekdayName.php:33
+msgid "T"
+msgstr ""
+
+#: pntemplates/plugins/function.weekdayName.php:32
+msgid "W"
+msgstr ""
+
+#: pntemplates/plugins/function.weekdayName.php:34
+msgid "F"
+msgstr ""
+
+#: pntemplates/plugins/function.weekdayName.php:37
+#: pncontenttypesapi/timeitEvent.php:66 pnuser.php:239
+#: classes/FormHandler/TimeIt_FormHandler_Edit_event.class.php:306
+msgid "Sun"
+msgstr ""
+
+#: pntemplates/plugins/function.weekdayName.php:38
+#: pncontenttypesapi/timeitEvent.php:67 pnuser.php:240
+#: classes/FormHandler/TimeIt_FormHandler_Edit_event.class.php:307
+msgid "Mon"
+msgstr ""
+
+#: pntemplates/plugins/function.weekdayName.php:39
+#: pncontenttypesapi/timeitEvent.php:68 pnuser.php:241
+#: classes/FormHandler/TimeIt_FormHandler_Edit_event.class.php:308
+msgid "Tue"
+msgstr ""
+
+#: pntemplates/plugins/function.weekdayName.php:40
+#: pncontenttypesapi/timeitEvent.php:69 pnuser.php:242
+#: classes/FormHandler/TimeIt_FormHandler_Edit_event.class.php:309
+msgid "Wed"
+msgstr ""
+
+#: pntemplates/plugins/function.weekdayName.php:41
+#: pncontenttypesapi/timeitEvent.php:70 pnuser.php:243
+#: classes/FormHandler/TimeIt_FormHandler_Edit_event.class.php:310
+msgid "Thu"
+msgstr ""
+
+#: pntemplates/plugins/function.weekdayName.php:42
+#: pncontenttypesapi/timeitEvent.php:71 pnuser.php:244
+#: classes/FormHandler/TimeIt_FormHandler_Edit_event.class.php:311
+msgid "Fri"
+msgstr ""
+
+#: pntemplates/plugins/function.weekdayName.php:43
+#: pncontenttypesapi/timeitEvent.php:72 pnuser.php:245
+#: classes/FormHandler/TimeIt_FormHandler_Edit_event.class.php:312
+msgid "Sat"
+msgstr ""
+
+#. !display events in a table
+#: pntemplates/plugins/function.navigationThemeLinks.php:21
+#: classes/FormHandler/TimeIt_FormHandler_Edit_config.class.php:26
+#: classes/FormHandler/TimeIt_FormHandler_Edit_calendar.class.php:54
+msgid "Table"
+msgstr ""
+
+#. !display events in a list
+#: pntemplates/plugins/function.navigationThemeLinks.php:22
+#: classes/FormHandler/TimeIt_FormHandler_Edit_config.class.php:27
+#: classes/FormHandler/TimeIt_FormHandler_Edit_calendar.class.php:55
+msgid "List"
+msgstr ""
+
+#: pntemplates/plugins/function.navigationThemeLinks.php:29
+msgid "View as"
+msgstr ""
+
+#: pntemplates/plugins/function.recurrenceNavBox.php:39
+msgid "Previous recurrence"
+msgstr ""
+
+#: pntemplates/plugins/function.recurrenceNavBox.php:48
+msgid "Next recurrence"
+msgstr ""
+
+#: pnuserapi.php:51 classes/domain/TimeItRegManager.class.php:24
+#: classes/domain/TimeItRegManager.class.php:61
+#: classes/domain/TimeItRegManager.class.php:84
+#: classes/domain/TimeItCalendarManager.class.php:24
+#: classes/domain/TimeItCalendarManager.class.php:60
+#: classes/domain/TimeItEventManager.class.php:493
+#: classes/domain/TimeItEventManager.class.php:650
+#: classes/domain/TimeItEventManager.class.php:687
+#: classes/domain/TimeItEventManager.class.php:727
+#: classes/domain/TimeItEventManager.class.php:765
+#: classes/domain/TimeItEventManager.class.php:791
+#: classes/filter/operator/TimeIt_Filter_OperatorIf.php:38
+#, php-format
+msgid "Unable to load array class of the object type %s."
+msgstr ""
+
+#. !%1$s is an link with the event title,%2$s is an city name,%3$s is an date, %4$s is an time
+#: pnneedleapi/timeit.php:96
+#, php-format
+msgid "%1$s in %2$s on the %3$s at %4$s"
+msgstr ""
+
+#. !%1$s is an link with the event title,%2$s is an city name,%3$s is an date
+#: pnneedleapi/timeit.php:101
+#, php-format
+msgid "%1$s in %2$s on the %3$s"
+msgstr ""
+
+#. !%1$s is an link with the event title,%2$s is an date, %3$s is an time
+#: pnneedleapi/timeit.php:105
+#, php-format
+msgid "%1$s on the %2$s at %3$s"
+msgstr ""
+
+#. !%1$s is an link with the event title,%2$s is an city name,%3$s is an date, %4$s is an time
+#: pnneedleapi/timeit.php:109
+#, php-format
+msgid "%1$s on the %2$s"
+msgstr ""
+
+#: pnneedleapi/timeit.php:114
+msgid "No auth for event"
+msgstr ""
+
+#: pnneedleapi/timeit.php:117
+msgid "to few parameter"
+msgstr ""
+
+#: pnneedleapi/timeit.php:136
+msgid "invalid parameter at pos. 1 (date with format YYYYMM)"
+msgstr ""
+
+#. !%s is an date, e.g.: July, 2009
+#: pnneedleapi/timeit.php:148
+#, php-format
+msgid "Events in %s"
+msgstr ""
+
+#: pnneedleapi/timeit.php:151 pnneedleapi/timeit.php:187
+#: pnneedleapi/timeit.php:223
+msgid "to few parameters"
+msgstr ""
+
+#: pnneedleapi/timeit.php:171 pnneedleapi/timeit.php:207
+msgid "invalid parameter at pos. 1 (date with format YYYYMMDD)"
+msgstr ""
+
+#. !%s is an date, e.g.: 47, 2009
+#: pnneedleapi/timeit.php:184
+#, php-format
+msgid "Events in week %s"
+msgstr ""
+
+#. !%s is an date, e.g.: 47, 2009
+#: pnneedleapi/timeit.php:220
+#, php-format
+msgid "Events on the %s"
+msgstr ""
+
+#: pnneedleapi/timeit.php:228
+msgid "unknown parameter at pos.1 (E, M, W or D)"
+msgstr ""
+
+#: pnneedleapi/timeit.php:231
+msgid "TimeIt not available"
+msgstr ""
+
+#: pnneedleapi/timeit.php:236
+msgid "no needle id"
+msgstr ""
+
+#: pncontenttypesapi/timeitEvent.php:31
+msgid "TimeIt event"
+msgstr ""
+
+#: pncontenttypesapi/timeitEvent.php:36
+msgid "Choose and display an TimeIt event."
+msgstr ""
+
+#: pncontenttypesapi/timeitEvent.php:51 pncontenttypesapi/timeitEvent.php:84
+#: pncontenttypesapi/timeitEvent.php:104 pncontenttypesapi/timeitEvent.php:117
+#: pnuser.php:209 pnuser.php:216 pnuser.php:260
+#: classes/domain/TimeItRegManager.class.php:166
+#: classes/FormHandler/TimeIt_FormHandler_Edit_eventtranslate.class.php:31
+#: classes/FormHandler/TimeIt_FormHandler_Edit_calendar.class.php:31
+#: classes/FormHandler/TimeIt_FormHandler_Edit_event.class.php:53
+#, php-format
+msgid "Item with id %s not found."
+msgstr ""
+
+#: pncontenttypesapi/timeitEvent.php:73 pnuser.php:246
+#: classes/FormHandler/TimeIt_FormHandler_Edit_event.class.php:295
+msgid "Days"
+msgstr ""
+
+#: pncontenttypesapi/timeitEvent.php:74 pnuser.php:247
+#: classes/FormHandler/TimeIt_FormHandler_Edit_event.class.php:296
+msgid "Weeks"
+msgstr ""
+
+#: pncontenttypesapi/timeitEvent.php:75 pnuser.php:248
+#: classes/FormHandler/TimeIt_FormHandler_Edit_event.class.php:297
+msgid "Months"
+msgstr ""
+
+#: pncontenttypesapi/timeitEvent.php:76 pnuser.php:249
+#: classes/FormHandler/TimeIt_FormHandler_Edit_event.class.php:298
+msgid "Years"
+msgstr ""
+
+#: pncontenttypesapi/timeitEvent.php:77 pnuser.php:250
+#: classes/FormHandler/TimeIt_FormHandler_Edit_event.class.php:300
+msgid "First"
+msgstr ""
+
+#: pncontenttypesapi/timeitEvent.php:78 pnuser.php:251
+#: classes/FormHandler/TimeIt_FormHandler_Edit_event.class.php:301
+msgid "Second"
+msgstr ""
+
+#: pncontenttypesapi/timeitEvent.php:79 pnuser.php:252
+#: classes/FormHandler/TimeIt_FormHandler_Edit_event.class.php:302
+msgid "Third"
+msgstr ""
+
+#: pncontenttypesapi/timeitEvent.php:80 pnuser.php:253
+#: classes/FormHandler/TimeIt_FormHandler_Edit_event.class.php:303
+msgid "Fourth"
+msgstr ""
+
+#: pncontenttypesapi/timeitEvent.php:81 pnuser.php:254
+#: classes/FormHandler/TimeIt_FormHandler_Edit_event.class.php:304
+msgid "Last"
+msgstr ""
+
+#: pncontenttypesapi/timeitEvent.php:120
+msgid "No event selected."
+msgstr ""
+
+#: pncontenttypesapi/timeitEvents.php:35
+msgid "TimeIt list of event"
+msgstr ""
+
+#: pncontenttypesapi/timeitEvents.php:40
+msgid "Displays a list of events."
+msgstr ""
+
+#: pnuser.php:42 pnuser.php:185 pnuser.php:290 pnuser.php:313
+#, php-format
+msgid "Unkown object type %s."
+msgstr ""
+
+#: pnuser.php:62
+#, php-format
+msgid "Calendar [%s] not found."
+msgstr ""
+
+#: pnuser.php:152
+msgid "Please specify an eid or uid!"
+msgstr ""
+
+#: pnuser.php:191 pnuser.php:319
+#, php-format
+msgid "Invalid id [%s] received ..."
+msgstr ""
+
+#: pnuser.php:349
+msgid "Done! Item deleted."
+msgstr ""
+
+#: pnuser.php:408
+msgid "Error! De-Registration from the event faild."
+msgstr ""
+
+#: pnaccountapi.php:26
+msgid "View events i registred to"
+msgstr ""
+
+#: pnaccountapi.php:35
+msgid "My private calendar"
+msgstr ""
+
+#: pnadminapi.php:28
+msgid "Pending"
+msgstr ""
+
+#: pnadminapi.php:31
+msgid "Offline"
+msgstr ""
+
+#: pnadminapi.php:34
+msgid "View all"
+msgstr ""
+
+#: pnadminapi.php:37 pntemplates/admin_modifyconfig.htm:5
+msgid "Settings"
+msgstr ""
+
+#: pnadminapi.php:40
+msgid "Import"
+msgstr ""
+
+#: pnadminapi.php:43
+msgid "Calendars"
+msgstr ""
+
+#: pninit.php:22 pninit.php:144
+#, php-format
+msgid "TimeIt requires PHP5! Your PHP version is %s."
+msgstr ""
+
+#: classes/domain/TimeItRegManager.class.php:100
+#: classes/domain/TimeItRegManager.class.php:116
+#: classes/domain/TimeItRegManager.class.php:137
+#: classes/domain/TimeItRegManager.class.php:156
+#: classes/domain/TimeItRegManager.class.php:213
+#: classes/domain/TimeItRegManager.class.php:230
+#: classes/domain/TimeItCalendarManager.class.php:73
+#: classes/domain/TimeItCalendarManager.class.php:86
+#: classes/domain/TimeItCalendarManager.class.php:99
+#: classes/domain/TimeItEventManager.class.php:31
+#: classes/domain/TimeItEventManager.class.php:67
+#: classes/domain/TimeItEventManager.class.php:191
+#, php-format
+msgid "Unable to load class of the object type %s."
+msgstr ""
+
+#: classes/domain/TimeItRegManager.class.php:186
+msgid ""
+"Thanks for your registration. Your registration will be verified as soon as "
+"possible."
+msgstr ""
+
+#: classes/domain/TimeItRegManager.class.php:188
+msgid "Thanks for your registration."
+msgstr ""
+
+#: classes/domain/TimeItEventManager.class.php:332
+#: classes/domain/TimeItEventManager.class.php:367
+#: classes/domain/TimeItEventManager.class.php:409
+#: classes/domain/TimeItEventManager.class.php:434
+#: classes/domain/TimeItEventManager.class.php:450
+#, php-format
+msgid "Error! The date %s is not valid."
+msgstr ""
+
+#: classes/FormHandler/TimeIt_FormHandler_Edit_config.class.php:23
+#: classes/FormHandler/TimeIt_FormHandler_Edit_calendar.class.php:51
+#: pntemplates/table/user_view_event_navigation.htm:78
+msgid "Month"
+msgstr ""
+
+#: classes/FormHandler/TimeIt_FormHandler_Edit_config.class.php:24
+#: classes/FormHandler/TimeIt_FormHandler_Edit_calendar.class.php:52
+#: pntemplates/table/user_view_event_navigation.htm:75
+msgid "Week"
+msgstr ""
+
+#: classes/FormHandler/TimeIt_FormHandler_Edit_config.class.php:25
+#: classes/FormHandler/TimeIt_FormHandler_Edit_calendar.class.php:53
+#: pntemplates/table/user_view_event_navigation.htm:72
+msgid "Day"
+msgstr ""
+
+#: classes/FormHandler/TimeIt_FormHandler_Edit_config.class.php:28
+msgid "By name"
+msgstr ""
+
+#: classes/FormHandler/TimeIt_FormHandler_Edit_config.class.php:29
+msgid "By category sort value"
+msgstr ""
+
+#: classes/FormHandler/TimeIt_FormHandler_Edit_config.class.php:69
+msgid "Anonymize events"
+msgstr ""
+
+#: classes/FormHandler/TimeIt_FormHandler_Edit_config.class.php:70
+msgid "Delete events"
+msgstr ""
+
+#: classes/FormHandler/TimeIt_FormHandler_Edit_eventtranslate.class.php:25
+#: classes/FormHandler/TimeIt_FormHandler_Edit_event.class.php:48
+msgid "Please add an id parameter!"
+msgstr ""
+
+#: classes/FormHandler/TimeIt_FormHandler_Edit_calendar.class.php:125
+msgid ""
+"It isnt allowed to disable global events, event for friends only and private "
+"calendar!"
+msgstr ""
+
+#: classes/FormHandler/TimeIt_FormHandler_Edit_calendar.class.php:130
+msgid "An entry in this field is mandatory."
+msgstr ""
+
+#: classes/FormHandler/TimeIt_FormHandler_Edit_calendar.class.php:139
+msgid "Done! Calendar updated."
+msgstr ""
+
+#: classes/FormHandler/TimeIt_FormHandler_Edit_calendar.class.php:142
+msgid "Error! Update attempt failed."
+msgstr ""
+
+#: classes/FormHandler/TimeIt_FormHandler_Edit_calendar.class.php:147
+msgid "Done! Calendar created."
+msgstr ""
+
+#: classes/FormHandler/TimeIt_FormHandler_Edit_calendar.class.php:149
+msgid "Error! Creation attempt failed."
+msgstr ""
+
+#: classes/FormHandler/TimeIt_FormHandler_Edit_event.class.php:275
+#: pntemplates/table/user_view_event_navigation.htm:28
+msgid "Private"
+msgstr ""
+
+#: classes/FormHandler/TimeIt_FormHandler_Edit_event.class.php:276
+#: pntemplates/table/user_view_event_navigation.htm:27
+msgid "Public"
+msgstr ""
+
+#: classes/FormHandler/TimeIt_FormHandler_Edit_event.class.php:279
+#: pntemplates/table/user_view_event_navigation.htm:21
+msgid "Global"
+msgstr ""
+
+#: classes/FormHandler/TimeIt_FormHandler_Edit_event.class.php:282
+#: pntemplates/table/user_view_event_navigation.htm:24
+msgid "Only for friends"
+msgstr ""
+
+#: pndocs/formicula/10_userheader.html:3
+#: pntemplates/eventplugins/TimeIt_eventplugins_contacttimeit.htm:9
+msgid "Register"
+msgstr ""
+
+#: pndocs/formicula/10_usermail.txt:7
+msgid "A visitor of to your web site used the form for register to an event:"
+msgstr ""
+
+#: pndocs/formicula/10_usermail.txt:10 pndocs/formicula/10_userconfirm.html:17
+msgid "Event"
+msgstr ""
+
+#: pndocs/formicula/10_usermail.txt:12
+#: pntemplates/eventplugins/TimeIt_eventplugins_ContactFormicula_edit.htm:2
+#: pntemplates/eventplugins/TimeIt_eventplugins_ContactFormicula_edit.htm:14
+#: pntemplates/eventplugins/TimeIt_eventplugins_ContactTimeIt_edit.htm:2
+#: pntemplates/eventplugins/TimeIt_eventplugins_ContactAddressbook_edit.htm:2
+#: pntemplates/eventplugins/TimeIt_eventplugins_contactbase.htm:4
+#: pntemplates/eventplugins/TimeIt_eventplugins_ContactTiFormiCombi_edit.htm:2
+#: pntemplates/eventplugins/TimeIt_eventplugins_ContactTiFormiCombi_edit.htm:4
+msgid "Contact"
+msgstr ""
+
+#: pndocs/formicula/10_userconfirm.html:8
+msgid "Thank you for your registation to the event."
+msgstr ""
+
+#: pndocs/formicula/10_userconfirm.html:26
+#: pntemplates/user_edit_event.htm.xcompile~:29
+#: pntemplates/user_display_event.htm:125 pntemplates/user_edit_event.htm~:29
+#: pntemplates/user_edit_event.htm.xcompile.orig~:29
+msgid "Date"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:10
+msgid "Edit calendar"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:12
+msgid "Create calendar"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:21
+#: pntemplates/user_edit_calendar.htm:117
+#: pntemplates/admin_modifyconfig.htm:10
+msgid "Basic"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:23
+#: pntemplates/eventplugins/TimeIt_eventplugins_LocationTimeIt_edit.htm:4
+#: pntemplates/eventplugins/TimeIt_eventplugins_contactbase.htm:6
+msgid "Name"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:27
+#: pntemplates/user_edit_event.htm.xcompile~:110
+#: pntemplates/user_display_event.htm:35
+#: pntemplates/contenttype/timeitEvent_view.html:23
+#: pntemplates/user_edit_event_translate.htm:12
+#: pntemplates/user_edit_event_translate.htm:28
+#: pntemplates/user_edit_event.htm~:110 pntemplates/user_edit_event.htm:111
+#: pntemplates/user_edit_event.htm.xcompile.orig~:110
+msgid "Description"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:32
+msgid "Workflow"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:37
+msgid ""
+"The workflow to use for new events. <ul><li><strong>standard:</strong> All "
+"events will be available immediately<li>  <li><strong>moderate:</strong> "
+"Every new event must be activated by a moderator</ul>"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:41
+msgid "Can users edit their own events?"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:46
+msgid "Default view"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:51
+msgid "Default template"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:57
+#: pntemplates/user_edit_event.htm.xcompile~:77
+#: pntemplates/user_edit_event.htm~:77 pntemplates/user_edit_event.htm:74
+#: pntemplates/user_edit_event.htm.xcompile.orig~:77
+msgid "Sharing"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:59
+msgid "Allow private events"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:63
+msgid "Allow global events"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:68
+msgid "Allow events with sharing [Only for friends]"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:72
+msgid "Module ContactList is not installed."
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:78
+#: pntemplates/admin_modifyconfig.htm:115
+msgid "Google Maps / Address"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:80
+msgid "Allowed location input modes"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:84
+msgid ""
+"Here you can specify the possbile location input possibilities. "
+"<ul><li><strong>TimeIt:</strong> Adds text fields to specify the location</"
+"li>   <li><strong>Location:</strong> Allows to choose a location from the "
+"locations-Module</li>  <li><strong>Addressbook:</strong> Allows to choose a "
+"location from the Adressbook-Module</li></ul>"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:91
+#: pntemplates/user_edit_calendar.htm:134
+msgid "Some options are not available:"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:95
+msgid "Module locations is not installed."
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:100
+#: pntemplates/user_edit_calendar.htm:143
+msgid "Module Addressbook is not installed."
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:108
+msgid "Should maps in events be possible?"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:114
+#: pntemplates/user_edit_event.htm.xcompile~:92
+#: pntemplates/user_display_event.htm:52 pntemplates/user_edit_event.htm~:92
+#: pntemplates/user_edit_event.htm:95
+#: pntemplates/user_edit_event.htm.xcompile.orig~:92
+msgid "Registration"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:119
+msgid "Allow users to register to events"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:124
+msgid "Allowed contact input modes"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:128
+msgid ""
+"Here you can specify the possbile contact input possibilities. "
+"<ul><li><strong>TimeIt:</strong> Adds text fields to specify the contact</"
+"li>  <li><strong>Formicula:</strong> Allows to choose an contact from the "
+"Formicula-Module. Additionally this mode displays a form on the event "
+"details page for registration.</li>  <li><strong>Addressbook:</strong> "
+"Allows to choose a location from the Addressbook-Module</li>  "
+"<li><strong>TimeIt/Formicula:</strong> Combination of TimeIt and Formicula. "
+"The contact comes from the Formicula-Module. Registred users see the normal "
+"register/unregister links whereby unregistred users see a Formicula form.</"
+"li> </ul>"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:138
+msgid "Module Formicula is not installed."
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:151
+msgid "Allow event creators to delete registated users"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:155
+msgid "Default"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:157
+#: pntemplates/user_edit_event.htm.xcompile~:94
+#: pntemplates/user_edit_event.htm~:94 pntemplates/user_edit_event.htm:97
+#: pntemplates/user_edit_event.htm.xcompile.orig~:94
+msgid "Limit (0 = disable registration)"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:161
+msgid "Moderate registered user"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:168
+msgid ""
+"To use Formicula copy the formicula templates from the modules/TimeIt/pndocs/"
+"formicula folder to modules/formicula/pntemplates folder please."
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:170
+msgid "Formicula form id (number on the start of the template names)"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:178 pntemplates/user_edit_event.htm:291
+msgid "Create"
+msgstr ""
+
+#: pntemplates/user_edit_calendar.htm:179
+#: pntemplates/user_edit_event_translate.htm:38
+#: pntemplates/admin_modifyconfig.htm:150
+#: pntemplates/admin_calendarsClear.htm:15 pntemplates/user_edit_event.htm:293
+msgid "Cancel"
+msgstr ""
+
+#: pntemplates/block_calendarnav2.htm:45
+msgid "Events"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:7
+#: pntemplates/user_edit_event.htm~:7 pntemplates/user_edit_event.htm:7
+#: pntemplates/user_edit_event.htm.xcompile.orig~:7
+msgid "Create a new event"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:7
+#: pntemplates/user_edit_event.htm~:7 pntemplates/user_edit_event.htm:7
+#: pntemplates/user_edit_event.htm.xcompile.orig~:7
+msgid "Edit an event"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:9
+#: pntemplates/user_edit_event.htm~:9
+#: pntemplates/user_edit_event.htm.xcompile.orig~:9
+msgid "test title"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:22
+#: pntemplates/user_edit_event.htm~:22 pntemplates/user_edit_event.htm:20
+#: pntemplates/user_edit_event.htm.xcompile.orig~:22
+msgid "Event name and date"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:24
+#: pntemplates/user_edit_event_translate.htm:11
+#: pntemplates/user_edit_event_translate.htm:23
+#: pntemplates/user_edit_event.htm~:24 pntemplates/user_edit_event.htm:22
+#: pntemplates/user_edit_event.htm.xcompile.orig~:24
+msgid "Title"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:37
+#: pntemplates/admin_modifyconfig.htm:90 pntemplates/user_edit_event.htm~:37
+#: pntemplates/user_edit_event.htm:34
+#: pntemplates/user_edit_event.htm.xcompile.orig~:37
+msgid "Categories"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:50
+#: pntemplates/user_edit_event.htm~:50 pntemplates/user_edit_event.htm:47
+#: pntemplates/user_edit_event.htm.xcompile.orig~:50
+msgid "Time"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:52
+#: pntemplates/user_edit_event.htm~:52
+#: pntemplates/user_edit_event.htm.xcompile.orig~:52
+msgid "Type"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:55
+#: pntemplates/user_edit_event.htm~:55
+#: pntemplates/user_edit_event.htm.xcompile.orig~:55
+msgid "all day"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:60
+#: pntemplates/user_edit_event.htm~:60 pntemplates/user_edit_event.htm:57
+#: pntemplates/user_edit_event.htm.xcompile.orig~:60
+msgid "Start time"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:64
+#: pntemplates/user_display_event.htm:116 pntemplates/user_edit_event.htm~:64
+#: pntemplates/user_edit_event.htm:61
+#: pntemplates/user_edit_event.htm.xcompile.orig~:64
+msgid "Duration"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:66
+#: pntemplates/user_edit_event.htm~:66 pntemplates/user_edit_event.htm:62
+#: pntemplates/user_edit_event.htm.xcompile.orig~:66
+msgid "Hours"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:67
+#: pntemplates/user_edit_event.htm~:67 pntemplates/user_edit_event.htm:63
+#: pntemplates/user_edit_event.htm.xcompile.orig~:67
+msgid "Minutes"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:75
+#: pntemplates/user_edit_event.htm~:75 pntemplates/user_edit_event.htm:72
+#: pntemplates/user_edit_event.htm.xcompile.orig~:75
+msgid "Permissions"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:83
+#: pntemplates/user_edit_event.htm~:83 pntemplates/user_edit_event.htm:83
+#: pntemplates/user_edit_event.htm.xcompile.orig~:83
+msgid "Group"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:100
+#: pntemplates/user_edit_event.htm~:100 pntemplates/user_edit_event.htm:102
+#: pntemplates/user_edit_event.htm.xcompile.orig~:100
+msgid "Moderate registrations"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:167
+#: pntemplates/user_edit_event.htm~:167 pntemplates/user_edit_event.htm:168
+#: pntemplates/user_edit_event.htm.xcompile.orig~:167
+msgid "Ticket / Price"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:169
+#: pntemplates/user_display_event.htm:127 pntemplates/user_edit_event.htm~:169
+#: pntemplates/user_edit_event.htm:170
+#: pntemplates/user_edit_event.htm.xcompile.orig~:169
+msgid "Fee"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:218
+#: pntemplates/user_edit_event.htm~:218 pntemplates/user_edit_event.htm:218
+#: pntemplates/user_edit_event.htm.xcompile.orig~:218
+msgid ""
+"<b>Warning:</b> TimeIt deletes all modified occurrences if you change the "
+"recurrence specification."
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:221
+#: pntemplates/contenttype/timeitEvents_edit.html:25
+#: pntemplates/user_edit_event.htm~:221
+#: pntemplates/user_edit_event.htm.xcompile.orig~:221
+msgid "End date"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:227
+#: pntemplates/user_edit_event.htm~:227 pntemplates/user_edit_event.htm:216
+#: pntemplates/user_edit_event.htm:230
+#: pntemplates/user_edit_event.htm.xcompile.orig~:227
+msgid "Recurrence"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:230
+#: pntemplates/user_edit_event.htm~:230 pntemplates/user_edit_event.htm:234
+#: pntemplates/user_edit_event.htm.xcompile.orig~:230
+msgid "No recurrence"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:235
+#: pntemplates/user_edit_event.htm.xcompile~:252
+#: pntemplates/user_edit_event.htm~:235 pntemplates/user_edit_event.htm~:252
+#: pntemplates/user_edit_event.htm:241 pntemplates/user_edit_event.htm:263
+#: pntemplates/user_edit_event.htm.xcompile.orig~:235
+#: pntemplates/user_edit_event.htm.xcompile.orig~:252
+msgid "every"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:242
+#: pntemplates/user_edit_event.htm~:242 pntemplates/user_edit_event.htm:249
+#: pntemplates/user_edit_event.htm.xcompile.orig~:242
+msgid "on"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:245
+#: pntemplates/user_edit_event.htm~:245 pntemplates/user_edit_event.htm:256
+#: pntemplates/user_edit_event.htm.xcompile.orig~:245
+msgid "of the month every"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile~:257
+#: pntemplates/user_edit_event.htm~:257
+#: pntemplates/user_edit_event.htm.xcompile.orig~:257
+msgid "No recurrence at (, separated list)"
+msgstr ""
+
+#: pntemplates/user_display_event.htm:24
+#: pntemplates/contenttype/timeitEvent_view.html:12
+#, php-format
+msgid "Posted by %1$s on %2$s"
+msgstr ""
+
+#: pntemplates/user_display_event.htm:26
+#: pntemplates/contenttype/timeitEvent_view.html:14
+#, php-format
+msgid "Recurrence: every %1$s %2$s"
+msgstr ""
+
+#: pntemplates/user_display_event.htm:28
+#: pntemplates/contenttype/timeitEvent_view.html:16
+#, php-format
+msgid "Recurrence: on %1$s %2$s every %3$s months"
+msgstr ""
+
+#: pntemplates/user_display_event.htm:44
+msgid "View registered user"
+msgstr ""
+
+#: pntemplates/user_display_event.htm:52
+msgid "Limit reached. Registration not possible."
+msgstr ""
+
+#: pntemplates/user_display_event.htm:57
+msgid "You are already registered."
+msgstr ""
+
+#: pntemplates/user_display_event.htm:82
+msgid "Options"
+msgstr ""
+
+#: pntemplates/user_display_event.htm:85
+msgid "Please note: Event with recurring events"
+msgstr ""
+
+#: pntemplates/user_display_event.htm:89
+#: pntemplates/user_display_event.htm:106
+msgid "Edit"
+msgstr ""
+
+#: pntemplates/user_display_event.htm:91
+msgid "Edit this recurrence"
+msgstr ""
+
+#: pntemplates/user_display_event.htm:96
+msgid "Translate"
+msgstr ""
+
+#: pntemplates/user_display_event.htm:100
+msgid "Create event with data of this event"
+msgstr ""
+
+#: pntemplates/user_display_event.htm:113
+msgid "Event details"
+msgstr ""
+
+#: pntemplates/user_display_event.htm:115
+msgid "Start Time"
+msgstr ""
+
+#: pntemplates/user_display_event.htm:116
+msgid "h"
+msgstr ""
+
+#: pntemplates/user_display_event.htm:116
+msgid "min"
+msgstr ""
+
+#: pntemplates/user_display_event.htm:119
+msgid "Private event"
+msgstr ""
+
+#: pntemplates/user_display_event.htm:121
+msgid "Public event"
+msgstr ""
+
+#: pntemplates/user_display_event.htm:123
+msgid "Global event"
+msgstr ""
+
+#: pntemplates/user_display_event.htm:150
+msgid "Really delete the event with all(!!) of its occurrences?"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_ContactFormicula_edit.htm:4
+#: pntemplates/eventplugins/TimeIt_eventplugins_ContactFormicula_edit.htm:9
+#: pntemplates/admin_modifyconfig.htm:143
+msgid "Mode"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_ContactFormicula_edit.htm:5
+msgid "Serach"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_LocationTimeIt_edit.htm:2
+#: pntemplates/eventplugins/TimeIt_eventplugins_LocationLocations_edit.htm:2
+#: pntemplates/eventplugins/TimeIt_eventplugins_LocationLocations_edit.htm:4
+msgid "Location"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_LocationTimeIt_edit.htm:8
+#: pntemplates/eventplugins/TimeIt_eventplugins_contactbase.htm:18
+msgid "City"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_LocationTimeIt_edit.htm:12
+msgid "Street"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_LocationTimeIt_edit.htm:16
+msgid "House number"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_LocationTimeIt_edit.htm:20
+#: pntemplates/eventplugins/TimeIt_eventplugins_contactbase.htm:22
+msgid "Country"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_LocationTimeIt_edit.htm:24
+#: pntemplates/eventplugins/TimeIt_eventplugins_contactbase.htm:14
+msgid "ZIP"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_LocationTimeIt_edit.htm:30
+#: pntemplates/eventplugins/TimeIt_eventplugins_LocationAddressbook_edit.htm:25
+#: pntemplates/eventplugins/TimeIt_eventplugins_LocationLocations_edit.htm:11
+msgid "Display map"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_LocationTimeIt_edit.htm:36
+#: pntemplates/eventplugins/TimeIt_eventplugins_LocationAddressbook_edit.htm:35
+#: pntemplates/eventplugins/TimeIt_eventplugins_LocationLocations_edit.htm:16
+msgid "Zoom (Map)"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_ContactTimeIt_edit.htm:4
+msgid "Contact persion"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_ContactTimeIt_edit.htm:8
+#: pntemplates/eventplugins/TimeIt_eventplugins_contactbase.htm:26
+msgid "E-Mail"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_ContactTimeIt_edit.htm:12
+#: pntemplates/eventplugins/TimeIt_eventplugins_contactbase.htm:30
+msgid "Phone"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_ContactTimeIt_edit.htm:16
+#: pntemplates/eventplugins/TimeIt_eventplugins_contactbase.htm:34
+msgid "Website"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_ContactAddressbook_edit.htm:7
+#: pntemplates/eventplugins/TimeIt_eventplugins_LocationAddressbook_edit.htm:7
+msgid "Current selection"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_ContactAddressbook_edit.htm:18
+#: pntemplates/eventplugins/TimeIt_eventplugins_LocationAddressbook_edit.htm:18
+#: pntemplates/table/user_view_event_navigation.htm:87
+msgid "Search"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_contactbase.htm:10
+msgid "Street & Housenumber"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_contactbase.htm:38
+msgid "Link to more informations"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_contactbase.htm:38
+msgid "Link"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_LocationAddressbook_edit.htm:2
+msgid "location"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_contacttimeit.htm:3
+msgid "This event is over already as a result the registration is disabled."
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_contacttimeit.htm:7
+msgid ""
+"You must be logged in and have got the required permission before you can "
+"subscribe to this event."
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_contacttimeit.htm:10
+msgid "De-register"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_contacttimeit.htm:14
+msgid "Really register to this event?"
+msgstr ""
+
+#: pntemplates/eventplugins/TimeIt_eventplugins_contacttimeit.htm:15
+msgid "Really de-register from this event?"
+msgstr ""
+
+#: pntemplates/contenttype/timeitEvent_edit.html:2
+msgid "Id of an existing event"
+msgstr ""
+
+#: pntemplates/contenttype/timeitEvent_edit.html:8
+msgid "Title of the event"
+msgstr ""
+
+#: pntemplates/contenttype/timeitEvents_edit.html:2
+msgid "Calendar"
+msgstr ""
+
+#: pntemplates/contenttype/timeitEvents_edit.html:8
+msgid "Registry"
+msgstr ""
+
+#: pntemplates/contenttype/timeitEvents_edit.html:13
+msgid "Category"
+msgstr ""
+
+#: pntemplates/contenttype/timeitEvents_edit.html:19
+msgid "Start date"
+msgstr ""
+
+#: pntemplates/user_edit_event_translate.htm:5
+msgid "Translate event"
+msgstr ""
+
+#: pntemplates/user_edit_event_translate.htm:10
+msgid "Original event details"
+msgstr ""
+
+#: pntemplates/user_edit_event_translate.htm:17
+#, php-format
+msgid "Translated event details (%s)"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:13
+msgid "Default Calendar"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:18
+msgid "Default Calendar for private events"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:23
+msgid "Rss/Atom: number of (newest) events"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:28
+msgid "Notify admin about event submission?"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:33
+msgid "E-Mail Address"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:38
+msgid "Items per page"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:43
+msgid "Scribite editor(-=>none)"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:47
+msgid "Module Scribite isn't installed."
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:53
+msgid "View"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:56
+msgid "Display popup on a hover over a event link"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:61
+#, php-format
+msgid "Format to display dates (see the PHP %s documentation)"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:67
+msgid "To use language specific dates use 'datebrief' or 'datelong'."
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:71
+msgid "Sort categories in views"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:76
+msgid "Month view"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:78
+msgid "First day of week?"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:83
+msgid ""
+"After how many characters should the title be truncated in the month view?"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:92
+msgid "Enable categorization"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:96
+msgid "Group all Events of the same category and use colors"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:100
+msgid "Get category colors form..."
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:102
+msgid ""
+"To set category color: Edit the category in the Category Module. Set the "
+"color as attribute with the name \"color\"."
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:105
+msgid "Filter Events by the Category Permissions"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:109
+msgid "Default catetory color"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:118
+msgid "Google Maps Api Key(when use locations not necessary)"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:122
+msgid "Map height"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:126
+msgid "Map width"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:130
+msgid "Map Type"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:134
+msgid "Module MyMap isn't avaible. Install MyMap then you can chosse MyMap."
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:140
+msgid "userdeletion-Module Support"
+msgstr ""
+
+#: pntemplates/admin_modifyconfig.htm:149
+msgid "Save"
+msgstr ""
+
+#: pntemplates/ajax_view_userOfReg.htm:1
+msgid "The following user are registered to this event"
+msgstr ""
+
+#: pntemplates/ajax_view_userOfReg.htm:11
+#: pntemplates/ajax_view_userOfReg.htm:13
+#: pntemplates/user_view_reg_user.htm:14 pntemplates/user_view_reg_user.htm:16
+#, php-format
+msgid "Registred on %s"
+msgstr ""
+
+#: pntemplates/ajax_view_userOfReg.htm:21
+#: pntemplates/user_view_reg_user.htm:24
+msgid "Unlock"
+msgstr ""
+
+#: pntemplates/ajax_view_userOfReg.htm:29
+#: pntemplates/user_view_reg_user.htm:32
+msgid "No registrations found."
+msgstr ""
+
+#: pntemplates/ajax_view_userOfReg.htm:32
+#: pntemplates/user_view_reg_user.htm:35
+msgid "Download .csv"
+msgstr ""
+
+#: pntemplates/xcompile.php~:180
+msgid ".$m[1]."
+msgstr ""
+
+#: pntemplates/admin_main.htm:5
+msgid "Pending events"
+msgstr ""
+
+#: pntemplates/admin_main.htm:7
+#, php-format
+msgid "There is %s new pending event."
+msgid_plural "There are %s new pending events."
+msgstr[0] ""
+msgstr[1] ""
+
+#: pntemplates/user_view_reg_user.htm:2
+msgid "The following user are registered to the event:"
+msgstr ""
+
+#: pntemplates/table/user_view_event_navigation.htm:18
+#: pntemplates/table/user_view_event_navigation.htm:41
+msgid "all"
+msgstr ""
+
+#: pntemplates/table/user_view_event_navigation.htm:48
+msgid "Filter"
+msgstr ""
+
+#: pntemplates/table/user_view_event_navigation.htm:49
+msgid "Jump"
+msgstr ""
+
+#: pntemplates/table/user_view_event_navigation.htm:81
+msgid "Year"
+msgstr ""
+
+#: pntemplates/table/user_view_event_navigation.htm:84
+msgid "Create an event"
+msgstr ""
+
+#: pntemplates/table/user_view_event_day.htm:29
+msgid "No events for this day found."
+msgstr ""
+
+#: pntemplates/admin_calendarsClear.htm:1
+#, php-format
+msgid "Delete old events of the Calendar '%s'"
+msgstr ""
+
+#: pntemplates/admin_calendarsClear.htm:3
+msgid "<b>Warning:</b>This deletes all events before the selected date!"
+msgstr ""
+
+#: pntemplates/admin_calendarsClear.htm:9 pntemplates/user_edit_event.htm:27
+msgid "Date (yyyy-mm-dd)"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm:49
+msgid "All day"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm:54
+#, php-format
+msgid ""
+"<strong>Warning:</strong> The original start time has been created by an "
+"user in an other timezone.<br/> Original start time: %s"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm:79
+msgid ""
+"The sharing field allows you to limit the access of this event: "
+"<ul><li><strong>Private:</strong> A private event, you are the only person "
+"that can see this event</li> <li><strong>Public:</strong> A public visible "
+"private event</li>  <li><strong>Global:</strong> A global event which is not "
+"specific to a user</li>  <li><strong>Only for friends:</strong> Limits the "
+"access to all contacts in your contact list.</li></ul>"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm:88
+msgid ""
+"The group field allows you to limit the access of this event to the "
+"specified group."
+msgstr ""
+
+#: pntemplates/user_edit_event.htm:221
+msgid "End date (yyyy-mm-dd)"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm:226
+msgid "If you leave this field empty, the start date is used."
+msgstr ""
+
+#: pntemplates/user_edit_event.htm:257
+msgid "months"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm:268
+msgid "No recurrence at (comma separated list)"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm:273
+msgid "Every date in this list will be ignored as recurrence date."
+msgstr ""
+
+#: pntemplates/user_edit_event.htm:282
+msgid "Action"
+msgstr ""
+
+#: pntemplates/user_edit_event.htm.xcompile.orig~:24
+msgid "abc"
+msgstr ""

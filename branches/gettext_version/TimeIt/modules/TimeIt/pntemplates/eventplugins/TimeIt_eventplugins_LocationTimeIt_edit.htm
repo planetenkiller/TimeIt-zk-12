@@ -1,0 +1,54 @@
+<fieldset>
+    <legend>%%%'Location'%%%</legend>
+    <div  class="z-formrow">
+            <!--[pnformlabel for="LocationTimeIt_name" __text="Name"]-->
+            <!--[pnformtextinput group="data" id="LocationTimeIt_name" maxLength="100"]-->
+    </div>
+    <div  class="z-formrow">
+            <!--[pnformlabel for="LocationTimeIt_city" __text="City"]-->
+            <!--[pnformtextinput group="data" id="LocationTimeIt_city" maxLength="100"]-->
+    </div>
+    <div  class="z-formrow">
+            <!--[pnformlabel for="LocationTimeIt_streat" __text="Street"]-->
+            <!--[pnformtextinput group="data" id="LocationTimeIt_street" maxLength="100"]-->
+    </div>
+    <div  class="z-formrow">
+            <!--[pnformlabel for="LocationTimeIt_houseNumber" __text="House number"]-->
+            <!--[pnformtextinput group="data" id="LocationTimeIt_houseNumber" maxLength="100"]-->
+    </div>
+    <div  class="z-formrow">
+            <!--[pnformlabel for="LocationTimeIt_country" __text="Country"]-->
+            <!--[pnformtextinput group="data" id="LocationTimeIt_country" maxLength="100"]-->
+    </div>
+    <div  class="z-formrow">
+            <!--[pnformlabel for="LocationTimeIt_zip" __text="ZIP"]-->
+            <!--[pnformtextinput group="data" id="LocationTimeIt_zip" maxLength="100"]-->
+    </div>
+    <!--[assign var="mapView" value=$calendar.enableMapView]-->
+    <!--[if $mapView eq true]-->
+        <div  class="z-formrow">
+            <!--[pnformlabel for="LocationTimeIt_displayMap" __text="Display map"]-->
+            <!--[pnformcheckbox group="data" id="LocationTimeIt_displayMap"]-->
+            <a href="#" onclick="showGoogleMapsMap(true);return false;">Preview</a>
+        </div>
+
+        <div  class="z-formrow">
+            <!--[pnformlabel for="LocationTimeIt_zoomFactor" __text="Zoom (Map)"]-->
+            <!--[pnformdropdownlist items=$LocationTimeIt_zoomFactorItems group="data" id="LocationTimeIt_zoomFactor" maxLength="100"]-->
+        </div>
+    <!--[/if]-->
+    <div  class="z-formrow">
+            <!--[pnformlabel for="LocationTimeIt_lat" text="Lat"]-->
+            <!--[pnformtextinput group="data" id="LocationTimeIt_lat" maxLength="100"]-->
+    </div>
+    <div  class="z-formrow">
+            <!--[pnformlabel for="LocationTimeIt_lng" text="Lng"]-->
+            <!--[pnformtextinput group="data" id="LocationTimeIt_lng" maxLength="100"]-->
+    </div>
+</fieldset>
+
+<!--[if $mapView]-->
+    <script type="text/javascript">
+        Event.observe(window, 'load', eventEditInit, false);
+    </script>
+<!--[/if]-->

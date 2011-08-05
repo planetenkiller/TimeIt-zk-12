@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow>
+	<title>Standard</title>
+    <description>This is a normal workflow. After submit, the event is online.</description>
+
+    <states>
+        <state id="initial">
+            <title>Initial</title>
+            <description>Initial State</description>
+        </state>
+
+        <state id="approved">
+            <title>Approved</title>
+            <description>Event has been approved is available online</description>
+        </state>
+    </states>
+
+    <actions>
+        <!-- begin actions for initial state -->
+        <action id="submit">
+            <title>Submit</title>
+            <description>Submit new content</description>
+            <permission>comment</permission>
+            <state>initial</state>
+            <nextState>approved</nextState>
+            <operation online='1'>createEvent</operation>
+        </action>
+        <!-- end actions for initial state -->
+
+        <!-- begin actions for approved state -->
+        <action id="update">
+            <title>Update</title>
+            <description>Update content</description>
+            <permission>moderate</permission>
+            <state>approved</state>
+            <nextState>approved</nextState>
+            <operation online='1'>updateEvent</operation>
+        </action>
+
+        <action id="delete">
+            <title>Delete</title>
+            <description>Delete publication</description>
+            <permission>delete</permission>
+            <state>approved</state>
+            <operation>deleteEvent</operation>
+        </action>
+
+        <action id="online">
+            <title>Go online</title>
+            <description>Set Event online</description>
+            <permission>moderate</permission>
+            <state>approved</state>
+            <operation online='1'>updateStatus</operation>
+        </action>
+
+        <action id="offline">
+            <title>Take offline</title>
+            <description>Set Event offline</description>
+            <permission>moderate</permission>
+            <state>approved</state>
+            <operation online='0'>updateStatus</operation>
+        </action>
+        <!-- end actions for approved state -->
+    </actions>
+</workflow>

@@ -1,0 +1,154 @@
+<!--[include file="admin_menu.htm"]-->
+
+<div class="pn-admincontainer">
+<div class="pn-adminpageicon"><!--[pnimg src=configure.gif set=icons/large altml=true]--></div>
+<h2>%%%'Settings'%%%</h2>
+<!--[pnform cssClass="z-form"]-->
+<!--[pnformvalidationsummary]-->
+
+<fieldset>
+    <legend>%%%'Basic'%%%</legend>
+
+    <div class="z-formrow">
+            <!--[pnformlabel for="defaultCalendar" __text="Default Calendar"]-->
+            <!--[pnformdropdownlist id="defaultCalendar"]-->
+    </div>
+
+    <div class="z-formrow">
+            <!--[pnformlabel for="defaultPrivateCalendar" __text="Default Calendar for private events"]-->
+            <!--[pnformdropdownlist id="defaultPrivateCalendar"]-->
+    </div>
+
+    <div class="z-formrow">
+            <!--[pnformlabel for="rssatomitems" __text="Rss/Atom: number of (newest) events"]-->
+            <!--[pnformintinput id="rssatomitems" maxLength="5"]-->
+    </div>
+
+    <div class="z-formrow">
+            <!--[pnformlabel for="notifyEvents" __text="Notify admin about event submission?"]-->
+            <!--[pnformcheckbox id="notifyEvents"]-->
+    </div>
+
+    <div class="z-formrow">
+            <!--[pnformlabel for="notifyEventsEmail" __text="E-Mail Address"]-->
+            <!--[pnformemailinput id="notifyEventsEmail"]-->
+    </div>
+
+    <div class="z-formrow">
+            <!--[pnformlabel for="itemsPerPage" __text="Items per page"]-->
+            <!--[pnformintinput id="itemsPerPage" maxLength="5"]-->
+    </div>
+
+    <div class="z-formrow">
+            <!--[pnformlabel for="scribiteEditor" __text="Scribite editor(-=>none)"]-->
+            <!--[if $scribiteEditorItems != false]-->
+                    <!--[pnformdropdownlist id="scribiteEditor"]-->
+            <!--[else]-->
+                    %%%"Module Scribite isn't installed."%%%
+            <!--[/if]-->
+    </div>
+</fieldset>
+
+<fieldset>
+    <legend>%%%'View'%%%</legend>
+
+    <div class="z-formrow">
+            <!--[pnformlabel for="popupOnHover" __text="Display popup on a hover over a event link"]-->
+            <!--[pnformcheckbox id="popupOnHover"]-->
+    </div>
+
+     <div class="z-formrow">
+            <!--[gt text="Format to display dates (see the PHP %s documentation)" tag1='<a href="http://php.net/strftime">strftime()</a>' assign="label_dateformat"]-->
+            <!--[pnformlabel for="dateformat" text=$label_dateformat html=true]-->
+            <div>
+                <!--[pnformtextinput id="dateformat" maxLength="20"]-->
+                <!--[tihelp mode="btn"]-->
+            </div>
+            <!--[tihelp __text="To use language specific dates use 'datebrief' or 'datelong'."]-->
+    </div>
+
+    <div class="z-formrow">
+            <!--[pnformlabel for="sortMode" __text="Sort categories in views"]-->
+            <!--[pnformdropdownlist id="sortMode"]-->
+    </div>
+
+    <fieldset>
+        <legend>%%%'Month view'%%%</legend>
+        <div class="z-formrow">
+                <!--[pnformlabel for="firstWeekDay" __text="First day of week?"]-->
+                <!--[pnformdropdownlist id="firstWeekDay"]-->
+        </div>
+
+        <div class="z-formrow">
+            <!--[pnformlabel for="truncateTitle" __text="After how many characters should the title be truncated in the month view?"]-->
+            <!--[pnformintinput id="truncateTitle"]-->
+        </div>
+    </fieldset>
+</fieldset>
+
+<fieldset>
+    <legend>%%%'Categories'%%%</legend>
+    <div class="z-formrow">
+            <!--[pnformlabel for="enablecategorization" __text="Enable categorization"]-->
+            <!--[pnformcheckbox id="enablecategorization"]-->
+    </div>
+    <div class="z-formrow">
+            <!--[pnformlabel for="colorCats" __text="Group all Events of the same category and use colors"]-->
+            <!--[pnformcheckbox id="colorCats"]-->
+    </div>
+    <div class="z-formrow">
+            <!--[pnformlabel for="colorCatsProp" __text="Get category colors form..."]-->
+            <!--[pnformdropdownlist id="colorCatsProp"]-->
+            %%%'To set category color: Edit the category in the Category Module. Set the color as attribute with the name "color".'%%%
+    </div>
+    <div class="z-formrow">
+            <!--[pnformlabel for="filterByPermission" __text="Filter Events by the Category Permissions"]-->
+            <!--[pnformcheckbox id="filterByPermission"]-->
+    </div>
+    <div class="z-formrow">
+            <!--[pnformlabel for="defalutCatColor" __text="Default catetory color"]-->
+            <!--[pnformtextinput id="defalutCatColor" maxLength="50"]-->
+    </div>
+</fieldset>
+
+<fieldset>
+    <legend>%%%'Google Maps / Address'%%%</legend>
+
+    <div class="z-formrow">
+            <!--[pnformlabel for="googleMapsApiKey" __text="Google Maps Api Key(when use locations not necessary)"]-->
+            <!--[pnformtextinput id="googleMapsApiKey" maxLength="100"]-->
+    </div>
+    <div class="z-formrow">
+            <!--[pnformlabel for="mapHeight" __text="Map height"]-->
+            <!--[pnformintinput id="mapHeight"]-->
+    </div>
+    <div class="z-formrow">
+            <!--[pnformlabel for="mapWidth" __text="Map width"]-->
+            <!--[pnformintinput id="mapWidth"]-->
+    </div>
+    <div class="z-formrow">
+            <!--[pnformlabel for="mapViewType" __text="Map Type"]-->
+            <!--[pnformdropdownlist id="mapViewType"]-->
+
+            <!--[if $MyMapModuleOk eq false]-->
+                %%%"Module MyMap isn't avaible. Install MyMap then you can chosse MyMap."%%%
+            <!--[/if]-->
+    </div>
+</fieldset>
+
+<fieldset>
+	<legend>%%%'userdeletion-Module Support'%%%</legend>
+	
+	<div class="z-formrow">
+		<!--[pnformlabel for="userdeletionMode" __text="Mode"]-->
+	  	<!--[pnformdropdownlist id="userdeletionMode"]-->
+	</div>
+</fieldset>
+
+<div class="pn-adminformrow pn-adminformbuttons">
+	<!--[pnformimagebutton commandName="update" __text="Save" imageUrl="images/icons/small/button_ok.gif"]-->
+	<!--[pnformimagebutton commandName="cancel" __text="Cancel" imageUrl="images/icons/small/button_cancel.gif"]-->
+</div>
+
+<!--[/pnform]-->
+</div>

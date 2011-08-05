@@ -1,0 +1,35 @@
+<div class="z-formrow">
+    <!--[gt text="Widget title" domain="module_timeit" assign="ti_lang"]-->
+    <!--[pnformlabel for=tiWidgetTitle text=$ti_lang]-->
+    <!--[pnformtextinput id=tiWidgetTitle group=data maxLength="255"]-->
+</div>
+
+<div class="z-formrow">
+    <!--[gt text="Calendar" domain="module_timeit" assign="ti_lang"]-->
+    <!--[pnformlabel for=calid text=$ti_lang]-->
+    <!--[pnformdropdownlist id=calid group=data items=$calidItems mandatory=true]-->
+</div>
+
+<div class="z-formrow">
+    <!--[gt text="Registry" domain="module_timeit" assign="ti_lang"]-->
+    <!--[pnformlabel for=prop text=$ti_lang]-->
+    <div class="z-formnote">
+        <!--[pnformdropdownlist id=prop group=data items=$propItems mandatory=true]-->
+        <!--[pnformimagebutton onCommand="handleSomethingChanged" imageUrl="images/icons/small/reload.gif" width="22px" height="22px" ]-->
+    </div>
+    <!--[gt text="Category" domain="module_timeit" assign="ti_lang"]-->
+    <!--[pnformlabel for=catId text=$ti_lang]-->
+    <!--[pnformdropdownlist id=catId group=data items=$catIdItems mandatory=true]-->
+</div>
+
+<div class="z-formrow">
+    <!--[gt text="Start date" domain="module_timeit" assign="ti_lang"]-->
+    <!--[pnformlabel for=start text=$ti_lang]-->
+    <!--[pnformdateinput id=start group=data  mandatory=true]-->
+</div>
+
+<div class="z-formrow">
+    <!--[gt text="End date" domain="module_timeit" assign="ti_lang"]-->
+    <!--[pnformlabel for=end text=$ti_lang]-->
+    <!--[pnformdateinput id=end group=data  mandatory=true]-->
+</div>

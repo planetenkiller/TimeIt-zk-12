@@ -1,0 +1,45 @@
+<!--[pnpageaddvar name="javascript" value="javascript/ajax/prototype.js"]-->
+<!--[pnpageaddvar name="javascript" value="modules/TimeIt/pnjavascript/translation_edit.js"]-->
+
+<div class="pn-admincontainer">
+<div class="pn-adminpageicon"><!--[pnimg src=xedit.gif set=icons/large alt='_TIMEIT_TRANSLATE' altml=true]--></div>
+<h2><!--[pnml name="_TIMEIT_TRANSLATE"]--></h2>
+
+<!--[pnform cssClass="pn-adminform"]-->
+<!--[pnformvalidationsummary]-->
+    <fieldset>
+	<legend><!--["_TIMEIT_TRANSLATE_ORIG"|pnml]--></legend>
+        <b><!--["_TITLE"|pnml]-->:</b> <!--[$event.title|pnvarprepfordisplay]--><br />
+        <b><!--["_DESCRIPTION"|pnml]-->:</b><br />
+          <!--[$event.text|pnvarprephtmldisplay]-->
+    </fieldset>
+
+    <!--[foreach from=$languages item="lang" key="langkey"]-->
+        <fieldset class="timeit_translate_lang" id="timeit_translate_lang_<!--[$langkey]-->">
+            <legend><!--["_TIMEIT_TRANSLATE_NEW"|pnml]--> (<!--[$lang]-->)</legend>
+            <div>
+
+            <div class="pn-adminformrow">
+                <!--[pnformlabel for="title_`$langkey`" text="_TITLE"|pnml]-->:
+                <!--[pnformtextinput group=$langkey id="title_`$langkey`" dataField="title" maxLength=50 ]-->
+            </div>
+
+            <div  class="pn-adminformrow ti-adminformrow">
+                <!--[pnformlabel for="text_`$langkey`" text="_DESCRIPTION"|pnml]-->:
+                <!--[pnformtextinput group=$langkey id="text_`$langkey`" dataField="text" textMode="multiline" cols=30 rows=10]-->
+            </div>
+
+            </div>
+        </fieldset>
+    <!--[/foreach]-->
+
+    <div class="pn-adminformrow pn-adminformbuttons" style="margin-left: 1em;">
+        <!--[pnformimagebutton commandName="update" text=_UPDATE imageUrl="images/icons/small/button_ok.gif"]-->
+        <!--[pnformimagebutton commandName="cancel" text=_CANCEL imageUrl="images/icons/small/button_cancel.gif"]-->
+    </div>
+<!--[/pnform]-->
+</div>
+
+<script type="text/javascript">
+    Event.observe(window, 'load', timeitTraslationEditInit, false);
+</script>

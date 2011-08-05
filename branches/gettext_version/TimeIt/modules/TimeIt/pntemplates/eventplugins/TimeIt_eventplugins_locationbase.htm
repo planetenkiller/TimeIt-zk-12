@@ -1,0 +1,17 @@
+<!--[if $data.name || $data.street || $data.houseNumber || $data.zip || $data.city || $data.phone || $data.fax
+        || $data.url || $data.email || $data.country]-->
+<fieldset>
+    <legend>%%%'Location'%%%</legend>
+    <!--[if $data.name]--><strong>%%%'Name'%%%:</strong> <!--[$data.name|pnvarprepfordisplay]--><br /><!--[/if]-->
+    <!--[if $data.street]--><strong>%%%'Street'%%%:</strong> <!--[$data.street|pnvarprepfordisplay]--><br /><!--[/if]-->
+    <!--[if $data.houseNumber]--><strong>%%%'House number'%%%:</strong> <!--[$data.houseNumber|pnvarprepfordisplay]--><br /><!--[/if]-->
+    <!--[if $data.zip]--><strong>%%%'ZIP'%%%:</strong> <!--[$data.zip|pnvarprepfordisplay]--><br /><!--[/if]-->
+    <!--[if $data.city]--><strong>%%%'City'%%%:</strong> <!--[$data.city|pnvarprepfordisplay]--><br /><!--[/if]-->
+    <!--[if $data.phone]--><strong>%%%'Phone'%%%:</strong> <!--[$data.phone|pnvarprepfordisplay]--><br /><!--[/if]-->
+    <!--[if $data.fax]--><strong>%%%'Fax'%%%:</strong> <!--[$data.fax|pnvarprepfordisplay]--><br /><!--[/if]-->
+    <!--[if $data.url]--><strong>%%%'Website'%%%:</strong> <a href="<!--[$data.url|pnvarprepfordisplay]-->"><!--[$data.url|pnvarprepfordisplay]--></a><br /><!--[/if]-->
+    <!--[if $data.email]--><strong>%%%'E-Mail'%%%:</strong> <!--[$data.email|pnvarprepfordisplay]--><br /><!--[/if]-->
+    <!--[if $data.country]--><strong>%%%'Country'%%%:</strong> <!--[$data.country|pnvarprepfordisplay]--><br /><!--[/if]-->
+</fieldset>
+
+<!--[/if]-->

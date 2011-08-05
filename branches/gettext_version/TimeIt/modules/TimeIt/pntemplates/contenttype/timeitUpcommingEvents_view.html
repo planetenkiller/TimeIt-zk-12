@@ -1,0 +1,27 @@
+<!--[pnpageaddvar name="stylesheet" value='modules/TimeIt/pnstyle/style.css']-->
+
+<!--[if $tiWidgetTitle]-->
+    <h2><!--[$tiWidgetTitle|pnvarprepfordisplay]--></h2>
+<!--[/if]-->
+
+<div class="ti-weekTable">
+    <!--[foreach from=$objectArray item="cats" key="day"]-->
+        <div class="ti-day">
+            <div class="ti-daynum"><!--[$day|tidate_format:$tiConfig.dateformat]--></div>
+            <div class="ti-eventlist">
+            <!--[foreach from=$cats item=objs2]-->
+                    <!--[if $tiConfig.colorCats && $objs2.info.color neq null]-->
+                        <div style="border:1px solid <!--[$objs2.info.color]-->"><div style="background-color:<!--[$objs2.info.color]-->;"><!--[$objs2.info.name|pnvarprepfordisplay]--></div>
+                    <!--[/if]-->
+                    <!--[foreach from=$objs2.data item=obj]-->
+                        &raquo; <!--[*<em><!--[$obj.plugins.location.name]--></em>*]--> <!--[* <== uncomment to show location name*]-->
+                        <!--[if $obj.allDay eq 0]--><!--[$obj.allDayStartLocalFormated|pnvarprepfordisplay]--> <!--[/if]--><a style="font-size: x-small;" href="<!--[pnmodurl modname="TimeIt" type="user" func="display" ot="event" id=$obj.id dheid=$obj.dhe_id]-->" <!--[if $tiConfig.popupOnHover eq true]--><!--[pnpageaddvar name="javascript" value="modules/TimeIt/pnjavascript/overlib.js"]--><!--[popup text=$obj.text|pnvarprepfordisplay caption=$obj.title|pnvarprepfordisplay]--><!--[/if]--> ><!--[$obj.title|pnvarprepfordisplay]--></a><br/>
+                    <!--[/foreach]-->
+                    <!--[if $objs2.info.color neq null]-->
+                        </div>
+                    <!--[/if]-->
+            <!--[/foreach]-->
+            </div>
+        </div>
+    <!--[/foreach]-->
+</div>

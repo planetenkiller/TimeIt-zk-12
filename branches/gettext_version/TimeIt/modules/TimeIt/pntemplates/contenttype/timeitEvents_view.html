@@ -1,0 +1,27 @@
+<!--[if $tiWidgetTitle]-->
+    <h2><!--[$tiWidgetTitle|pnvarprepfordisplay]--></h2>
+<!--[/if]-->
+
+%%%'Title - Creator - Registred: N(limit)'%%%
+<ul style="list-style-type:circle;margin-left:20px;">
+<!--[foreach from=$events item=cats key=timestamp]-->
+<!--[foreach from=$cats item=cat]-->
+<!--[foreach from=$cat.data item=event]-->
+
+    <li><b><!--[$event.title]--></b>
+        - <!--[pnusergetvar name="uname" uid=$event.cr_uid]-->
+        <!--[if $event.subscribeLimit > 0]-->
+            - %%%'Registred users:'%%%:
+            <!--[pnmodapifunc modname="TimeIt" type="subscribe" func="countUserForEvent" eid=$event.dhe_id]-->(<!--[$event.subscribeLimit]-->)
+        <!--[else]-->
+            - %%%'N/A'%%%
+        <!--[/if]-->
+        
+            <a href="<!--[pnmodurl modname="TimeIt" func="display" id=$event.id dheid=$event.dheid]-->">%%%'more...'%%%</a>
+         
+    </li>
+
+<!--[/foreach]-->
+<!--[/foreach]-->
+<!--[/foreach]-->
+</ul>

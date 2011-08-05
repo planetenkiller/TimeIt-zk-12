@@ -1,0 +1,34 @@
+<!--[include file="TimeIt_admin_menu.htm"]-->
+<div class="pn-admincontainer">
+<h2>Pending Events</h2>
+
+<table class="pn-admintable">
+	<thead>
+	<tr>
+		<th><!--[pnml name="_ID"]--></th>
+		<th><!--[pnml name="_TITLE"]--></th>
+		<th><!--[pnml name="_CATEGORY"]--></th>
+		<th><!--[pnml name="_ACTIONS"]--></th>
+	</tr>
+	</thead>
+	<tbody>
+	<!--[foreach from=$events item=event]-->
+		<tr class="<!--[cycle values=pn-odd,pn-even]-->">
+			<td><!--[$event.id|pnvarprepfordisplay]--></td>
+			<td><!--[$event.title|strip_tags|pnvarprepfordisplay]--></td>
+			<td>
+				<ul>
+				<!--[ foreach from=$event.__CATEGORIES__ item=cat ]-->
+					<li><!--[ $cat.name ]--></li>
+				<!--[ /foreach ]-->
+				</ul>
+			</td>
+			<td>
+				<a href="<!--[pnmodurl modname="TimeIt" type="admin" func="modify" eventid=$event.id]-->"><!--[pnimg modname=core set=icons/extrasmall src="xedit.gif" alt=_EDIT]--></a>
+			</td>
+		</tr>
+	<!--[/foreach]-->
+	</tbody>
+</table>
+<!--[pager display=page rowcount=$pager.numitems limit=$pager.itemsperpage posvar=page]-->
+</div>

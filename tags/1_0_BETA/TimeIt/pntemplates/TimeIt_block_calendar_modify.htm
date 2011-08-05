@@ -1,0 +1,19 @@
+<div class="pn-adminformrow">
+    <label for="TimeIt_viewType"><!--[pnml name="_TIMEIT_BLOCK_VIEWTYPE"]--></label>
+	<select id="TimeIt_viewType" name="viewType" size="1">
+		<option value="today" <!--[if $viewtype eq "today"]-->selected="selected"<!--[/if]-->><!--[pnml name="_TIMEIT_BLOCK_TODAYEVENTS"]--></option>
+      	<option value="upcoming" <!--[if $viewtype eq "upcoming"]-->selected="selected"<!--[/if]-->><!--[pnml name="_TIMEIT_BLOCK_UPCOMINGEVENTS"]--></option>
+	</select>
+</div>
+
+
+<div class="pn-adminformrow">
+    <!--[pnml name="_TIMEIT_BLOCK_CONFIGFORVEWTYPE"]--><br />
+    <label for="TimeIt_maxEvents"><!--[pnml name="_TIMEIT_BLOCK_EVENTS_DISPLAY_LIMIT"]--></label>
+	<input id="TimeIt_maxEvents" type="text" name="maxEvents" value="<!--[$maxEvents|pnvarprephtmldisplay]-->" size="5" maxlength="2" />
+</div>
+
+<div class="pn-adminformrow">
+    <label for="TimeIt_maxMonths"><!--[pnml name="_TIMEIT_BLOCK_EVENTS_DISPLAY_RANGE"]--></label>
+	<input id="TimeIt_maxMonths" type="text" name="maxMonths" value="<!--[$maxMonths|pnvarprephtmldisplay]-->" size="5" maxlength="2" />
+</div>
